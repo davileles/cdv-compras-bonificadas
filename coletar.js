@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const PROXY = 'https://cdv-proxy-production.up.railway.app/fetch';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const RESEND_FROM = 'alertas@clubedoviajante.com.br'; // ou seu domínio verificado no Resend
+const RESEND_FROM = 'davileles@gmail.com'; // ou seu domínio verificado no Resend
 
 const PROGRAMS = [
   { id: 'livelo', name: 'Livelo',     url: 'https://www.comparemania.com.br/lojas/pontos-milhas/programa-fidelidade-livelo' },
