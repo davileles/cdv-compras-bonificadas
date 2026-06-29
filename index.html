@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Compras Bonificadas — Clube do Viajante</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  :root {
+    --bg:#0d0d14;--surface:#13131f;--card:#1a1a2e;--border:#252540;
+    --text:#e8e8f0;--muted:#6b6b8a;
+    --livelo:#df0979;--livelo-dim:rgba(223,9,121,0.15);
+    --green:#34d399;--dollar:#60a5fa;--dollar-dim:rgba(96,165,250,0.12);
+    --red:#f87171;
+    /* CDV brand */
+    --cdv-navy:#2a3246;--cdv-coral:#ff585e;--cdv-blue:#126eff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;min-height:100vh}
+  header{background:var(--cdv-navy);border-bottom:3px solid var(--cdv-coral);padding:14px 22px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .logo-area{display:flex;align-items:center;gap:10px}
+  .logo-dot{width:32px;height:32px;background:var(--cdv-coral);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#fff;flex-shrink:0;letter-spacing:-1px}
+  .title-block{}
+  .title-main{font-size:15px;font-weight:800;color:#fff;line-height:1.2}
+  .title-sub{font-size:11px;color:rgba(255,255,255,.5);font-weight:500}
+  .badge{font-size:11px;color:var(--muted);background:var(--card);border:1px solid var(--border);padding:3px 10px;border-radius:20px}
+  .badge strong{color:var(--green)}
+  .hright{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .refresh-btn{background:var(--cdv-coral);border:none;color:#fff;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s}
+  .refresh-btn:hover{opacity:.85}
+  .refresh-btn:disabled{opacity:.5;cursor:not-allowed}
+
+  .controls{padding:11px 22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:65px;z-index:99}
+  input[type=text]{background:var(--card);border:1px solid var(--border);color:var(--text);padding:7px 12px;border-radius:8px;font-size:13px;font-family:'Inter',sans-serif;width:210px;outline:none;transition:border-color .2s}
+  input[type=text]:focus{border-color:var(--cdv-coral)}
+  input[type=text]::placeholder{color:var(--muted)}
+  .fbtn{border:1px solid var(--border);background:transparent;color:var(--muted);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .15s}
+  .fbtn:hover{color:var(--text);border-color:var(--cdv-coral)}
+  .fbtn.active{background:rgba(255,88,94,.12);border-color:var(--cdv-coral);color:var(--cdv-coral)}
+  select.srt{margin-left:auto;background:var(--card);border:1px solid var(--border);color:var(--text);padding:7px 10px;border-radius:8px;font-size:12px;font-family:'Inter',sans-serif;cursor:pointer;outline:none}
+
+  .cat-bar{padding:8px 22px 10px;display:flex;gap:5px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
+  .cbtn{border:1px solid var(--border);background:transparent;color:var(--muted);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:4px;white-space:nowrap;transition:all .15s}
+  .cbtn:hover{border-color:var(--text);color:var(--text)}
+  .cbtn.active{background:rgba(255,88,94,.12);border-color:var(--cdv-coral);color:var(--cdv-coral)}
+  .cbtn .cc{background:var(--border);border-radius:4px;padding:1px 5px;font-size:10px;color:var(--muted);font-weight:700}
+  .cbtn.active .cc{background:var(--cdv-coral);color:#fff}
+
+  .stats{display:flex;gap:18px;padding:9px 22px;border-bottom:1px solid var(--border);flex-wrap:wrap;font-size:12px;color:var(--muted)}
+  .stats strong{color:var(--text);font-size:14px;font-weight:700}
+  .sdot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:5px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;padding:18px 22px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+  .card:hover{transform:translateY(-2px)}
+  .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--livelo)}
+  .card:hover{border-color:var(--livelo)}
+  .card.is-dollar::before{background:var(--dollar)}
+  .card.is-dollar:hover{border-color:var(--dollar)}
+  .pname{font-size:13px;font-weight:700;line-height:1.3}
+  .pts-row{display:flex;align-items:baseline;gap:4px}
+  .pts-val{font-size:26px;font-weight:900;color:var(--livelo);line-height:1}
+  .card.is-dollar .pts-val{color:var(--dollar)}
+  .pts-lbl{font-size:11px;color:var(--muted)}
+  .tag{border-radius:5px;padding:2px 7px;font-size:10px;font-weight:600;width:fit-content}
+  .tag-dollar{background:var(--dollar-dim);border:1px solid rgba(96,165,250,.2);color:var(--dollar)}
+  .tag-ate{background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.25);color:#818cf8}
+  .card-foot{margin-top:auto;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+
+  .status-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;gap:16px;grid-column:1/-1;text-align:center}
+  .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--cdv-coral);border-radius:50%;animation:spin 0.7s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .error-box{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.3);border-radius:10px;padding:16px 20px;color:var(--red);font-size:13px;grid-column:1/-1;text-align:center;line-height:1.8}
+
+  @media(max-width:600px){
+    header,.controls{padding:10px 14px}
+    .cat-bar,.stats{padding:8px 14px}
+    .grid{padding:14px;gap:9px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+    input[type=text]{width:100%}
+    select.srt{margin-left:0}
+    .controls{top:58px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <div class="logo-dot">CDV</div>
+    <div class="title-block">
+      <div class="title-main">Compras Bonificadas</div>
+      <div class="title-sub">Clube do Viajante · Livelo</div>
+    </div>
+  </div>
+  <div class="badge" id="update-badge">Carregando…</div>
+  <div class="hright">
+    <button class="refresh-btn" id="refresh-btn" onclick="loadData()">⟳ Atualizar</button>
+  </div>
+</header>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Buscar parceiro ou categoria…" oninput="render()">
+  <button class="fbtn" data-filter="dollar">U$ dólar</button>
+  <button class="fbtn" data-filter="ate">Até X pts</button>
+  <select class="srt" id="sort" onchange="render()">
+    <option value="pts_desc">Maior pontuação</option>
+    <option value="pts_asc">Menor pontuação</option>
+    <option value="name">A → Z</option>
+  </select>
+</div>
+
+<div class="cat-bar" id="cat-bar"></div>
+<div class="stats" id="stats"></div>
+<div class="grid" id="grid">
+  <div class="status-box"><div class="spinner"></div><div style="color:var(--muted);font-size:13px">Buscando parceiros…</div></div>
+</div>
+
+<script>
+// ─── CONFIGURAÇÃO — substitua pela URL do seu proxy no Railway ────────────────
+// Exemplo: https://cdv-proxy.up.railway.app/fetch
+const PROXY_URL = 'https://cdv-proxy-production.up.railway.app/fetch';
+const TARGET    = 'https://www.comparemania.com.br/lojas/pontos-milhas/programa-fidelidade-livelo';
+
+// ─── Categorias ───────────────────────────────────────────────────────────────
+const CAT_RULES=[
+  [/seguro.*(viagem|travel|vida|residencial|celular|auto|moto|odonto)/i,'Seguros'],
+  [/seguro|assist.card|coris|ciclic|hero.seguro|universal.assist|medsenior|suhai|mapfre|next.seguro/i,'Seguros'],
+  [/consórcio|consorcio|klubi|embracon|mycon|bradesco.cons|liga.vitória.cons/i,'Financeiro'],
+  [/porto.seguro|travelex|mobills|bulbe|grupo.dreams|creditas/i,'Financeiro'],
+  [/sam.?s.club|carrefour|angeloni|supernosso|baianão/i,'Supermercado'],
+  [/booking|decolar|hoteis|kaligo|localiza|movida|unidas|hertz|rental.cars|rentcars|avis|budget|sixt|reservecar|tripchip|agaxtur|beach.park.hosp|hope.resort|viajar/i,'Viagem'],
+  [/farmácias.app|drogaria|drogarias.pacheco/i,'Farmácia'],
+  [/petlove|petz|zee.dog|cobasi/i,'Pet'],
+  [/shopee|magalu|magazine.luiza|mercado.livre|q.compra|aliexpress|kabum|fast.shop/i,'Marketplace'],
+  [/claro|tim\b/i,'Telecom'],
+  [/asics|centauro|netshoes|decathlon|fila\b|nike|umbro|puma|speedo|olympikus|mizuno|new.balance|under.armour|adidas/i,'Esportes'],
+  [/sephora|boticário|granado|forever.liss|adcos|amobeleza|beleza.na.web|eudora|avon|natura|oceane|shiseido|nars|truss|vult|quem.disse|abelha.rainha|época.cosm|loccitane/i,'Beleza'],
+  [/casas.bahia|extra\b|ponto\b|kabum|acer|electrolux|gazin|midea|brastemp|consul|cook|dufrio/i,'Eletrônicos'],
+  [/renner|riachuelo|c.?&.?a\b|cea\b|colcci|converse|crocs|dudalina|ellus|havaianas|hering|hope\b|individual\b|john.john|lacoste|le.lis|live!|malwee|osklen|posthaus|puket|reserva\b|zattini|bobstore|beyoung|dafiti|shoestock|meia.sola|guess|bibi|democrata|estoque\b|elbo\b|morana|yvy|zissou|foco\b|bo\.bô|bobo|loungerie|vivara/i,'Moda'],
+  [/camicado|imaginarium|bombay|pado|maltacor/i,'Casa'],
+  [/globoplay|cinemark|seus.ingressos|playstation|beto.carrero|coliseu/i,'Entretenimento'],
+  [/coffee.mais|assinatura.coffee|café.orf|tia.sônia|outback|mistral|bombay|piatan|cestas/i,'Alimentação'],
+  [/samsonite|bagaggio|thule\b|tripchip/i,'Viagem'],
+  [/uber|buser|clickbus/i,'Transporte'],
+  [/loja.do.mec|pneustore|postos.ale/i,'Automotivo'],
+  [/lego|carters/i,'Infantil'],
+  [/vivara|monte.carlo|technos|fóssil|seculus|mondaine/i,'Acessórios'],
+  [/pura.vida|beep\b|medsênior|max.titanium|probiótica|wise.up|alura/i,'Saúde'],
+  [/edp\b|home.angels/i,'Serviços'],
+];
+const CAT_ICONS={'Marketplace':'🛒','Eletrônicos':'💻','Moda':'👗','Beleza':'💄','Viagem':'✈️','Esportes':'🏅','Farmácia':'💊','Supermercado':'🛍️','Pet':'🐾','Telecom':'📱','Casa':'🏠','Alimentação':'☕','Entretenimento':'🎬','Seguros':'🛡️','Financeiro':'💰','Acessórios':'⌚','Saúde':'🏋️','Lazer':'🎡','Transporte':'🚌','Automotivo':'🔧','Infantil':'🧸','Serviços':'⚙️','Outros':'📦'};
+function categorize(n){for(const[re,c]of CAT_RULES)if(re.test(n))return c;return'Outros';}
+
+// ─── Parser ───────────────────────────────────────────────────────────────────
+function parse(html){
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const out=[];
+  doc.querySelectorAll('table tr').forEach(tr=>{
+    const td=tr.querySelectorAll('td');
+    if(td.length<2)return;
+    const na=td[0].querySelector('a'),ga=td[1].querySelector('a');
+    if(!na||!ga)return;
+    const name=na.textContent.trim(),g=ga.textContent.trim();
+    const am=g.match(/até\s+(\d+)/i),em=g.match(/=\s+(\d+)/i);
+    const pts=am?+am[1]:em?+em[1]:null;
+    if(!pts||!name)return;
+    const pm=g.match(/por\s+(\d+)\s+real/i);
+    const dollar=/kaligo|hertz|decolar|aliexpress|rental.cars|rentcars|localiza.int/i.test(name);
+    out.push({name,pts,per:pm?+pm[1]:1,ate:!!am,dollar,cat:categorize(name),url:na.href||'#'});
+  });
+  return out;
+}
+
+// ─── State ────────────────────────────────────────────────────────────────────
+let partners=[],activeCat='all',activeFilters=new Set();
+
+// ─── Load ─────────────────────────────────────────────────────────────────────
+async function loadData(){
+  const btn=document.getElementById('refresh-btn');
+  btn.disabled=true;btn.textContent='⟳ Buscando…';
+  document.getElementById('update-badge').textContent='Buscando…';
+  document.getElementById('update-badge').style.borderColor='';
+  document.getElementById('grid').innerHTML='<div class="status-box"><div class="spinner"></div><div style="color:var(--muted);font-size:13px">Buscando parceiros…</div></div>';
+  document.getElementById('cat-bar').innerHTML='';
+  document.getElementById('stats').innerHTML='';
+
+  try{
+    const proxyEndpoint = PROXY_URL.includes('SEU-PROXY')
+      ? null  // proxy ainda não configurado
+      : `${PROXY_URL}?url=${encodeURIComponent(TARGET)}`;
+
+    if(!proxyEndpoint) throw new Error('Configure a URL do proxy no arquivo HTML (variável PROXY_URL).');
+
+    const res=await fetch(proxyEndpoint,{signal:AbortSignal.timeout(15000)});
+    if(!res.ok) throw new Error(`Servidor retornou ${res.status}`);
+    const html=await res.text();
+    if(!html.includes('ponto(s)')) throw new Error('Resposta inesperada do servidor.');
+
+    partners=parse(html);
+    if(!partners.length) throw new Error('Nenhum parceiro encontrado.');
+
+    const now=new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('update-badge').innerHTML=`Atualizado em <strong>${now}</strong>`;
+    document.getElementById('update-badge').style.borderColor='rgba(52,211,153,.4)';
+    buildCatBar();render();
+  }catch(e){
+    document.getElementById('grid').innerHTML=`<div class="error-box">⚠️ ${e.message}</div>`;
+    document.getElementById('update-badge').textContent='Erro';
+  }finally{
+    btn.disabled=false;btn.textContent='⟳ Atualizar';
+  }
+}
+
+// ─── UI ───────────────────────────────────────────────────────────────────────
+function pool(){
+  const q=document.getElementById('search').value.toLowerCase();
+  return partners.filter(p=>{
+    if(q&&!p.name.toLowerCase().includes(q)&&!p.cat.toLowerCase().includes(q))return false;
+    if(activeCat!=='all'&&p.cat!==activeCat)return false;
+    if(activeFilters.has('dollar')&&!p.dollar)return false;
+    if(activeFilters.has('ate')&&!p.ate)return false;
+    return true;
+  });
+}
+function buildCatBar(){
+  const cnt={};partners.forEach(p=>{cnt[p.cat]=(cnt[p.cat]||0)+1;});
+  document.getElementById('cat-bar').innerHTML=
+    `<button class="cbtn active" data-cat="all">Todas <span class="cc">${partners.length}</span></button>`+
+    Object.keys(cnt).sort().map(c=>`<button class="cbtn" data-cat="${c}">${CAT_ICONS[c]||'•'} ${c} <span class="cc">${cnt[c]}</span></button>`).join('');
+}
+function render(){
+  const sort=document.getElementById('sort').value;
+  const list=pool().sort((a,b)=>{
+    if(sort==='name')return a.name.localeCompare(b.name);
+    const va=a.pts/(a.per||1),vb=b.pts/(b.per||1);
+    return sort==='pts_asc'?va-vb:vb-va;
+  });
+  document.getElementById('stats').innerHTML=
+    `<span><span class="sdot" style="background:var(--text)"></span>Total: <strong>${partners.length}</strong></span>`+
+    `<span><span class="sdot" style="background:var(--cdv-coral)"></span>Exibindo: <strong>${list.length}</strong></span>`+
+    `<span><span class="sdot" style="background:var(--dollar)"></span>Em dólar: <strong>${partners.filter(p=>p.dollar).length}</strong></span>`;
+  document.querySelectorAll('.cbtn').forEach(b=>b.classList.toggle('active',b.dataset.cat===activeCat));
+  if(!list.length){document.getElementById('grid').innerHTML='<div class="status-box" style="color:var(--muted)">Nenhum parceiro encontrado.</div>';return;}
+  const lbl=p=>p.per>1?`R$${p.per}`:p.dollar?'U$1':'R$1';
+  document.getElementById('grid').innerHTML=list.map(p=>`
+    <a class="card ${p.dollar?'is-dollar':''}" href="${p.url}" target="_blank">
+      <div class="pname">${p.name}</div>
+      <div class="pts-row"><span class="pts-val">${p.pts}</span><span class="pts-lbl">pts/${lbl(p)}</span></div>
+      ${p.ate?'<span class="tag tag-ate">até X pts</span>':''}
+      ${p.dollar?'<span class="tag tag-dollar">em U$ turismo</span>':''}
+      <div class="card-foot">${p.cat}</div>
+    </a>`).join('');
+}
+document.addEventListener('click',e=>{
+  const fb=e.target.closest('[data-filter]');
+  if(fb){const f=fb.dataset.filter;activeFilters.has(f)?activeFilters.delete(f):activeFilters.add(f);fb.classList.toggle('active');render();return;}
+  const cb=e.target.closest('[data-cat]');
+  if(cb){activeCat=(activeCat===cb.dataset.cat&&cb.dataset.cat!=='all')?'all':cb.dataset.cat;render();}
+});
+loadData();
+</script>
+</body>
+</html>
