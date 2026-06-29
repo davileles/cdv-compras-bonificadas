@@ -586,8 +586,6 @@ async function openModal(name){
   const cached=directUrlCache[name];
   document.getElementById('modal-rows').innerHTML=renderModalRows(p, cached||{});
 
-  const bestPid=p.bestProg==='both'?Object.keys(p.programs)[0]:p.bestProg;
-  document.getElementById('modal-url').href=resolveLink(bestPid,cached||{})||p.programs[bestPid]?.url||'#';
   document.getElementById('modal-overlay').classList.add('open');
 
   // Se ainda não buscou, busca agora
@@ -602,7 +600,6 @@ async function openModal(name){
       // Atualiza o modal se ainda estiver aberto para este parceiro
       if(document.getElementById('modal-name').textContent===name){
         document.getElementById('modal-rows').innerHTML=renderModalRows(p,links);
-        document.getElementById('modal-url').href=resolveLink(bestPid,links)||p.programs[bestPid]?.url||'#';
       }
     }
   }
@@ -744,20 +741,25 @@ function renderHistChart(partnerName){
 }
 
 // ─── Events ───────────────────────────────────────────────────────────────────
+// Event listeners separados por contexto para evitar conflitos
+// 1. Modal overlay — fecha ao clicar fora
+document.getElementById('modal-overlay').addEventListener('click', e=>{
+  if(e.target===document.getElementById('modal-overlay')) closeModal();
+});
+document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+
+// 2. Grid e controles — nunca dispara quando modal está aberto
 document.addEventListener('click',e=>{
-  // Fechar modal ao clicar no overlay ou no botão fechar
-  if(e.target.id==='modal-overlay'||e.target.id==='modal-close-btn'){closeModal();return;}
-  // Não propaga cliques dentro do modal para os cards
-  if(e.target.closest('.modal')){return;}
+  // Ignora se modal está aberto
+  if(document.getElementById('modal-overlay').classList.contains('open')) return;
+
   const pf=e.target.closest('[data-prog]');
   if(pf){
     const pid=pf.dataset.prog;
     if(activeProgs!==null&&activeProgs.has(pid)){
-      // Clicou no já selecionado → limpa filtro (mostra todos)
       activeProgs=null;
       document.querySelectorAll('.prog-fbtn').forEach(b=>b.classList.remove('active'));
     } else {
-      // Seleciona só este
       activeProgs=new Set([pid]);
       document.querySelectorAll('.prog-fbtn').forEach(b=>b.classList.toggle('active',b.dataset.prog===pid));
     }
@@ -768,7 +770,7 @@ document.addEventListener('click',e=>{
   const cb=e.target.closest('[data-cat]');
   if(cb){activeCat=(activeCat===cb.dataset.cat&&cb.dataset.cat!=='all')?'all':cb.dataset.cat;render();return;}
   const card=e.target.closest('.card[data-name]');
-  if(card){openModal(decodeURIComponent(card.dataset.name));} // async, fire & forget
+  if(card){openModal(decodeURIComponent(card.dataset.name));}
 });
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
