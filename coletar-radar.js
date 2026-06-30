@@ -233,9 +233,16 @@ REGRAS POR CATEGORIA:
 - "loja" e "cupom": deixe como "" (não se aplicam, exceto se houver cupom de desconto na compra — nesse caso preencha "cupom").
 - "importante": deixe como "".
 
+[transferencia] — REGRA ADICIONAL OBRIGATÓRIA DO TETO DE BÔNUS:
+- Transferências bonificadas quase sempre têm um TETO MÁXIMO de bônus (ex: "limite de 300.000 milhas bônus por CPF"). Quando esse teto existir no texto, calcule o VOLUME MÁXIMO de pontos que a pessoa deve transferir para atingir exatamente esse teto, para CADA percentual de bônus aplicável (cada perfil/categoria).
+  Fórmula: PONTOS_PARA_ATINGIR_TETO = TETO_DE_BONUS_EM_PONTOS / (PERCENTUAL_DE_BONUS / 100)
+  Exemplo: bônus de 80% com teto de 300.000 milhas bônus → transferir até 375.000 pontos (375.000 × 80% = 300.000 milhas de bônus, atingindo o teto). Para o cenário de 50% de bônus com o mesmo teto de 300.000 → transferir até 600.000 pontos.
+  Preencha o campo "tetoTransferencia" com uma linha por cenário/perfil, no formato: "🎯 Bônus de [X]% ([perfil, se houver]): transfira até [N] pontos para atingir o teto de [TETO] milhas/pontos de bônus", uma linha por cenário separada por quebra de linha (\\n).
+  Se não houver teto de bônus explícito no texto, ou não for possível calcular, deixe "tetoTransferencia" como "".
+
 [clube] e [cartao] e [geral]
 - "resumo" e "restricoes" normalmente, sem regras especiais de título.
-- "loja", "cupom", "milheiro", "importante": deixe "" a menos que claramente aplicável (ex: cupom de assinatura).
+- "loja", "cupom", "milheiro", "tetoTransferencia", "importante": deixe "" a menos que claramente aplicável (ex: cupom de assinatura).
 
 REGRA DE PRAZO (todas as categorias):
 - "prazo" = data de ENCERRAMENTO da campanha/promoção em si.
@@ -259,6 +266,7 @@ Formato exato de saída (todos os campos sempre presentes, mesmo que vazios):
   "loja": "string ou \"\"",
   "cupom": "string ou \"\"",
   "milheiro": "string ou \"\"",
+  "tetoTransferencia": "string ou \"\"",
   "importante": "",
   "link": "string ou \"\"",
   "restricoes": ["item com hífen", "..."]
@@ -370,10 +378,19 @@ async function main() {
         }
       }
 
+      // Ícone fixo por categoria (mais consistente do que deixar a IA escolher)
+      const EMOJI_POR_CATEGORIA = {
+        compra: '💰',
+        transferencia: '🔄',
+        cartao: '💳',
+        compra_bonificada: '🛍️',
+      };
+      const emoji = EMOJI_POR_CATEGORIA[categoria] || ia.emoji || '📰';
+
       novosItens.push({
         id: c.id,
         titulo: ia.titulo || c.title,
-        emoji: ia.emoji || '📰',
+        emoji,
         resumo: ia.resumo || '',
         programa: ia.programa || '',
         bonus: ia.bonus || '',
@@ -382,6 +399,7 @@ async function main() {
         loja: categoria === 'compra_bonificada' ? (ia.loja || '') : '',
         cupom: ia.cupom || '',
         milheiro: ia.milheiro || '',
+        tetoTransferencia: categoria === 'transferencia' ? (ia.tetoTransferencia || '') : '',
         importante: categoria === 'compra_bonificada' ? TEXTO_IMPORTANTE_COMPRA_BONIFICADA : '',
         link,
         restricoes: Array.isArray(ia.restricoes) ? ia.restricoes : [],
