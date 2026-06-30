@@ -29,14 +29,18 @@ app.get('/fetch', async (req, res) => {
   try {
     const response = await fetch(target, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-        'Accept': 'text/html,application/xhtml+xml',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'pt-BR,pt;q=0.9',
-        'Cache-Control': 'no-cache'
+        'Cache-Control': 'no-cache',
       },
       timeout: 15000
     });
-    if (!response.ok) return res.status(response.status).json({ error: `Destino retornou ${response.status}` });
+    if (!response.ok) {
+      const bodyText = await response.text().catch(() => '');
+      console.log(`[proxy] ${target} → ${response.status}. Body preview: ${bodyText.slice(0,300)}`);
+      return res.status(response.status).json({ error: `Destino retornou ${response.status}` });
+    }
     const html = await response.text();
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.send(html);
