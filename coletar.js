@@ -1,6 +1,6 @@
 // Script executado pelo GitHub Action
 // 1. Coleta pontuações → historico.json
-// 2. Raspa feeds RSS do Passageiro de Primeira → ofertas.json
+// 2. Raspa feeds RSS → reescreve com IA → ofertas.json
 // 3. Verifica alertas → dispara emails
 
 const https = require('https');
@@ -10,6 +10,7 @@ const fs = require('fs');
 const PROXY = 'https://cdv-proxy-production.up.railway.app/fetch';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM = 'alertas@clubedoviajante.com.br';
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 const PROGRAMS = [
   { id:'livelo',  name:'Livelo',     url:'https://www.comparemania.com.br/lojas/pontos-milhas/programa-fidelidade-livelo' },
@@ -21,8 +22,8 @@ const PROGRAMS = [
 
 const EQUIV = { livelo:1, esfera:1, smiles:1/1.8, azul:1/1.9, latam:1/1.25 };
 
-// Categorias de ofertas a monitorar
-const PP_FEEDS = [
+// Categorias de ofertas a monitorar (fonte fica só aqui, nunca exposta no painel)
+const FEEDS = [
   { id:'transferencia', label:'Transferência com bônus', emoji:'🔄',
     url:'https://passageirodeprimeira.com/categorias/promocoes/transferencia-de-pontos/feed/' },
   { id:'compra',        label:'Compra de pontos',        emoji:'🛒',
@@ -38,7 +39,6 @@ function httpGet(url, timeout=15000) {
   return new Promise((resolve, reject) => {
     const lib = url.startsWith('https') ? https : http;
     const req = lib.get(url, { timeout }, res => {
-      // Segue redirecionamentos
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         return httpGet(res.headers.location, timeout).then(resolve).catch(reject);
       }
@@ -116,30 +116,37 @@ async function fetchProg(prog) {
   return items;
 }
 
-// ── Parser RSS (Passageiro de Primeira) ───────────────────────────────────────
+// ── Parser RSS ─────────────────────────────────────────────────────────────────
+function decodeEntities(s){
+  return s.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>')
+          .replace(/&quot;/g,'"').replace(/&#039;/g,"'").replace(/&nbsp;/g,' ');
+}
+
 function parseRSS(xml, catId, catLabel, catEmoji) {
   const items = [];
   const itemRe = /<item>([\s\S]*?)<\/item>/g;
   let m;
   while ((m = itemRe.exec(xml)) !== null) {
     const block = m[1];
-    const title   = (block.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) ||
-                     block.match(/<title>([\s\S]*?)<\/title>/))?.[1]?.trim() || '';
+    const title = decodeEntities((block.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/) ||
+                     block.match(/<title>([\s\S]*?)<\/title>/))?.[1]?.trim() || '');
     const link    = block.match(/<link>([\s\S]*?)<\/link>/)?.[1]?.trim() || '';
     const pubDate = block.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1]?.trim() || '';
-    const desc    = (block.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) ||
-                     block.match(/<description>([\s\S]*?)<\/description>/))?.[1]
-                    ?.replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim()
-                    .slice(0,300) || '';
+    // Tenta content:encoded primeiro (texto completo), senão description
+    const contentFull = (block.match(/<content:encoded><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/))?.[1] || '';
+    const descRaw = (block.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/) ||
+                     block.match(/<description>([\s\S]*?)<\/description>/))?.[1] || '';
+    const rawHtml = contentFull || descRaw;
+    const plainText = decodeEntities(rawHtml.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
     if (!title || !link) continue;
     const date = pubDate ? new Date(pubDate).toISOString() : new Date().toISOString();
     const slug = link.replace(/^https?:\/\/[^/]+\//, '').replace(/\/$/, '');
-    items.push({ id:slug, cat:catId, catLabel, catEmoji, title, link, date, desc });
+    items.push({ id:slug, cat:catId, catLabel, catEmoji, title, link, date, rawText:plainText.slice(0,4000) });
   }
   return items;
 }
 
-async function fetchPPFeed(feed) {
+async function fetchFeed(feed) {
   console.log(`Buscando feed ${feed.id}...`);
   try {
     const xml = await httpGet(feed.url);
@@ -149,6 +156,69 @@ async function fetchPPFeed(feed) {
   } catch(e) {
     console.error(`  Erro no feed ${feed.id}:`, e.message);
     return [];
+  }
+}
+
+// ── Reescreve a oferta via IA (Claude Haiku) — conteúdo 100% original ─────────
+async function reescreverOferta(item) {
+  if (!ANTHROPIC_API_KEY) {
+    // Fallback sem IA: usa título e primeiras frases do texto bruto
+    return {
+      titulo: item.title,
+      resumo: item.rawText.slice(0,220),
+      bonus: '',
+      prazo: '',
+      programa: ''
+    };
+  }
+
+  const prompt = `Você vai reescrever uma notícia sobre promoção de pontos/milhas em formato de post próprio, SEM citar nomes de sites, portais, blogs ou veículos de imprensa. Não use frases como "segundo o site", "de acordo com o portal" etc.
+
+Notícia original (título + texto):
+TÍTULO: ${item.title}
+TEXTO: ${item.rawText}
+
+Responda SOMENTE em JSON válido, sem markdown, neste formato exato:
+{"titulo":"título reescrito, direto, sem citar fontes","resumo":"resumo de 2-3 frases com os dados mais importantes (programa, bônus %, prazo, condições principais)","bonus":"percentual de bônus se houver, ex: '80%' ou vazio","prazo":"prazo da oferta se houver, ex: 'até 30/06' ou vazio","programa":"nome do programa de fidelidade principal envolvido, ex: 'Livelo', 'Azul Fidelidade', ou vazio"}`;
+
+  try {
+    const payload = JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 500,
+      messages: [{ role:'user', content:prompt }]
+    });
+
+    const result = await new Promise((resolve, reject) => {
+      const req = https.request({
+        hostname:'api.anthropic.com', path:'/v1/messages', method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'x-api-key':ANTHROPIC_API_KEY,
+          'anthropic-version':'2023-06-01',
+          'Content-Length':Buffer.byteLength(payload)
+        }
+      }, res => {
+        let data='';
+        res.on('data', c=>data+=c);
+        res.on('end', ()=>resolve(data));
+      });
+      req.on('error', reject);
+      req.write(payload);
+      req.end();
+    });
+
+    const parsed = JSON.parse(result);
+    const text = parsed.content?.[0]?.text || '';
+    const clean = text.replace(/```json\s*/gi,'').replace(/```\s*/gi,'').trim();
+    const json = JSON.parse(clean);
+    return json;
+  } catch(e) {
+    console.error('  [IA] erro ao reescrever, usando fallback:', e.message);
+    return {
+      titulo: item.title,
+      resumo: item.rawText.slice(0,220),
+      bonus: '', prazo: '', programa: ''
+    };
   }
 }
 
@@ -215,10 +285,9 @@ async function main() {
   const hoje = new Date().toISOString().split('T')[0];
   const isFirstRunOfDay = () => {
     const h = new Date().getUTCHours();
-    return h >= 11 && h < 13; // ~8h SP — primeira execução do dia
+    return h >= 11 && h < 13; // ~8h SP
   };
 
-  // ── 1. Carrega arquivos existentes ─────────────────────────────────────────
   let historico = {};
   if (fs.existsSync('historico.json')) {
     try { historico = JSON.parse(fs.readFileSync('historico.json','utf8')); } catch(e) {}
@@ -234,28 +303,46 @@ async function main() {
     try { ofertas = JSON.parse(fs.readFileSync('ofertas.json','utf8')); } catch(e) {}
   }
 
-  // ── 2. Feeds RSS do Passageiro de Primeira (sempre, a cada execução) ───────
+  // ── Radar de Ofertas: busca feeds, reescreve novos artigos via IA ──────────
   console.log('\n=== RADAR DE OFERTAS ===');
   const slugsExistentes = new Set(ofertas.items.map(i => i.id));
-  const novosArtigos = [];
+  const candidatosNovos = [];
 
-  for (const feed of PP_FEEDS) {
-    const items = await fetchPPFeed(feed);
+  for (const feed of FEEDS) {
+    const items = await fetchFeed(feed);
     for (const item of items) {
       if (!slugsExistentes.has(item.id)) {
-        novosArtigos.push(item);
+        candidatosNovos.push(item);
         slugsExistentes.add(item.id);
       }
     }
   }
 
-  // Adiciona novos e remove artigos com mais de 7 dias
-  // Na primeira população (ofertas.json vazio), aceita artigos dos últimos 3 dias do feed
-  const isPrimeiraPopulacao = ofertas.items.length === 0 && slugsExistentes.size === novosArtigos.length;
-  const limiteData = new Date();
-  limiteData.setDate(limiteData.getDate() - 7);
+  console.log(`${candidatosNovos.length} artigo(s) novo(s) — reescrevendo com IA...`);
+  const novosProcessados = [];
+  for (const item of candidatosNovos) {
+    const reescrito = await reescreverOferta(item);
+    novosProcessados.push({
+      id: item.id,
+      cat: item.cat,
+      catLabel: item.catLabel,
+      catEmoji: item.catEmoji,
+      date: item.date,
+      titulo: reescrito.titulo || item.title,
+      resumo: reescrito.resumo || '',
+      bonus: reescrito.bonus || '',
+      prazo: reescrito.prazo || '',
+      programa: reescrito.programa || '',
+    });
+    // throttle leve para não sobrecarregar a API
+    await new Promise(r => setTimeout(r, 300));
+  }
 
-  let itemsFinais = [...novosArtigos, ...ofertas.items.filter(i => new Date(i.date) > limiteData)];
+  const isPrimeiraPopulacao = ofertas.items.length === 0 && slugsExistentes.size === novosProcessados.length;
+  const limite7dias = new Date();
+  limite7dias.setDate(limite7dias.getDate() - 7);
+
+  let itemsFinais = [...novosProcessados, ...ofertas.items.filter(i => new Date(i.date) > limite7dias)];
 
   if (isPrimeiraPopulacao) {
     const limite3dias = new Date();
@@ -268,9 +355,9 @@ async function main() {
   ofertas.atualizadoEm = new Date().toISOString();
 
   fs.writeFileSync('ofertas.json', JSON.stringify(ofertas, null, 2));
-  console.log(`Ofertas salvas: ${ofertas.items.length} total, ${novosArtigos.length} novos`);
+  console.log(`Ofertas salvas: ${ofertas.items.length} total, ${novosProcessados.length} novas`);
 
-  // ── 3. Coleta histórico (apenas na primeira execução do dia) ───────────────
+  // ── Histórico de pontuações (apenas 1ª execução do dia) ────────────────────
   if (isFirstRunOfDay()) {
     console.log('\n=== HISTÓRICO DE PONTUAÇÕES ===');
     const allData = {};
@@ -309,7 +396,6 @@ async function main() {
     fs.writeFileSync('historico.json', JSON.stringify(historico, null, 2));
     console.log(`Histórico salvo: ${Object.keys(historico).length} dias`);
 
-    // ── 4. Verifica alertas ─────────────────────────────────────────────────
     console.log('\n=== ALERTAS ===');
     for (const alerta of alertas) {
       if (!alerta.email||!alerta.parceiro||!alerta.minPts||!alerta.programa) continue;
