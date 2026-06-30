@@ -155,7 +155,11 @@
   /* ── Radar de Ofertas ────────────────────────────────────────────────── */
   .radar-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px 0;flex-wrap:wrap}
   .radar-title{font-size:12px;color:var(--muted);font-weight:600}
-  .oferta-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,transform .15s}
+  .oferta-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;cursor:pointer;transition:border-color .15s,transform .15s;position:relative}
+  .oferta-card.encerrada{opacity:.45}
+  .oferta-card.encerrada:hover{opacity:.7}
+  .oferta-encerrada-badge{position:absolute;top:10px;right:10px;font-size:8px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;background:rgba(248,113,113,.18);color:#f87171;padding:2px 7px;border-radius:5px}
+  #oferta-modal-titulo.encerrada-titulo{opacity:.7}
   .oferta-card:hover{border-color:var(--cdv-coral);transform:translateY(-2px)}
   .oferta-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
   .oferta-emoji{font-size:22px;line-height:1}
@@ -165,7 +169,7 @@
   .oferta-card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:6px;border-top:1px solid var(--border)}
   .oferta-prazo-mini{font-size:10px;color:#f97316;font-weight:700}
   .oferta-data-mini{font-size:10px;color:var(--muted2)}
-  .oferta-modal{max-width:480px}
+  .oferta-modal{max-width:680px;max-height:85vh;overflow-y:auto}
   .oferta-modal-emoji{font-size:30px;margin-bottom:6px}
   .oferta-modal-section{font-size:13px;color:var(--text);line-height:1.55;margin-top:6px}
   .oferta-modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
@@ -1018,6 +1022,34 @@ function renderRadarCatBar(){
   bar.innerHTML=html;
 }
 
+function parsePrazoData(s){
+  if(!s) return null;
+  const txt=s.toLowerCase();
+  const meses={janeiro:0,fevereiro:1,'março':2,marco:2,abril:3,maio:4,junho:5,julho:6,agosto:7,setembro:8,outubro:9,novembro:10,dezembro:11};
+  let m=txt.match(/(\d{1,2})\s+de\s+([a-zçã]+)\s+de\s+(\d{4})/);
+  if(m && meses[m[2]]!=null) return new Date(+m[3], meses[m[2]], +m[1], 23,59,59);
+  m=txt.match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  if(m) return new Date(+m[3], +m[2]-1, +m[1], 23,59,59);
+  return null;
+}
+
+function isOfertaEncerrada(o){
+  const d=parsePrazoData(o.prazo);
+  return d ? d.getTime() < Date.now() : false;
+}
+
+function formatPrazoLimpo(prazo){
+  if(!prazo) return '';
+  if(prazo.toLowerCase().trim()==='não informado') return 'não informado';
+  const d=parsePrazoData(prazo);
+  if(d) return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
+  // Fallback: remove menções de horário do texto original (ex: "às 23h59", "23:59")
+  return prazo
+    .replace(/\(?\s*(às|as)?\s*\d{1,2}\s*[h:]\s*\d{2}\s*\)?/gi,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
 function renderOfertas(){
   const grid=document.getElementById('radar-grid');
   if(!ofertasData||!ofertasData.items||!ofertasData.items.length){
@@ -1030,8 +1062,13 @@ function renderOfertas(){
     grid.innerHTML='<div class="status-box"><div style="font-size:30px">🔍</div><div style="color:var(--muted);font-size:13px">Nenhuma oferta nessa categoria.</div></div>';
     return;
   }
-  grid.innerHTML=items.map(o=>`
-    <div class="oferta-card" data-oferta-id="${o.id}">
+  // Ofertas vigentes primeiro, encerradas por último
+  items=[...items].sort((a,b)=>(isOfertaEncerrada(a)?1:0)-(isOfertaEncerrada(b)?1:0));
+  grid.innerHTML=items.map(o=>{
+    const encerrada=isOfertaEncerrada(o);
+    return `
+    <div class="oferta-card${encerrada?' encerrada':''}" data-oferta-id="${o.id}">
+      ${encerrada?'<span class="oferta-encerrada-badge">Encerrada</span>':''}
       <div class="oferta-card-top">
         <span class="oferta-emoji">${o.emoji||'📰'}</span>
         <span class="oferta-cat-badge">${(OFERTA_CAT_LABELS[o.categoria]||o.categoria||'').replace(/^[^ ]+ /,'')}</span>
@@ -1039,11 +1076,11 @@ function renderOfertas(){
       <div class="oferta-titulo">${o.titulo}</div>
       <div class="oferta-resumo-mini">${o.resumo||''}</div>
       <div class="oferta-card-foot">
-        <span class="oferta-prazo-mini">${o.prazo&&o.prazo.toLowerCase()!=='não informado'?'⏳ '+o.prazo:''}</span>
+        <span class="oferta-prazo-mini">${o.prazo&&o.prazo.toLowerCase()!=='não informado'?'⏳ '+formatPrazoLimpo(o.prazo):''}</span>
         <span class="oferta-data-mini">${o.publicadoEm?formatDataCurta(o.publicadoEm):''}</span>
       </div>
     </div>
-  `).join('');
+  `;}).join('');
 }
 
 function formatDataCurta(iso){
@@ -1056,15 +1093,17 @@ function formatDataCurta(iso){
 function openOfertaModal(id){
   const o=(ofertasData&&ofertasData.items||[]).find(x=>x.id===id);
   if(!o) return;
+  const encerrada=isOfertaEncerrada(o);
   document.getElementById('oferta-modal-emoji').textContent=o.emoji||'📰';
-  document.getElementById('oferta-modal-titulo').textContent=o.titulo;
+  document.getElementById('oferta-modal-titulo').textContent=o.titulo+(encerrada?' (Encerrada)':'');
+  document.getElementById('oferta-modal-titulo').classList.toggle('encerrada-titulo',encerrada);
   document.getElementById('oferta-modal-meta').textContent=
     (o.programa?o.programa+' · ':'')+(OFERTA_CAT_LABELS[o.categoria]||o.categoria||'')+(o.publicadoEm?' · '+formatDataCurta(o.publicadoEm):'');
   document.getElementById('oferta-modal-resumo').textContent=o.resumo||'';
 
   const fatos=[];
   if(o.bonus) fatos.push(['Bônus / Ganho',o.bonus]);
-  if(o.prazo) fatos.push(['Prazo',o.prazo]);
+  if(o.prazo) fatos.push(['Prazo',formatPrazoLimpo(o.prazo)+(encerrada?' (encerrada)':'')]);
   if(o.programa) fatos.push(['Programa',o.programa]);
   if(o.categoria) fatos.push(['Categoria',OFERTA_CAT_LABELS[o.categoria]||o.categoria]);
   document.getElementById('oferta-modal-fatos').innerHTML=fatos.map(([label,val])=>
