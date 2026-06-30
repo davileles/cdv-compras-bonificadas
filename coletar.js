@@ -346,18 +346,26 @@ async function main() {
     await new Promise(r => setTimeout(r, 300));
   }
 
-  // Janela de exibição: mantém sempre apenas os últimos 3 dias de ofertas
+  // Janela de exibição: mantém os últimos 7 dias de ofertas
+  // (3 dias era curto demais — algumas categorias publicam só 1x/dia ou menos)
   const limiteOfertas = new Date();
-  limiteOfertas.setDate(limiteOfertas.getDate() - 3);
+  limiteOfertas.setDate(limiteOfertas.getDate() - 7);
 
-  const itemsFinais = [...novosProcessados, ...itemsValidos]
-    .filter(i => new Date(i.date) > limiteOfertas);
+  const combinados = [...novosProcessados, ...itemsValidos];
+  const itemsFinais = combinados.filter(i => new Date(i.date) > limiteOfertas);
+
+  console.log(`Itens combinados (novos + válidos antigos): ${combinados.length}`);
+  console.log(`Itens dentro da janela de 7 dias: ${itemsFinais.length}`);
+  if (combinados.length > 0 && itemsFinais.length === 0) {
+    const datas = combinados.map(i => i.date).sort();
+    console.log(`AVISO: todos os itens foram filtrados pela janela de data. Mais recente: ${datas[datas.length-1]}, limite: ${limiteOfertas.toISOString()}`);
+  }
 
   ofertas.items = itemsFinais.sort((a,b) => new Date(b.date) - new Date(a.date));
   ofertas.atualizadoEm = new Date().toISOString();
 
   fs.writeFileSync('ofertas.json', JSON.stringify(ofertas, null, 2));
-  console.log(`Ofertas salvas: ${ofertas.items.length} total (últimos 3 dias), ${novosProcessados.length} novas`);
+  console.log(`Ofertas salvas: ${ofertas.items.length} total (últimos 7 dias), ${novosProcessados.length} novas`);
 
   // ── Histórico de pontuações (apenas 1ª execução do dia) ────────────────────
   if (isFirstRunOfDay()) {
