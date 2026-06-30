@@ -44,7 +44,15 @@ function httpGet(url, timeout=15000) {
       }
       let data = '';
       res.on('data', chunk => data += chunk);
-      res.on('end', () => resolve(data));
+      res.on('end', () => {
+        if (res.statusCode >= 400) {
+          const err = new Error(`HTTP ${res.statusCode}: ${data.slice(0,200)}`);
+          err.statusCode = res.statusCode;
+          err.body = data;
+          return reject(err);
+        }
+        resolve(data);
+      });
     });
     req.on('error', reject);
     req.on('timeout', () => { req.destroy(); reject(new Error('Timeout')); });
@@ -164,12 +172,36 @@ async function fetchArticleFullText(link) {
   try {
     const html = await httpGet(`${PROXY}?url=${encodeURIComponent(link)}`);
 
-    // Tenta isolar o conteúdo do post: WordPress geralmente usa <article>...</article>
-    // ou uma div com classe que contenha "content"/"entry"/"post-content"
+    // Estratégia 1: tenta containers conhecidos de conteúdo (várias variações de tema)
     let bodyHtml =
       (html.match(/<article[^>]*>([\s\S]*?)<\/article>/i))?.[1] ||
-      (html.match(/<div[^>]+class="[^"]*(?:entry-content|post-content|article-content)[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?:<\/div>\s*){0,3}<footer/i))?.[1] ||
+      (html.match(/<div[^>]+class="[^"]*(?:entry-content|post-content|article-content|single-content|post-body)[^"]*"[^>]*>([\s\S]*?)<\/div>\s*(?:<\/div>\s*){0,4}(?:<footer|<aside|$)/i))?.[1] ||
       '';
+
+    // Estratégia 2 (fallback robusto): pega tudo entre o <h1> do título e marcadores
+    // conhecidos de fim de post (compartilhamento, autor, "Leia também", footer)
+    if (!bodyHtml || bodyHtml.length < 300) {
+      const h1Match = html.match(/<h1[^>]*>[\s\S]*?<\/h1>/i);
+      if (h1Match) {
+        const afterH1 = html.slice(h1Match.index + h1Match[0].length);
+        const endMarkers = [
+          /Entre agora para o nosso/i,
+          /Leia também/i,
+          /URL para compartilhar/i,
+          /Compartilhar no WhatsApp/i,
+          /<footer/i,
+          /class="[^"]*author[^"]*"/i,
+        ];
+        let cutIdx = afterH1.length;
+        for (const marker of endMarkers) {
+          const m = afterH1.match(marker);
+          if (m && m.index < cutIdx) cutIdx = m.index;
+        }
+        bodyHtml = afterH1.slice(0, cutIdx);
+      }
+    }
+
+    if (!bodyHtml || bodyHtml.length < 200) return null;
 
     // Remove blocos claramente irrelevantes antes de extrair texto
     bodyHtml = bodyHtml
@@ -180,16 +212,23 @@ async function fetchArticleFullText(link) {
       .replace(/<form[\s\S]*?<\/form>/gi, ' ')
       .replace(/<!--[\s\S]*?-->/g, ' ');
 
-    if (!bodyHtml) return null;
+    // Preserva quebras de linha de headings/parágrafos/listas antes de remover tags,
+    // para a IA conseguir distinguir seções (Desconto, Limite, Parcelamento etc.)
+    bodyHtml = bodyHtml
+      .replace(/<\/(h[1-6]|p|li|div)>/gi, '\n')
+      .replace(/<li[^>]*>/gi, '\n- ');
 
-    const plain = decodeEntities(bodyHtml.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+    const plain = decodeEntities(bodyHtml.replace(/<[^>]+>/g, ' '))
+      .replace(/[ \t]+/g, ' ')
+      .replace(/\n\s*\n+/g, '\n')
+      .trim();
 
-    // Corta qualquer rodapé padrão do site que ainda tenha sobrado (ex: "O post ... apareceu primeiro em")
+    // Corta qualquer rodapé padrão do site que ainda tenha sobrado
     const cortado = plain.split(/\bO post\b.{0,10}apareceu primeiro em/i)[0].trim();
 
-    return cortado.length > 200 ? cortado.slice(0, 12000) : null;
+    return cortado.length > 200 ? cortado.slice(0, 14000) : null;
   } catch(e) {
-    console.log(`  [fetchArticleFullText] falhou para ${link}:`, e.message);
+    console.log(`  [fetchArticleFullText] falhou para ${link}: ${e.message}`);
     return null;
   }
 }
@@ -343,16 +382,26 @@ async function main() {
   // ── Radar de Ofertas: busca feeds, reescreve novos artigos via IA ──────────
   console.log('\n=== RADAR DE OFERTAS ===');
   const slugsExistentes = new Set(ofertas.items.map(i => i.id));
+  const limiteOfertasPre = new Date();
+  limiteOfertasPre.setDate(limiteOfertasPre.getDate() - 3);
   const candidatosNovos = [];
+  let descartadosPorData = 0;
 
   for (const feed of FEEDS) {
     const items = await fetchFeed(feed);
     for (const item of items) {
-      if (!slugsExistentes.has(item.id)) {
-        candidatosNovos.push(item);
-        slugsExistentes.add(item.id);
+      if (slugsExistentes.has(item.id)) continue;
+      // Descarta já aqui itens fora da janela de 3 dias — evita gastar fetch/IA com eles
+      if (new Date(item.date) <= limiteOfertasPre) {
+        descartadosPorData++;
+        continue;
       }
+      candidatosNovos.push(item);
+      slugsExistentes.add(item.id);
     }
+  }
+  if (descartadosPorData > 0) {
+    console.log(`${descartadosPorData} artigo(s) do feed já fora da janela de 3 dias — ignorados antes do processamento`);
   }
 
   // Descarta qualquer item no formato antigo (sem campo "titulo") — migração de versão
@@ -390,10 +439,9 @@ async function main() {
     await new Promise(r => setTimeout(r, 300));
   }
 
-  // Janela de exibição: mantém os últimos 7 dias de ofertas
-  // (3 dias era curto demais — algumas categorias publicam só 1x/dia ou menos)
+  // Janela de exibição: mantém os últimos 3 dias de ofertas (agiliza o processamento)
   const limiteOfertas = new Date();
-  limiteOfertas.setDate(limiteOfertas.getDate() - 7);
+  limiteOfertas.setDate(limiteOfertas.getDate() - 3);
 
   const combinados = [...novosProcessados, ...itemsValidos];
   const itemsFinais = combinados.filter(i => new Date(i.date) > limiteOfertas);
