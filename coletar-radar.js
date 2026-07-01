@@ -149,7 +149,14 @@ function stripUtm(url) {
     const cleaned = (url || '').replace(/\?amp;/gi, '?').replace(/&amp;/gi, '&');
     const u = new URL(cleaned);
     [...u.searchParams.keys()].forEach((k) => {
-      if (/^utm_/i.test(k)) u.searchParams.delete(k);
+      const v = u.searchParams.get(k) || '';
+      // Remove parâmetros cujo nome começa com utm_
+      if (/^utm_/i.test(k)) { u.searchParams.delete(k); return; }
+      // Remove parâmetros cujo VALOR (decodificado) contém referência ao PP ou UTMs embutidos
+      // ex: pt=pp%3Futm_source%3Dpassageiro-de-primeira → pt é removido
+      if (/passageiro/i.test(v) || /\?utm_/i.test(v) || /utm_source/i.test(v)) {
+        u.searchParams.delete(k);
+      }
     });
     return u.toString();
   } catch (e) {
