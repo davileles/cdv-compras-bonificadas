@@ -101,6 +101,119 @@ app.post('/alerta', async (req, res) => {
   }
 });
 
+// ── Helpers genéricos de leitura/escrita de arquivos JSON no GitHub ───────────
+function ghHeaders() {
+  return {
+    'Authorization': `Bearer ${GITHUB_TOKEN}`,
+    'Accept': 'application/vnd.github+json',
+    'Content-Type': 'application/json'
+  };
+}
+
+async function ghGetJson(filePath, fallback) {
+  const apiBase = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
+  const res = await fetch(apiBase, { headers: ghHeaders() });
+  if (res.status === 404) return { data: fallback, sha: null };
+  const data = await res.json();
+  if (!res.ok || !data.content) return { data: fallback, sha: null };
+  try {
+    return { data: JSON.parse(Buffer.from(data.content, 'base64').toString('utf8')), sha: data.sha };
+  } catch (e) {
+    return { data: fallback, sha: data.sha };
+  }
+}
+
+async function ghPutJson(filePath, jsonData, sha, message) {
+  const apiBase = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
+  const body = {
+    message,
+    content: Buffer.from(JSON.stringify(jsonData, null, 2)).toString('base64'),
+  };
+  if (sha) body.sha = sha;
+  const res = await fetch(apiBase, { method: 'PUT', headers: ghHeaders(), body: JSON.stringify(body) });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || `Falha ao salvar ${filePath} no GitHub (status ${res.status})`);
+  }
+  return res.json();
+}
+
+const OFERTAS_PENDENTES_PATH = 'ofertas-pendentes.json';
+const OFERTAS_APROVADAS_PATH = 'ofertas.json';
+const OFERTAS_REJEITADAS_PATH = 'ofertas-rejeitadas.json';
+const MAX_OFERTAS_APROVADAS = 100;
+
+// ── Aprovar oferta pendente (com possíveis edições) ───────────────────────────
+app.post('/ofertas/aprovar', async (req, res) => {
+  const { id, edits } = req.body || {};
+  if (!id) return res.status(400).json({ ok: false, erro: 'Campo obrigatório: id' });
+  if (!GITHUB_TOKEN) return res.status(500).json({ ok: false, erro: 'GITHUB_TOKEN não configurado no servidor' });
+
+  try {
+    const pend = await ghGetJson(OFERTAS_PENDENTES_PATH, { geradoEm: null, items: [] });
+    const idx = (pend.data.items || []).findIndex((o) => o.id === id);
+    if (idx < 0) return res.status(404).json({ ok: false, erro: 'Oferta não encontrada nas pendentes (pode já ter sido processada)' });
+
+    const item = { ...pend.data.items[idx], ...(edits || {}) };
+    pend.data.items.splice(idx, 1);
+
+    const aprov = await ghGetJson(OFERTAS_APROVADAS_PATH, { geradoEm: null, items: [] });
+    const jaExiste = (aprov.data.items || []).some((o) => o.id === id);
+    const novosAprovados = jaExiste
+      ? aprov.data.items
+      : [item, ...(aprov.data.items || [])].slice(0, MAX_OFERTAS_APROVADAS);
+
+    await ghPutJson(
+      OFERTAS_APROVADAS_PATH,
+      { geradoEm: new Date().toISOString(), items: novosAprovados },
+      aprov.sha,
+      `chore: aprova oferta "${item.titulo || id}"`
+    );
+    await ghPutJson(
+      OFERTAS_PENDENTES_PATH,
+      { geradoEm: pend.data.geradoEm || new Date().toISOString(), items: pend.data.items },
+      pend.sha,
+      `chore: remove oferta aprovada "${item.titulo || id}" das pendentes`
+    );
+
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ ok: false, erro: err.message });
+  }
+});
+
+// ── Rejeitar oferta pendente (bloqueia permanentemente) ───────────────────────
+app.post('/ofertas/rejeitar', async (req, res) => {
+  const { id } = req.body || {};
+  if (!id) return res.status(400).json({ ok: false, erro: 'Campo obrigatório: id' });
+  if (!GITHUB_TOKEN) return res.status(500).json({ ok: false, erro: 'GITHUB_TOKEN não configurado no servidor' });
+
+  try {
+    const pend = await ghGetJson(OFERTAS_PENDENTES_PATH, { geradoEm: null, items: [] });
+    const idx = (pend.data.items || []).findIndex((o) => o.id === id);
+    if (idx < 0) return res.status(404).json({ ok: false, erro: 'Oferta não encontrada nas pendentes (pode já ter sido processada)' });
+
+    pend.data.items.splice(idx, 1);
+
+    const rej = await ghGetJson(OFERTAS_REJEITADAS_PATH, []);
+    const listaRejeitadas = Array.isArray(rej.data) ? rej.data : [];
+    if (!listaRejeitadas.includes(id)) listaRejeitadas.push(id);
+    const limitada = listaRejeitadas.slice(-1000); // mantém histórico de até 1000 ids bloqueados
+
+    await ghPutJson(OFERTAS_REJEITADAS_PATH, limitada, rej.sha, `chore: bloqueia oferta rejeitada ${id}`);
+    await ghPutJson(
+      OFERTAS_PENDENTES_PATH,
+      { geradoEm: pend.data.geradoEm || new Date().toISOString(), items: pend.data.items },
+      pend.sha,
+      `chore: remove oferta rejeitada ${id} das pendentes`
+    );
+
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ ok: false, erro: err.message });
+  }
+});
+
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 app.listen(PORT, '0.0.0.0', () => {
