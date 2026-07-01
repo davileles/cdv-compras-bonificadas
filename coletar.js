@@ -203,6 +203,12 @@ async function main() {
     try {
       const html = await fetchDirect(prog.url);
 
+      // DEBUG TEMPORÁRIO — remover após investigar
+if (prog.id === 'smiles') {
+  console.log('[DEBUG Smiles] primeiros 3000 chars:');
+  console.log(html.slice(0, 3000));
+}
+
       // Sanidade mínima
       const hasContent =
         html.includes('ponto') || html.includes('PONTOS') ||
