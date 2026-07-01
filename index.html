@@ -1083,8 +1083,9 @@ function openOfertaModal(id){
       o.tetoTransferencia.split('\n').map(l=>l.trim()).filter(Boolean).join('<br>')+'</div>';
   }
   if(o.restricoes&&o.restricoes.length){
-    restHtml+='<strong style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Condições e detalhes</strong><ul>'+
-      o.restricoes.map(r=>`<li>${r}</li>`).join('')+'</ul>';
+    restHtml+='<strong style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">Condições e detalhes</strong>'+
+      '<ul style="margin:6px 0 0 0;padding-left:20px;display:flex;flex-direction:column;gap:4px;list-style-position:outside">'+
+      o.restricoes.map(r=>`<li style="font-size:12px;color:var(--muted);line-height:1.4">${r}</li>`).join('')+'</ul>';
   }
   restEl.innerHTML=restHtml;
 
