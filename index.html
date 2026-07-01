@@ -373,12 +373,21 @@ async function carregarHistorico(){
   }catch(e){console.log('[CDV] historico.json não encontrado ainda');}
 }
 
+function decodeHistKey(s){
+  return (s||'')
+    .replace(/&#x([0-9a-f]+);/gi,(_,h)=>String.fromCharCode(parseInt(h,16)))
+    .replace(/&#(\d+);/g,(_,d)=>String.fromCharCode(+d))
+    .replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&nbsp;/g,' ').replace(/&#0?39;/g,"'")
+    .toLowerCase().trim();
+}
+
 function mediaHistorica(partnerKey){
   const hoje=new Date().toISOString().split('T')[0];
   const vals=[];
   for(const[data,snap] of Object.entries(historico)){
     if(data===hoje) continue;
-    const entry=snap[partnerKey];
+    // tenta chave normal e chave decodificada
+    const entry=snap[partnerKey]||snap[decodeHistKey(partnerKey)];
     if(!entry) continue;
     let bestEquiv=0;
     for(const[pid,pts] of Object.entries(entry.programs||{})){
@@ -776,8 +785,11 @@ function renderHistChart(partnerName){
   for(const [pid, pname] of Object.entries(PROG_NAMES)){
     const vals = ultimos.map(d => {
       const snap = historico[d];
-      if(!snap || !snap[key]) return null;
-      return snap[key].programs?.[pid] || null;
+      if(!snap) return null;
+      // tenta chave normal e chave decodificada
+      const entry = snap[key] || snap[decodeHistKey(key)];
+      if(!entry) return null;
+      return entry.programs?.[pid] || null;
     });
     if(vals.some(v=>v!==null)){
       datasets.push({
