@@ -1,6 +1,32 @@
 {
-  "geradoEm": "2026-07-01T10:01:24.565Z",
+  "geradoEm": "2026-07-01T10:13:57.549Z",
   "items": [
+    {
+      "id": "1fte634",
+      "titulo": "20% de bônus nas transferências de pontos do Itaú e Credicard para LATAM Pass",
+      "emoji": "🔄",
+      "resumo": "O LATAM Pass oferece 20% de bônus em transferências de pontos provenientes do Itaú e do Credicard. Clientes que fazem sua primeira transferência ganham um bônus adicional de 1.000 milhas. A promoção é válida até 26 de junho de 2026 e requer cadastro prévio na campanha.",
+      "programa": "LATAM Pass",
+      "bonus": "20% de bônus + 1.000 milhas extras na primeira transferência",
+      "prazo": "26/06/2026",
+      "categoria": "transferencia",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://latampass.latam.com/pt_br/promocao/itau-milhas-extras",
+      "restricoes": [
+        "Promoção válida até 26 de junho de 2026",
+        "Necessário cadastro prévio do CPF na campanha",
+        "Bônus de 1.000 milhas extras aplicável apenas na primeira transferência",
+        "Milhas transferidas terão validade de 36 meses contados da data de crédito",
+        "Clientes LATAM Pass Categoria Elite: milhas nunca expiram",
+        "Milhas extras serão creditadas em até 30 dias após o término da promoção",
+        "Acúmulos dos cartões LATAM Pass Itaú não são válidos para esta campanha"
+      ],
+      "publicadoEm": "2026-06-23T14:12:37.000Z"
+    },
     {
       "id": "1uyzf3u",
       "titulo": "Até 70% de bônus nas transferências entre BB Empresas e Smiles",
