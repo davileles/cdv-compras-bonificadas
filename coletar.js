@@ -78,7 +78,7 @@ function extractPts(g) {
   const eq     = g.match(/=\s+(\d+)/i);
   const azul   = g.match(/(\d+[,.]?\d*)\s*pt\//i);
   const latam  = g.match(/=\s*(\d+)\s*ponto/i);
-  const smiles = g.match(/ganha\s+(?:até\s+)?(\d+)\s+smiles/i);
+  const smiles = g.match(/ganha\s+(?:até\s+)?(\d+)\s+smiles/i) || g.match(/você\s+ganha\s+(?:até\s+)?(\d+)\s+smiles/i);
   const raw    = ate || eq || latam || smiles || azul;
   if (!raw) return null;
   const pts = parseFloat((raw[1] || '').replace(',', '.'));
@@ -107,31 +107,34 @@ function parseComparemaniaPts(html, progId) {
     .replace(/<script[\s\S]*?<\/script>/gi, '')
     .replace(/<style[\s\S]*?<\/style>/gi, '');
 
-  // Percorre todas as linhas <tr> com pelo menos 2 <td>
-  const trBlocks = clean.match(/<tr[\s\S]*?<\/tr>/gi) || [];
-  for (const tr of trBlocks) {
-    const tds = tr.match(/<td[\s\S]*?<\/td>/gi) || [];
-    if (tds.length < 2) continue;
+  // Extrai todos os pares de <a href> (nome do parceiro) + texto de pontuação
+  // O Smiles e outros programas têm estrutura:
+  // <td><a href="...">Nome</a></td><td><a href="...">A cada 1 real gasto...</a></td>
+  // Usa split por </tr> para processar linha a linha sem regex greedy
+  const rows = clean.split(/<\/tr>/i);
+  for (const row of rows) {
+    // Divide a linha em células pelo fechamento de </td>
+    const cells = row.split(/<\/td>/i);
+    if (cells.length < 2) continue;
 
-    // Primeiro <td> → nome do parceiro (via link <a>)
-    const aMatch = tds[0].match(/<a[^>]*>([\s\S]*?)<\/a>/i);
+    // Primeiro <td>: extrai o nome via <a>
+    const aMatch = cells[0].match(/<a[^>]*>([\s\S]*?)<\/a>/i);
     if (!aMatch) continue;
     const name = aMatch[1].replace(/<[^>]*>/g, '').trim();
     if (!name) continue;
 
-    // Segundo <td> → texto com pontuação
-    const ptsTxt = tds[1].replace(/<[^>]*>/g, ' ').trim();
+    // Segundo <td>: texto de pontuação (remove tags)
+    const ptsTxt = cells[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
     const pts = extractPts(ptsTxt);
     if (!pts) continue;
 
     const key = name.toLowerCase().trim();
-    // Guarda o maior pts encontrado para o mesmo parceiro (pode aparecer mais de uma vez)
     if (!result[key] || pts > result[key]) {
       result[key] = pts;
     }
   }
 
-  return result; // { "shopee": 8, "magalu": 5, ... }
+  return result;
 }
 
 function decodeEntities(s) {
