@@ -1,6 +1,19 @@
 {
-  "atualizadoEm": "2026-07-01T19:16:07.060Z",
+  "atualizadoEm": "2026-07-01T19:34:36.233Z",
   "items": [
+    {
+      "id": "ii798m",
+      "origem": "Goiânia",
+      "destino": "San José",
+      "cia": "LATAM",
+      "programa": "LATAM Pass",
+      "pontos": 43600,
+      "cabine": "Economica",
+      "datas_ida": "Ago/26: 4, 5, 8, 11, 13, 19, 23",
+      "datas_volta": "Ago/26: 18, 19, 20; Set/26: 2",
+      "fonte": "alerta",
+      "enviadoEm": "2026-07-01T19:34:36.233Z"
+    },
     {
       "id": "1r0ar3l",
       "origem": "Goiânia",
