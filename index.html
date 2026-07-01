@@ -1097,8 +1097,8 @@ function renderPassagens() {
     const fonteClass = p.fonte === 'alerta' ? 'pass-fonte-alerta' : 'pass-fonte-emissao';
     const fonteTxt   = p.fonte === 'alerta' ? 'Alerta' : 'Emissão';
 
-    return `<div class="pass-card">
-      <button class="pass-excluir" onclick="excluirPassagem('${p.id}')" title="Excluir">×</button>
+    return `<div class="pass-card" onclick="abrirPassagemModal('${p.id}')" style="cursor:pointer">
+      <button class="pass-excluir" onclick="event.stopPropagation();excluirPassagem('${p.id}')" title="Excluir">×</button>
       <span class="pass-fonte ${fonteClass}">${fonteTxt}</span>
       <div class="pass-rota">${p.origem} <span>→</span> ${p.destino}</div>
       <div style="display:flex;align-items:baseline;gap:4px">
@@ -1110,12 +1110,65 @@ function renderPassagens() {
         ${p.cia ? `<span class="pass-badge">✈️ ${p.cia}</span>` : ''}
         ${p.cabine ? `<span class="pass-badge">${p.cabine}</span>` : ''}
       </div>
-      ${p.datas_ida ? `<div class="pass-datas"><strong>Ida</strong>${p.datas_ida}</div>` : ''}
-      ${p.datas_volta ? `<div class="pass-datas"><strong>Volta</strong>${p.datas_volta}</div>` : ''}
-      <div style="font-size:10px;color:var(--muted2);margin-top:2px">${fmtData(p.enviadoEm)}</div>
+      <div style="font-size:10px;color:var(--muted2);margin-top:6px">${fmtData(p.enviadoEm)}</div>
       ${histHtml}
     </div>`;
   }).join('');
+}
+
+
+function abrirPassagemModal(id) {
+  const p = passagensData.find(x => x.id === id);
+  if (!p) return;
+
+  const MESES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  function fmtData(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return `${String(d.getDate()).padStart(2,'0')} ${MESES[d.getMonth()]}. ${d.getFullYear()}`;
+  }
+
+  // Comparativo histórico
+  const k = grupoKey(p);
+  const hist = passagensData.filter(h => h.id !== p.id && grupoKey(h) === k)
+    .sort((a,b) => new Date(b.enviadoEm) - new Date(a.enviadoEm));
+  const anterior = hist[0];
+  let histHtml = '';
+  if (anterior) {
+    const diff = p.pontos - anterior.pontos;
+    const pct = anterior.pontos > 0 ? Math.round(Math.abs(diff)/anterior.pontos*100) : 0;
+    let cls, icone, txt;
+    if (diff < 0)      { cls='pass-hist-melhor'; icone='↓'; txt=`${Math.abs(diff).toLocaleString('pt-BR')} pts a menos (${pct}% melhor) vs. ${fmtData(anterior.enviadoEm)}`; }
+    else if (diff > 0) { cls='pass-hist-pior';   icone='↑'; txt=`${diff.toLocaleString('pt-BR')} pts a mais (${pct}% pior) vs. ${fmtData(anterior.enviadoEm)}`; }
+    else               { cls='pass-hist-igual';  icone='='; txt=`Mesma pontuação vs. ${fmtData(anterior.enviadoEm)}`; }
+    histHtml = `<div class="pass-hist" style="margin-top:16px">
+      <div class="pass-hist-titulo">Comparativo com envio anterior</div>
+      <div class="pass-hist-item"><span class="${cls}">${icone} ${txt}</span></div>
+    </div>`;
+  }
+
+  document.getElementById('pass-modal-content').innerHTML = `
+    <div class="modal-name">${p.origem} → ${p.destino}</div>
+    <div class="modal-cat" style="margin-bottom:16px">${fmtData(p.enviadoEm)}</div>
+    <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:16px">
+      <span style="font-size:34px;font-weight:900;color:var(--cdv-coral)">${(p.pontos||0).toLocaleString('pt-BR')}</span>
+      <span style="font-size:13px;color:var(--muted)">pontos</span>
+    </div>
+    <div class="modal-rows" style="gap:8px">
+      ${p.programa ? `<div class="modal-row" style="padding:10px 14px"><span style="color:var(--muted);font-size:12px">Programa</span><span style="font-weight:700">${p.programa}</span></div>` : ''}
+      ${p.cia      ? `<div class="modal-row" style="padding:10px 14px"><span style="color:var(--muted);font-size:12px">Companhia</span><span style="font-weight:700">${p.cia}</span></div>` : ''}
+      ${p.cabine   ? `<div class="modal-row" style="padding:10px 14px"><span style="color:var(--muted);font-size:12px">Classe</span><span style="font-weight:700">${p.cabine}</span></div>` : ''}
+    </div>
+    ${p.datas_ida ? `<div class="pass-datas" style="margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><strong>Datas de ida</strong>${p.datas_ida}</div>` : ''}
+    ${p.datas_volta ? `<div class="pass-datas" style="margin-top:8px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px"><strong>Datas de volta</strong>${p.datas_volta}</div>` : ''}
+    ${histHtml}
+  `;
+
+  document.getElementById('pass-modal-overlay').classList.add('open');
+}
+
+function fecharPassagemModal() {
+  document.getElementById('pass-modal-overlay').classList.remove('open');
 }
 
 async function excluirPassagem(id) {
@@ -1375,6 +1428,11 @@ document.getElementById('radar-grid').addEventListener('click',e=>{
   if(card) openOfertaModal(card.dataset.ofertaId);
 });
 
+document.getElementById('pass-modal-overlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('pass-modal-overlay')) fecharPassagemModal();
+});
+document.getElementById('pass-modal-close').addEventListener('click', fecharPassagemModal);
+
 document.getElementById('oferta-modal-overlay').addEventListener('click',e=>{
   if(e.target===document.getElementById('oferta-modal-overlay')) closeOfertaModal();
 });
@@ -1382,5 +1440,13 @@ document.getElementById('oferta-modal-close-btn').addEventListener('click',close
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOfertaModal();});
 
 </script>
+
+<!-- MODAL PASSAGEM -->
+<div class="modal-overlay" id="pass-modal-overlay">
+  <div class="modal" style="max-width:480px">
+    <button class="modal-close" id="pass-modal-close">×</button>
+    <div id="pass-modal-content"></div>
+  </div>
+</div>
 </body>
 </html>
