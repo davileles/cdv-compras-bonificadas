@@ -178,7 +178,7 @@
   .oferta-fato-label{font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700}
   .oferta-fato-val{font-size:13px;font-weight:800;color:var(--text);margin-top:2px}
   .oferta-modal-restricoes{margin-top:14px}
-  .oferta-modal-restricoes ul{margin:6px 0 0 18px;display:flex;flex-direction:column;gap:4px}
+  .oferta-modal-restricoes ul{margin:6px 0 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px;list-style-position:outside}
   .oferta-modal-restricoes li{font-size:12px;color:var(--muted);line-height:1.4}
   .oferta-importante{margin-top:14px;background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.3);border-radius:8px;padding:10px 12px;font-size:11px;color:#fb923c;line-height:1.5}
   @media(max-width:640px){
@@ -972,7 +972,14 @@ function parsePrazoData(s){
 
 function isOfertaEncerrada(o){
   const d=parsePrazoData(o.prazo);
-  return d ? d.getTime() < Date.now() : false;
+  if(d) return d.getTime() < Date.now();
+  // Sem prazo informado: expira no dia seguinte à publicação
+  if(o.publicadoEm){
+    const pub=new Date(o.publicadoEm);
+    const expira=new Date(pub.getFullYear(), pub.getMonth(), pub.getDate()+1, 23, 59, 59);
+    return expira.getTime() < Date.now();
+  }
+  return false;
 }
 
 const MESES_ABREV=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
