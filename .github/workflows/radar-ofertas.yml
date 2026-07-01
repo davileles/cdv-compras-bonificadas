@@ -25,10 +25,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node coletar-radar.js
 
-      - name: Commit ofertas.json
+      - name: Commit ofertas-pendentes.json
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ofertas.json
-          git diff --staged --quiet || git commit -m "chore: atualiza radar de ofertas [skip ci]"
+          git add ofertas-pendentes.json
+          git diff --staged --quiet || git commit -m "chore: novas ofertas pendentes de aprovação [skip ci]"
           git push
