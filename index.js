@@ -18,7 +18,36 @@ app.use((req, res, next) => {
   next();
 });
 
-// ── Proxy de fetch ────────────────────────────────────────────────────────────
+// ── Fetch para análise de ofertas (sem restrição de domínio) ─────────────────
+// Usado pela aba Oferta do gerador para buscar qualquer URL de parceiro/programa
+app.get('/fetch-oferta', async (req, res) => {
+  const target = req.query.url;
+  if (!target) return res.status(400).json({ error: 'Parâmetro ?url= obrigatório' });
+  if (!/^https?:\/\//i.test(target)) return res.status(400).json({ error: 'URL inválida' });
+
+  try {
+    const response = await fetch(target, {
+      compress: false,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Encoding': 'identity',
+        'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.7',
+        'Cache-Control': 'no-cache',
+        'Upgrade-Insecure-Requests': '1'
+      },
+      timeout: 20000
+    });
+    if (!response.ok) return res.status(response.status).json({ error: `Destino retornou ${response.status}` });
+    const html = await response.text();
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(html);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── Proxy de fetch (domínios restritos — usado pelo painel público) ───────────
 app.get('/fetch', async (req, res) => {
   const target = req.query.url;
   if (!target) return res.status(400).json({ error: 'Parâmetro ?url= obrigatório' });
