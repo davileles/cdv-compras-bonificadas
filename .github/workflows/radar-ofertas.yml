@@ -2,7 +2,7 @@ name: Radar de Ofertas — Coleta e Reescrita com IA
 
 on:
   schedule:
-    - cron: '0 * * * *'   # a cada 1 hora
+    - cron: '0 */3 * * *'   # a cada 3 horas
   workflow_dispatch: {}      # permite rodar manualmente pela aba Actions
 
 permissions:
@@ -25,10 +25,10 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node coletar-radar.js
 
-      - name: Commit ofertas-pendentes.json
+      - name: Commit arquivos atualizados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ofertas-pendentes.json
-          git diff --staged --quiet || git commit -m "chore: novas ofertas pendentes de aprovação [skip ci]"
+          git add ofertas-pendentes.json ofertas-processados.json
+          git diff --staged --quiet || git commit -m "chore: atualiza radar e histórico de IDs [skip ci]"
           git push
