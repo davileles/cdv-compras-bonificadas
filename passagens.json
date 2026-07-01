@@ -1,6 +1,19 @@
 {
-  "atualizadoEm": "2026-07-01T19:35:00.354Z",
+  "atualizadoEm": "2026-07-01T19:35:11.167Z",
   "items": [
+    {
+      "id": "i2pnym",
+      "origem": "Florianópolis",
+      "destino": "San José",
+      "cia": "LATAM",
+      "programa": "LATAM Pass",
+      "pontos": 36800,
+      "cabine": "Economica",
+      "datas_ida": "Ago/26: 4, 6, 8, 11, 12, 13, 19, 20, 23, 24; Out/26: 28; Nov/26: 29; Dez/26: 4, 11",
+      "datas_volta": "Ago/26: 13, 18, 19, 26, 27, 31; Set/26: 2; Nov/26: 11; Dez/26: 9, 14, 21",
+      "fonte": "alerta",
+      "enviadoEm": "2026-07-01T19:35:11.167Z"
+    },
     {
       "id": "h8toid",
       "origem": "Campinas",
