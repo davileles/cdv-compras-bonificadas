@@ -2,7 +2,7 @@ name: Radar de Ofertas — Coleta e Reescrita com IA
 
 on:
   schedule:
-    - cron: '0 */3 * * *'   # a cada 3 horas
+    - cron: '0 * * * *'   # a cada 1 hora
   workflow_dispatch: {}      # permite rodar manualmente pela aba Actions
 
 permissions:
