@@ -156,7 +156,7 @@ async function dispararAlerta(alerta, parceiro, pts) {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from:    'Clube do Viajante <alertas@clubedoviajante.com.br>',
+        from:    'Clube do Viajante <onboarding@resend.dev>',
         to:      [alerta.email],
         subject: `🔔 ${parceiro} atingiu ${pts} pts/R$ no ${alerta.programa}`,
         html: `
