@@ -78,7 +78,7 @@ function extractPts(g) {
   const eq     = g.match(/=\s+(\d+)/i);
   const azul   = g.match(/(\d+[,.]?\d*)\s*pt\//i);
   const latam  = g.match(/=\s*(\d+)\s*ponto/i);
-  const smiles = g.match(/ganha\s+(?:até\s+)?(\d+)\s+smiles/i) || g.match(/você\s+ganha\s+(?:até\s+)?(\d+)\s+smiles/i);
+  const smiles = g.match(/ganha\s+(?:você\s+)?(?:até\s+)?(\d+)\s+smiles/i) || g.match(/ganha\s+até\s+(\d+)\s+smiles/i) || g.match(/(\d+)\s+smiles/i);
   const raw    = ate || eq || latam || smiles || azul;
   if (!raw) return null;
   const pts = parseFloat((raw[1] || '').replace(',', '.'));
