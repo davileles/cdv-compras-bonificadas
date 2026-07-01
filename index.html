@@ -655,9 +655,13 @@ function resolveLink(pid, links){
 }
 
 function renderModalRows(p, links={}){
+  // Calcula o melhor equiv real entre todos os programas presentes
+  const bestEquivReal = Math.max(...Object.entries(p.programs).map(([pid,d])=>d.pts*(EQUIV[pid]||1)));
+
   return Object.entries(p.programs).sort((a,b)=>b[1].pts-a[1].pts).map(([pid,data])=>{
     const prog=PROGRAMS.find(x=>x.id===pid);
-    const isBest=pid===p.bestProg||(p.bestProg==='both'&&['livelo','esfera'].includes(pid));
+    const equiv=data.pts*(EQUIV[pid]||1);
+    const isBest=Math.abs(equiv-bestEquivReal)<0.01;
     const lbl=(data.per>1)?`R$${data.per}`:p.dollar?'U$':'R$';
     const destUrl=resolveLink(pid,links);
     const linksLoaded=Object.keys(links).length>0;
@@ -787,13 +791,23 @@ function renderHistChart(partnerName){
       if(!entry) return null;
       return entry.programs?.[pid] || null;
     });
-    if(vals.some(v=>v!==null)){
+  const BORDER_DASH = {
+    livelo: [],
+    esfera: [6,3],
+    smiles: [2,2],
+    azul:   [10,3],
+    latam:  [4,2,1,2],
+  };
+
+      if(vals.some(v=>v!==null)){
       datasets.push({
         label: pname,
         data: vals,
         borderColor: PROG_COLORS[pid],
         backgroundColor: PROG_COLORS[pid]+'22',
         borderWidth: 2,
+        borderDash: BORDER_DASH[pid]||[],
+        segment: { borderDash: ()=>BORDER_DASH[pid]||[] },
         pointRadius: 3,
         pointHoverRadius: 5,
         spanGaps: true,
