@@ -121,6 +121,7 @@
       "programs": {
         "livelo": 5,
         "esfera": 5,
+        "smiles": 4,
         "azul": 15,
         "latam": 3
       }
@@ -134,6 +135,7 @@
       "programs": {
         "livelo": 5,
         "esfera": 4,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -157,6 +159,7 @@
       "programs": {
         "livelo": 5,
         "esfera": 1,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -416,6 +419,7 @@
       "programs": {
         "livelo": 2,
         "esfera": 1,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -463,6 +467,7 @@
       "programs": {
         "livelo": 2,
         "esfera": 2,
+        "smiles": 4,
         "azul": 5
       }
     },
@@ -536,6 +541,7 @@
       "programs": {
         "livelo": 2,
         "esfera": 2,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -578,6 +584,7 @@
       "programs": {
         "livelo": 2,
         "esfera": 3,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -728,6 +735,7 @@
       "programs": {
         "livelo": 2,
         "esfera": 3,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -1093,6 +1101,7 @@
     "portal das malas": {
       "programs": {
         "livelo": 1,
+        "smiles": 4,
         "azul": 16
       }
     },
@@ -1259,6 +1268,7 @@
     "polishop": {
       "programs": {
         "esfera": 5,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -1336,6 +1346,7 @@
     "fast shop": {
       "programs": {
         "esfera": 2,
+        "smiles": 4,
         "azul": 5
       }
     },
@@ -1392,6 +1403,7 @@
     "natura": {
       "programs": {
         "esfera": 2,
+        "smiles": 4,
         "azul": 5
       }
     },
@@ -1621,6 +1633,7 @@
     "magazine luiza": {
       "programs": {
         "esfera": 1,
+        "smiles": 4,
         "azul": 5,
         "latam": 3
       }
@@ -1699,6 +1712,7 @@
     "stanley": {
       "programs": {
         "esfera": 1,
+        "smiles": 4,
         "azul": 5
       }
     },
@@ -1740,6 +1754,21 @@
     "nespresso": {
       "programs": {
         "esfera": 1
+      }
+    },
+    "diageo": {
+      "programs": {
+        "smiles": 4
+      }
+    },
+    "top store": {
+      "programs": {
+        "smiles": 4
+      }
+    },
+    "tramontina": {
+      "programs": {
+        "smiles": 4
       }
     },
     "aliexpress": {
