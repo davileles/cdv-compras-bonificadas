@@ -1349,7 +1349,7 @@ function openOfertaModal(id){
   document.getElementById('oferta-modal-titulo').classList.toggle('encerrada-titulo',encerrada);
   document.getElementById('oferta-modal-meta').textContent=
     (o.programa?o.programa+' · ':'')+(OFERTA_CAT_LABELS[o.categoria]||o.categoria||'')+(o.publicadoEm?' · '+formatDataCurta(o.publicadoEm):'');
-  document.getElementById('oferta-modal-resumo').textContent=o.resumo||'';
+  document.getElementById('oferta-modal-resumo').innerHTML=(o.resumo||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
 
   const fatos=[];
   if(o.bonus) fatos.push(['Bônus / Ganho',o.bonus]);
