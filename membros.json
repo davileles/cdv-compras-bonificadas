@@ -1,6 +1,6 @@
 {
-  "atualizadoEm": "2026-07-02T18:46:28.313433Z",
-  "total": 51,
+  "atualizadoEm": "2026-07-02T19:16:42.132Z",
+  "total": 52,
   "membros": [
     {
       "nome": "Vinicius Groppo",
@@ -771,6 +771,21 @@
       "adicionadoEm": "2026-07-02T18:46:28.313433Z",
       "atualizadoEm": "2026-07-02T18:46:28.313433Z",
       "origem": "importacao_inicial"
+    },
+    {
+      "nome": "Davi L",
+      "email": "davileles@gmail.com",
+      "status": "ativo",
+      "produtos": [
+        {
+          "oferta": "Acesso vitalício ao conteúdo gravado da Escola do viajante",
+          "produtoId": "Y6SczFdKpSz5T3gg2c8f",
+          "produtoNome": "Acesso vitalício ao conteúdo gravado da Escola do Viajante"
+        }
+      ],
+      "adicionadoEm": "2026-07-02T19:16:42.132Z",
+      "atualizadoEm": "2026-07-02T19:16:42.132Z",
+      "origem": "webhook"
     }
   ]
 }
