@@ -2,3532 +2,3170 @@
   "2026-07-01": {
     "seguro viagem bradesco": {
       "programs": {
-        "livelo": 15
+        "livelo": {
+          "pts": 15,
+          "dollar": false
+        }
       }
     },
     "ciclic seguro viagem": {
       "programs": {
-        "livelo": 14
+        "livelo": {
+          "pts": 14,
+          "dollar": false
+        }
       }
     },
     "hero seguro viagem": {
       "programs": {
-        "livelo": 14
+        "livelo": {
+          "pts": 14,
+          "dollar": false
+        }
       }
     },
     "sulamérica seguro viagem": {
       "programs": {
-        "livelo": 14
+        "livelo": {
+          "pts": 14,
+          "dollar": false
+        }
       }
     },
     "bulbe energia": {
       "programs": {
-        "livelo": 12
+        "livelo": {
+          "pts": 12,
+          "dollar": false
+        }
       }
     },
     "embracon": {
       "programs": {
-        "livelo": 11
+        "livelo": {
+          "pts": 11,
+          "dollar": false
+        }
       }
     },
     "assist card": {
       "programs": {
-        "livelo": 10
+        "livelo": {
+          "pts": 10,
+          "dollar": false
+        }
       }
     },
     "clube bancorbrás": {
       "programs": {
-        "livelo": 10
+        "livelo": {
+          "pts": 10,
+          "dollar": false
+        }
       }
     },
     "consorcio magalu": {
       "programs": {
-        "livelo": 10
+        "livelo": {
+          "pts": 10,
+          "dollar": false
+        }
       }
     },
     "mobills": {
       "programs": {
-        "livelo": 10
+        "livelo": {
+          "pts": 10,
+          "dollar": false
+        }
       }
     },
     "tokio marine seguros": {
       "programs": {
-        "livelo": 10
+        "livelo": {
+          "pts": 10,
+          "dollar": false
+        }
       }
     },
     "universal assistance – seguro viagem": {
       "programs": {
-        "livelo": 9
+        "livelo": {
+          "pts": 9,
+          "dollar": false
+        }
       }
     },
     "decolar": {
       "programs": {
-        "livelo": 7,
-        "esfera": 8,
-        "azul": 8
+        "livelo": {
+          "pts": 7,
+          "dollar": true
+        },
+        "esfera": {
+          "pts": 8,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 8,
+          "dollar": false
+        }
       }
     },
     "medsênior": {
       "programs": {
-        "livelo": 7
+        "livelo": {
+          "pts": 7,
+          "dollar": false
+        }
       }
     },
     "assinatura coffee mais": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "bo.bÔ": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "ciclic seguro celular": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "claro": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "edp": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "hertz": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": true
+        }
       }
     },
     "sulamérica plano odonto": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "tim": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "travelex": {
       "programs": {
-        "livelo": 6
+        "livelo": {
+          "pts": 6,
+          "dollar": true
+        }
       }
     },
     "casas bahia": {
       "programs": {
-        "livelo": 5,
-        "esfera": 5,
-        "smiles": 4,
-        "azul": 15,
-        "latam": 3
+        "livelo": {
+          "pts": 5,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 5,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 15,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "coris": {
       "programs": {
-        "livelo": 5
+        "livelo": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "extra": {
       "programs": {
-        "livelo": 5,
-        "esfera": 4,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "livelo": {
+          "pts": 5,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 4,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "giuliana flores": {
       "programs": {
-        "livelo": 5
+        "livelo": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "localiza internacional": {
       "programs": {
-        "livelo": 5
+        "livelo": {
+          "pts": 5,
+          "dollar": true
+        }
       }
     },
     "maltacor": {
       "programs": {
-        "livelo": 5
+        "livelo": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "ponto": {
       "programs": {
-        "livelo": 5,
-        "esfera": 1,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "livelo": {
+          "pts": 5,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "rentcars": {
       "programs": {
-        "livelo": 5
+        "livelo": {
+          "pts": 5,
+          "dollar": true
+        }
       }
     },
     "tripchip": {
       "programs": {
-        "livelo": 5
+        "livelo": {
+          "pts": 5,
+          "dollar": true
+        }
       }
     },
     "allianz travel": {
       "programs": {
-        "livelo": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "booking": {
       "programs": {
-        "livelo": 4,
-        "esfera": 4,
-        "azul": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "coffee mais": {
       "programs": {
-        "livelo": 4,
-        "esfera": 12
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 12,
+          "dollar": false
+        }
       }
     },
     "grupo dreams": {
       "programs": {
-        "livelo": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "live!": {
       "programs": {
-        "livelo": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "localiza meoo": {
       "programs": {
-        "livelo": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "scudoo seguro celular": {
       "programs": {
-        "livelo": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "speedo": {
       "programs": {
-        "livelo": 4
+        "livelo": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "abelha rainha": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "beyoung": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "boticário": {
       "programs": {
-        "livelo": 3,
-        "esfera": 1,
-        "azul": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "café orfeu": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "carrefour mercado": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "carters": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "cestas michelli": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "dudalina": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "hering": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "hope": {
       "programs": {
-        "livelo": 3,
-        "esfera": 1
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "john john": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "le lis": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "liga vitória - seguro de viagem": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "liga vitória seguro de vida": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "liga vitória seguro residencial": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "morana": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "nars": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "next seguro viagem": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "o.u.i paris": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "piatan natural": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "q compra": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "quem disse, berenice?": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "quintess": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "riachuelo": {
       "programs": {
-        "livelo": 3,
-        "esfera": 3,
-        "azul": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "shiseido": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "tia sônia": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "truss": {
       "programs": {
-        "livelo": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "vult": {
       "programs": {
-        "livelo": 3,
-        "esfera": 1
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "yvy": {
       "programs": {
-        "livelo": 3,
-        "esfera": 2
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "zissou": {
       "programs": {
-        "livelo": 3,
-        "esfera": 3
+        "livelo": {
+          "pts": 3,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "acer": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "agaxtur cruzeiros": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "beach park hospedagens": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "beto carrero world": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "bobstore": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "bombay herbs & spices": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "bradesco capitalização": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "buddha spa": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "camicado": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "centauro": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1,
-        "azul": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "colcci": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "coliseu": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "converse": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "crocs": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "ellus": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "Época cosméticos": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "smiles": 4,
-        "azul": 5
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "eudora": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1,
-        "azul": 3
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "faber-castell": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "fila": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "foco": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "forever liss": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "fóssil": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "gazin": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "guess": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "havaianas": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "hope resort": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "individual": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "lacoste": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "lojas renner": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "luxury loyalty": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "malwee": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "meia sola": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "mercado livre": {
       "programs": {
-        "livelo": 2,
-        "azul": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "monte carlo": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "movida": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "azul": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "netshoes": {
       "programs": {
-        "livelo": 2,
-        "esfera": 3,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "new balance": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "nike": {
       "programs": {
-        "livelo": 2,
-        "esfera": 1,
-        "azul": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "oceane": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "osklen": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "oxford": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "pado": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "petlove": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "azul": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "petz": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "portallar": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "reserva": {
       "programs": {
-        "livelo": 2,
-        "esfera": 4,
-        "azul": 4
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "reservecar": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": true
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "richards": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "salinas": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "samsonite": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "seus ingressos": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "shoestock": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "studio z": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "suhai seguradora": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "summerville": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "technos": {
       "programs": {
-        "livelo": 2,
-        "esfera": 3
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "trocafy": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "umbro": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "unidas": {
       "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "azul": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "viajar": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "vr collezioni": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "wise up": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "zattini": {
       "programs": {
-        "livelo": 2,
-        "esfera": 3,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "zee dog": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "abc da construção": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "adcos": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "alura": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "angeloni": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "asics": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 2
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "avis": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "bagaggio": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "baianão": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "beach park ingressos": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "beep": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "bibi calçados": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "budget": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "carrefour": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "cinemark": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "civitatis": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "clickbus": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "cook eletroraro": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "creditas": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "dafiti": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "democrata": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "divvino": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "drogaria sao paulo": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "drogarias pacheco": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "dufrio": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "easy live": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "elbo": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "electrolux": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "estapar": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "estoque": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "euro": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "farmacias app": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "frigelar": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "granado": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "guldi": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "hering outlet": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "hero seguro celular": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "horas mágicas": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "hot beach": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "hoteis.com": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "hotel nacional": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "imaginarium": {
       "programs": {
-        "livelo": 1,
-        "esfera": 2
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "insider store": {
       "programs": {
-        "livelo": 1,
-        "esfera": 13,
-        "azul": 13
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 13,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 13,
+          "dollar": false
+        }
       }
     },
     "kabum!": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "klabin": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "lego": {
       "programs": {
-        "livelo": 1,
-        "esfera": 2
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "liga vitória seguro auto": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "liga vitória seguro moto": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "liz": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "loccitane au bresil": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 3
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "loccitane en provence": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 3
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "loja do mecânico": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "loungerie": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "mapfre seguro auto": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "maxracer": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "max titanium": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "midea": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "mistral": {
       "programs": {
-        "livelo": 1,
-        "esfera": 10
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 10,
+          "dollar": false
+        }
       }
     },
     "mizuno": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "mobifácil": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "mobly": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "oficina": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "olympikus": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "outback": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "playstation": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "pneustore": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "portal das malas": {
       "programs": {
-        "livelo": 1,
-        "smiles": 4,
-        "azul": 16
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 16,
+          "dollar": false
+        }
       }
     },
     "posthaus": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "probiótica": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "puket": {
       "programs": {
-        "livelo": 1,
-        "esfera": 2
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "pura vida": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "quero passagem": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "quero-quero": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "seguro residencial mapfre": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "sephora": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "sixt": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "spicy": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "thule": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "top móveis": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "under armour": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "universal music": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "vivara": {
       "programs": {
-        "livelo": 1,
-        "esfera": 1,
-        "azul": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        },
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "zee.now": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "bradesco capitalização max prêmios torcida pu": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "bankei": {
       "programs": {
-        "livelo": 2
+        "livelo": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "postos ale": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "supernosso": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "uber": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "home angels": {
       "programs": {
-        "livelo": 1
+        "livelo": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "petlove saúde": {
       "programs": {
-        "esfera": 45
+        "esfera": {
+          "pts": 45,
+          "dollar": false
+        }
       }
     },
     "concha y toro": {
       "programs": {
-        "esfera": 23
+        "esfera": {
+          "pts": 23,
+          "dollar": false
+        }
       }
     },
     "la pastina": {
       "programs": {
-        "esfera": 12
+        "esfera": {
+          "pts": 12,
+          "dollar": false
+        }
       }
     },
     "decor colors": {
       "programs": {
-        "esfera": 9
+        "esfera": {
+          "pts": 9,
+          "dollar": false
+        }
       }
     },
     "world wine": {
       "programs": {
-        "esfera": 8
+        "esfera": {
+          "pts": 8,
+          "dollar": false
+        }
       }
     },
     "freixenet": {
       "programs": {
-        "esfera": 6
+        "esfera": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "candide": {
       "programs": {
-        "esfera": 5
+        "esfera": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "mac cosméticos": {
       "programs": {
-        "esfera": 5
+        "esfera": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "nomad": {
       "programs": {
-        "esfera": 5
+        "esfera": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "polishop": {
       "programs": {
-        "esfera": 5,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "esfera": {
+          "pts": 5,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "too faced": {
       "programs": {
-        "esfera": 4
+        "esfera": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "clinique": {
       "programs": {
-        "esfera": 3
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "fossil": {
       "programs": {
-        "esfera": 3
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "jo malone": {
       "programs": {
-        "esfera": 3
+        "esfera": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "aigai spa": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "airport park": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "babystock": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "beautique cosméticos": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "belong be": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "café store": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "casa flora": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "chocolat du jour": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "compre Óculos": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "emma": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "fast shop": {
       "programs": {
-        "esfera": 2,
-        "smiles": 4,
-        "azul": 5
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "foreo": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "gama italy": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "go case": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "highstil": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "lithos galeria": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "lyor": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "maisbarato.net": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "mga store": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "multi": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "my sous vide": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "natura": {
       "programs": {
-        "esfera": 2,
-        "smiles": 4,
-        "azul": 5
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "nzc cosmetics": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "polar": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "shopee": {
       "programs": {
-        "esfera": 2,
-        "azul": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "shop vinho": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "slow beauty": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "utensílios do chef": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "wala place": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "wavee, seu esim global": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "weconnect": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "wolff": {
       "programs": {
-        "esfera": 2
+        "esfera": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "adidas": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "agaxtur viagens e turismo": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "amobeleza": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "animale": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "artwalk": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "authentic feet": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "avon": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "beleza na web": {
       "programs": {
-        "esfera": 1,
-        "azul": 8
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 8,
+          "dollar": false
+        }
       }
     },
     "biscoitê": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "brinox shop": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "café l'or": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "cea": {
       "programs": {
-        "esfera": 1,
-        "azul": 6
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 6,
+          "dollar": false
+        }
       }
     },
     "central ar": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "cobasi": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "decathlon": {
       "programs": {
-        "esfera": 1,
-        "azul": 2
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "drogal": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "drogaria araújo": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "drogaria venâncio": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "dutra máquinas": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "eclock": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "elens": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "eÓtica": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "esteé lauder": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "evino": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "extrafarma": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "first step": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "flixbus": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "fut fanatics": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "grand cru": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "jbl": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "karsten": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "kipling": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "lg": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "luuna": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "madeiramadeira": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "magazine luiza": {
       "programs": {
-        "esfera": 1,
-        "smiles": 4,
-        "azul": 5,
-        "latam": 3
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "magic feet": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "mascavo": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "motorola": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "mundos infinitos": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "oqvestir": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "pague menos": {
       "programs": {
-        "esfera": 1,
-        "azul": 2
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "phooto": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "pilão": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "plié": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "puma": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "santander shopping": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "schutz": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "sestini": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "shop2gether": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "stanley": {
       "programs": {
-        "esfera": 1,
-        "smiles": 4,
-        "azul": 5
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        },
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        },
+        "azul": {
+          "pts": 5,
+          "dollar": false
+        }
       }
     },
     "trussardi": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "webfones": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "yamamura": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "brastemp": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "consul": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "efácil": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "iplace": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "nespresso": {
       "programs": {
-        "esfera": 1
+        "esfera": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "diageo": {
       "programs": {
-        "smiles": 4
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "top store": {
       "programs": {
-        "smiles": 4
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "tramontina": {
       "programs": {
-        "smiles": 4
+        "smiles": {
+          "pts": 4,
+          "dollar": false
+        }
       }
     },
     "aliexpress": {
       "programs": {
-        "azul": 3
+        "azul": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "ponto store": {
       "programs": {
-        "latam": 3
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
       }
     },
     "ifriend": {
       "programs": {
-        "latam": 2
+        "latam": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "all accor": {
       "programs": {
-        "latam": 2
+        "latam": {
+          "pts": 2,
+          "dollar": false
+        }
       }
     },
     "marriott bonvoy": {
       "programs": {
-        "latam": 1
+        "latam": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     },
     "elite internacional realty": {
       "programs": {
-        "latam": 1
-      }
-    }
-  },
-  "2026-07-02": {
-    "porto seguro": {
-      "programs": {
-        "livelo": 24
-      }
-    },
-    "seguro viagem bradesco": {
-      "programs": {
-        "livelo": 15
-      }
-    },
-    "ciclic seguro viagem": {
-      "programs": {
-        "livelo": 14
-      }
-    },
-    "hero seguro viagem": {
-      "programs": {
-        "livelo": 14
-      }
-    },
-    "sulamérica seguro viagem": {
-      "programs": {
-        "livelo": 14
-      }
-    },
-    "insider store": {
-      "programs": {
-        "livelo": 13,
-        "esfera": 13,
-        "azul": 1
-      }
-    },
-    "tokio marine seguros": {
-      "programs": {
-        "livelo": 13
-      }
-    },
-    "bulbe energia": {
-      "programs": {
-        "livelo": 12
-      }
-    },
-    "coffee mais": {
-      "programs": {
-        "livelo": 12,
-        "esfera": 12
-      }
-    },
-    "decolar": {
-      "programs": {
-        "livelo": 12,
-        "esfera": 8
-      }
-    },
-    "elbo": {
-      "programs": {
-        "livelo": 12
-      }
-    },
-    "tia sônia": {
-      "programs": {
-        "livelo": 12
-      }
-    },
-    "embracon": {
-      "programs": {
-        "livelo": 11
-      }
-    },
-    "adcos": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "assist card": {
-      "programs": {
-        "livelo": 10,
-        "azul": 25
-      }
-    },
-    "clube bancorbrás": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "consorcio magalu": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "euro": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "fóssil": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "hertz": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "mobills": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "morana": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "o.u.i paris": {
-      "programs": {
-        "livelo": 10
-      }
-    },
-    "technos": {
-      "programs": {
-        "livelo": 10,
-        "esfera": 3
-      }
-    },
-    "vult": {
-      "programs": {
-        "livelo": 10,
-        "esfera": 1
-      }
-    },
-    "universal assistance – seguro viagem": {
-      "programs": {
-        "livelo": 9
-      }
-    },
-    "farmacias app": {
-      "programs": {
-        "livelo": 8
-      }
-    },
-    "truss": {
-      "programs": {
-        "livelo": 8
-      }
-    },
-    "cestas michelli": {
-      "programs": {
-        "livelo": 7
-      }
-    },
-    "eudora": {
-      "programs": {
-        "livelo": 7,
-        "esfera": 1
-      }
-    },
-    "giuliana flores": {
-      "programs": {
-        "livelo": 7
-      }
-    },
-    "medsênior": {
-      "programs": {
-        "livelo": 7
-      }
-    },
-    "quem disse, berenice?": {
-      "programs": {
-        "livelo": 7
-      }
-    },
-    "assinatura coffee mais": {
-      "programs": {
-        "livelo": 6
-      }
-    },
-    "bo.bÔ": {
-      "programs": {
-        "livelo": 6,
-        "azul": 3
-      }
-    },
-    "boticário": {
-      "programs": {
-        "livelo": 6,
-        "esfera": 5
-      }
-    },
-    "claro": {
-      "programs": {
-        "livelo": 6
-      }
-    },
-    "crocs": {
-      "programs": {
-        "livelo": 6
-      }
-    },
-    "edp": {
-      "programs": {
-        "livelo": 6
-      }
-    },
-    "riachuelo": {
-      "programs": {
-        "livelo": 6,
-        "esfera": 3,
-        "azul": 3
-      }
-    },
-    "sulamérica plano odonto": {
-      "programs": {
-        "livelo": 6
-      }
-    },
-    "tim": {
-      "programs": {
-        "livelo": 6
-      }
-    },
-    "alura": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 1
-      }
-    },
-    "beep": {
-      "programs": {
-        "livelo": 5
-      }
-    },
-    "beleza na web": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 1
-      }
-    },
-    "casas bahia": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 5
-      }
-    },
-    "ciclic seguro celular": {
-      "programs": {
-        "livelo": 5
-      }
-    },
-    "coris": {
-      "programs": {
-        "livelo": 5
-      }
-    },
-    "extra": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 4
-      }
-    },
-    "hoteis.com": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 1
-      }
-    },
-    "klabin": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 1
-      }
-    },
-    "lacoste": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 1
-      }
-    },
-    "localiza internacional": {
-      "programs": {
-        "livelo": 5
-      }
-    },
-    "maltacor": {
-      "programs": {
-        "livelo": 5
-      }
-    },
-    "ponto": {
-      "programs": {
-        "livelo": 5,
-        "esfera": 5
-      }
-    },
-    "rentcars": {
-      "programs": {
-        "livelo": 5,
-        "azul": 1
-      }
-    },
-    "tripchip": {
-      "programs": {
-        "livelo": 5
-      }
-    },
-    "allianz travel": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "booking": {
-      "programs": {
-        "livelo": 4,
-        "esfera": 4
-      }
-    },
-    "grupo dreams": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "live!": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "localiza meoo": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "scudoo seguro celular": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "speedo": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "thule": {
-      "programs": {
-        "livelo": 4
-      }
-    },
-    "abelha rainha": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "beyoung": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "café orfeu": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "carrefour mercado": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "carters": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "dudalina": {
-      "programs": {
-        "livelo": 3,
-        "azul": 3
-      }
-    },
-    "hering": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "hope": {
-      "programs": {
-        "livelo": 3,
-        "esfera": 1
-      }
-    },
-    "john john": {
-      "programs": {
-        "livelo": 3,
-        "azul": 3
-      }
-    },
-    "le lis": {
-      "programs": {
-        "livelo": 3,
-        "azul": 3
-      }
-    },
-    "liga vitória - seguro de viagem": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "liga vitória seguro de vida": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "liga vitória seguro residencial": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "nars": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "next seguro viagem": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "piatan natural": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "puket": {
-      "programs": {
-        "livelo": 3,
-        "esfera": 2
-      }
-    },
-    "q compra": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "quintess": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "shiseido": {
-      "programs": {
-        "livelo": 3
-      }
-    },
-    "yvy": {
-      "programs": {
-        "livelo": 3,
-        "esfera": 2
-      }
-    },
-    "zissou": {
-      "programs": {
-        "livelo": 3,
-        "esfera": 3
-      }
-    },
-    "acer": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "agaxtur cruzeiros": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "beach park hospedagens": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "beto carrero world": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "bobstore": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "bombay herbs & spices": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "bradesco capitalização": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "buddha spa": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "camicado": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 1
-      }
-    },
-    "centauro": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 1
-      }
-    },
-    "colcci": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "coliseu": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "converse": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "ellus": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "Época cosméticos": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2
-      }
-    },
-    "faber-castell": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "fila": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2
-      }
-    },
-    "foco": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "forever liss": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2
-      }
-    },
-    "gazin": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "guess": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "havaianas": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "hope resort": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 1
-      }
-    },
-    "imaginarium": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2
-      }
-    },
-    "individual": {
-      "programs": {
-        "livelo": 2,
-        "azul": 3
-      }
-    },
-    "lojas renner": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "azul": 2
-      }
-    },
-    "luxury loyalty": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "malwee": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "meia sola": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "mercado livre": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "monte carlo": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 1
-      }
-    },
-    "movida": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "azul": 2
-      }
-    },
-    "new balance": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 1
-      }
-    },
-    "nike": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 1
-      }
-    },
-    "oceane": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "osklen": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "oxford": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "pado": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "petz": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "portallar": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "reserva": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 4
-      }
-    },
-    "reservecar": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2
-      }
-    },
-    "richards": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "salinas": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "samsonite": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "seus ingressos": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "shoestock": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "studio z": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "suhai seguradora": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "summerville": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "trocafy": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "umbro": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2
-      }
-    },
-    "unidas": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 2,
-        "azul": 2
-      }
-    },
-    "viajar": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "vr collezioni": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "wise up": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "zattini": {
-      "programs": {
-        "livelo": 2,
-        "esfera": 3,
-        "azul": 3
-      }
-    },
-    "zee dog": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "abc da construção": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "angeloni": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "asics": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "avis": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "bagaggio": {
-      "programs": {
-        "livelo": 1,
-        "azul": 1
-      }
-    },
-    "baianão": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "beach park ingressos": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "bibi calçados": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "budget": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "carrefour": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "cinemark": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "civitatis": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "clickbus": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "cook eletroraro": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "creditas": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "dafiti": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "democrata": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "divvino": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "drogaria sao paulo": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "drogarias pacheco": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "dufrio": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "easy live": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "electrolux": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "estapar": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "estoque": {
-      "programs": {
-        "livelo": 1,
-        "azul": 1
-      }
-    },
-    "frigelar": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "granado": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "guldi": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "hering outlet": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "hero seguro celular": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "horas mágicas": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "hot beach": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "hotel nacional": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "kabum!": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "lego": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 2
-      }
-    },
-    "liga vitória seguro auto": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "liga vitória seguro moto": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "liz": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "loccitane au bresil": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "loccitane en provence": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "loja do mecânico": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "loungerie": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "mapfre seguro auto": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "maxracer": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "max titanium": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "midea": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "mistral": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 10
-      }
-    },
-    "mizuno": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "mobifácil": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "mobly": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "oficina": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "olympikus": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "outback": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "playstation": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "pneustore": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "portal das malas": {
-      "programs": {
-        "livelo": 1,
-        "azul": 16
-      }
-    },
-    "posthaus": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "probiótica": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "pura vida": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "quero passagem": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "quero-quero": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "seguro residencial mapfre": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "sephora": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "sixt": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "spicy": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "top móveis": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "travelex": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "under armour": {
-      "programs": {
-        "livelo": 1,
-        "esfera": 1
-      }
-    },
-    "universal music": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "zee.now": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "bradesco capitalização max prêmios torcida pu": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "bankei": {
-      "programs": {
-        "livelo": 2
-      }
-    },
-    "supernosso": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "uber": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "home angels": {
-      "programs": {
-        "livelo": 1
-      }
-    },
-    "petlove saúde": {
-      "programs": {
-        "esfera": 45,
-        "azul": 6
-      }
-    },
-    "concha y toro": {
-      "programs": {
-        "esfera": 23
-      }
-    },
-    "la pastina": {
-      "programs": {
-        "esfera": 12
-      }
-    },
-    "decor colors": {
-      "programs": {
-        "esfera": 9
-      }
-    },
-    "world wine": {
-      "programs": {
-        "esfera": 8
-      }
-    },
-    "freixenet": {
-      "programs": {
-        "esfera": 6
-      }
-    },
-    "candide": {
-      "programs": {
-        "esfera": 5
-      }
-    },
-    "mac cosméticos": {
-      "programs": {
-        "esfera": 5
-      }
-    },
-    "nomad": {
-      "programs": {
-        "esfera": 5
-      }
-    },
-    "polishop": {
-      "programs": {
-        "esfera": 5
-      }
-    },
-    "too faced": {
-      "programs": {
-        "esfera": 4
-      }
-    },
-    "clinique": {
-      "programs": {
-        "esfera": 3
-      }
-    },
-    "fossil": {
-      "programs": {
-        "esfera": 3
-      }
-    },
-    "jo malone": {
-      "programs": {
-        "esfera": 3
-      }
-    },
-    "netshoes": {
-      "programs": {
-        "esfera": 3,
-        "azul": 3
-      }
-    },
-    "aigai spa": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "airport park": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "babystock": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "beautique cosméticos": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "belong be": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "café store": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "casa flora": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "chocolat du jour": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "compre Óculos": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "emma": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "fast shop": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "foreo": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "gama italy": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "go case": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "highstil": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "lithos galeria": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "lyor": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "maisbarato.net": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "mga store": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "multi": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "my sous vide": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "natura": {
-      "programs": {
-        "esfera": 2,
-        "azul": 4
-      }
-    },
-    "nzc cosmetics": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "petlove": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "polar": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "shopee": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "shop vinho": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "slow beauty": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "utensílios do chef": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "wala place": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "wavee, seu esim global": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "weconnect": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "wolff": {
-      "programs": {
-        "esfera": 2
-      }
-    },
-    "adidas": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "agaxtur viagens e turismo": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "amobeleza": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "animale": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "artwalk": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "authentic feet": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "avon": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "biscoitê": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "brinox shop": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "café l'or": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "cea": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "central ar": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "cobasi": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "decathlon": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "drogal": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "drogaria araújo": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "drogaria venâncio": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "dutra máquinas": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "eclock": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "elens": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "eÓtica": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "esteé lauder": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "evino": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "extrafarma": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "first step": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "flixbus": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "fut fanatics": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "grand cru": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "jbl": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "karsten": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "kipling": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "lg": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "luuna": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "madeiramadeira": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "magazine luiza": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "magic feet": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "mascavo": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "motorola": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "mundos infinitos": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "oqvestir": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "pague menos": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "phooto": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "pilão": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "plié": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "puma": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "santander shopping": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "schutz": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "sestini": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "shop2gether": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "stanley": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "trussardi": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "vivara": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "webfones": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "yamamura": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "brastemp": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "consul": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "efácil": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "iplace": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "nespresso": {
-      "programs": {
-        "esfera": 1
-      }
-    },
-    "airport park - guarulhos": {
-      "programs": {
-        "azul": 15
-      }
-    },
-    "easy live vouchers": {
-      "programs": {
-        "azul": 14
-      }
-    },
-    "easy live entreterimento": {
-      "programs": {
-        "azul": 3
-      }
-    },
-    "sam's club": {
-      "programs": {
-        "azul": 1
+        "latam": {
+          "pts": 1,
+          "dollar": false
+        }
       }
     }
   }
