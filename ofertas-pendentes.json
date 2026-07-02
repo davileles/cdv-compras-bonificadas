@@ -1,4 +1,45 @@
 {
-  "geradoEm": "2026-07-02T11:32:32.282Z",
-  "items": []
+  "geradoEm": "2026-07-02T12:09:23.545Z",
+  "items": [
+    {
+      "id": "var_dv32zj",
+      "titulo": "31 parceiros tiveram aumento de pontuação com Livelo",
+      "emoji": "📈",
+      "resumo": "31 parceiros do programa Livelo tiveram aumento de pontuação na última atualização do Painel do Clube do Viajante.\n\n🛍️ Adcos — 1 → 10 pts/R$ (+9)\n🛍️ Alura — 1 → 5 pts/R$ (+4)\n🛍️ Beep — 1 → 5 pts/R$ (+4)\n🛍️ Boticário — 3 → 6 pts/R$ (+3)\n🛍️ Cestas michelli — 3 → 7 pts/R$ (+4)\n🛍️ Coffee mais — 4 → 12 pts/R$ (+8)\n🛍️ Crocs — 2 → 6 pts/R$ (+4)\n🛍️ Decolar — 7 → 12 pts/R$ (+5)\n🛍️ Elbo — 1 → 12 pts/R$ (+11)\n🛍️ Eudora — 2 → 7 pts/R$ (+5)\n🛍️ Euro — 1 → 10 pts/R$ (+9)\n🛍️ Farmacias app — 1 → 8 pts/R$ (+7)\n🛍️ Fóssil — 2 → 10 pts/R$ (+8)\n🛍️ Giuliana flores — 5 → 7 pts/R$ (+2)\n🛍️ Hertz — 6 → 10 pts/R$ (+4)\n🛍️ Hoteis.com — 1 → 5 pts/R$ (+4)\n🛍️ Imaginarium — 1 → 2 pts/R$ (+1)\n🛍️ Insider store — 1 → 13 pts/R$ (+12)\n🛍️ Klabin — 1 → 5 pts/R$ (+4)\n🛍️ Lacoste — 2 → 5 pts/R$ (+3)\n🛍️ Morana — 3 → 10 pts/R$ (+7)\n🛍️ O.u.i paris — 3 → 10 pts/R$ (+7)\n🛍️ Puket — 1 → 3 pts/R$ (+2)\n🛍️ Quem disse, berenice? — 3 → 7 pts/R$ (+4)\n🛍️ Riachuelo — 3 → 6 pts/R$ (+3)\n🛍️ Technos — 2 → 10 pts/R$ (+8)\n🛍️ Thule — 1 → 4 pts/R$ (+3)\n🛍️ Tia sônia — 3 → 12 pts/R$ (+9)\n🛍️ Tokio marine seguros — 10 → 13 pts/R$ (+3)\n🛍️ Truss — 3 → 8 pts/R$ (+5)\n🛍️ Vult — 3 → 10 pts/R$ (+7)",
+      "descricao": "",
+      "programa": "Livelo",
+      "bonus": "",
+      "prazo": "",
+      "categoria": "compra_bonificada",
+      "loja": "Livelo",
+      "cupom": "",
+      "link": "https://painel.clubedoviajante.com.br",
+      "importante": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "restricoes": [],
+      "publicadoEm": "2026-07-02T12:09:22.849Z",
+      "tipoVariacao": true
+    },
+    {
+      "id": "var_m0rpoc",
+      "titulo": "2 parceiros tiveram aumento de pontuação com Esfera",
+      "emoji": "📈",
+      "resumo": "2 parceiros do programa Esfera tiveram aumento de pontuação na última atualização do Painel do Clube do Viajante.\n\n🛍️ Boticário — 1 → 5 pts/R$ (+4)\n🛍️ Ponto — 1 → 5 pts/R$ (+4)",
+      "descricao": "",
+      "programa": "Esfera",
+      "bonus": "",
+      "prazo": "",
+      "categoria": "compra_bonificada",
+      "loja": "Esfera",
+      "cupom": "",
+      "link": "https://painel.clubedoviajante.com.br",
+      "importante": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "restricoes": [],
+      "publicadoEm": "2026-07-02T12:09:22.850Z",
+      "tipoVariacao": true
+    }
+  ]
 }
