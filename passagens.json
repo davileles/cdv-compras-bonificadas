@@ -1,6 +1,19 @@
 {
-  "atualizadoEm": "2026-07-02T15:34:03.791Z",
+  "atualizadoEm": "2026-07-02T15:34:09.413Z",
   "items": [
+    {
+      "id": "8nudbr",
+      "origem": "Navegantes",
+      "destino": "Goiânia",
+      "cia": "Gol",
+      "programa": "Smiles",
+      "pontos": 12000,
+      "cabine": "Economica",
+      "datas_ida": "Ago/26: 5, 6, 11, 12, 13, 17, 19, 20, 24, 25, 26, 27, 28, 29",
+      "datas_volta": "Ago/26: 9, 10, 11, 12, 13, 14, 18, 20, 24, 25, 26, 28",
+      "fonte": "alerta",
+      "enviadoEm": "2026-07-02T15:34:09.413Z"
+    },
     {
       "id": "137jxrp",
       "origem": "Navegantes",
