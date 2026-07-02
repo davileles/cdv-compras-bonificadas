@@ -313,7 +313,7 @@ async function ghPut(filePath, jsonData, sha, message) {
 
 // ── Gera ofertas pendentes para variações positivas de pontuação ──────────────
 async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
-  // Pega a coleta imediatamente anterior (último snapshot diferente de hoje)
+  // Compara sempre com o snapshot do dia ANTERIOR (não com coleta anterior do mesmo dia)
   const datasOrdenadas = Object.keys(historico)
     .filter(d => d !== hoje)
     .sort()
@@ -326,10 +326,19 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
 
   const dataAnterior = datasOrdenadas[0];
   const snapshotAnterior = historico[dataAnterior];
-  console.log(`[Variação] Comparando com coleta de ${dataAnterior}`);
+  console.log(`[Variação] Comparando com snapshot de ${dataAnterior}`);
 
-  // Agrupa variações positivas por programa
-  // { livelo: [ { parceiro, ptsBefore, ptsNow } ], esfera: [...] }
+  // Carrega controle de notificações do dia (evita mensagens repetidas)
+  const notifFile = 'variacoes-notificadas.json';
+  const notifData = await ghGet(notifFile, {});
+  // Limpa entradas com mais de 2 dias
+  const notifAtual = {};
+  for (const [data, entries] of Object.entries(notifData.data || {})) {
+    if (data >= hoje) notifAtual[data] = entries; // mantém hoje e futuro
+  }
+  const notifHoje = notifAtual[hoje] || {};
+
+  // Agrupa variações positivas por programa — filtrando as já notificadas hoje
   const variacoesPorProg = {};
 
   for (const [parceiro, dadosAtual] of Object.entries(snapshotAtual)) {
@@ -340,9 +349,15 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
       const ptsBefore = (dadosAnt.programs || {})[progId];
       if (!ptsBefore || ptsNow <= ptsBefore) continue; // sem variação positiva
 
+      // Chave única por parceiro+programa
+      const chave = `${parceiro}__${progId}`;
+      // Já notificado hoje com esse mesmo valor? Pula
+      if (notifHoje[chave] === ptsNow) continue;
+
       if (!variacoesPorProg[progId]) variacoesPorProg[progId] = [];
       variacoesPorProg[progId].push({
         parceiro: parceiro.charAt(0).toUpperCase() + parceiro.slice(1),
+        chave,
         ptsBefore,
         ptsNow,
         delta: ptsNow - ptsBefore,
@@ -352,11 +367,11 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
 
   const programasComVariacao = Object.keys(variacoesPorProg);
   if (programasComVariacao.length === 0) {
-    console.log('[Variação] Nenhuma variação positiva encontrada.');
+    console.log('[Variação] Nenhuma variação nova para notificar.');
     return;
   }
 
-  console.log(`[Variação] Variações encontradas em ${programasComVariacao.length} programa(s): ${programasComVariacao.join(', ')}`);
+  console.log(`[Variação] Novas variações em ${programasComVariacao.length} programa(s): ${programasComVariacao.join(', ')}`);
 
   // Lê ofertas-pendentes.json atual
   const pendentes = await ghGet('ofertas-pendentes.json', { geradoEm: null, items: [] });
@@ -376,7 +391,6 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
 
     const titulo = `${count} parceiro${count > 1 ? 's' : ''} tiveram aumento de pontuação com ${progName}`;
 
-    // ID estável baseado no programa + data + hora
     const raw = `variacao-${progId}-${new Date().toISOString()}`;
     let hash = 0;
     for (let i = 0; i < raw.length; i++) hash = (hash * 31 + raw.charCodeAt(i)) >>> 0;
@@ -405,11 +419,19 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
 
     novasOfertas.push(oferta);
     console.log(`[Variação] Oferta gerada: "${titulo}"`);
+
+    // Registra parceiros notificados
+    for (const v of variacoes) {
+      notifHoje[v.chave] = v.ptsNow;
+    }
   }
+
+  // Salva controle de notificações atualizado
+  notifAtual[hoje] = notifHoje;
+  await ghPut(notifFile, notifAtual, notifData.sha, `chore: atualiza notificações ${hoje}`);
 
   // Adiciona novas ofertas no início das pendentes
   const itensMerged = [...novasOfertas, ...itensPendentes];
-
   await ghPut(
     'ofertas-pendentes.json',
     { geradoEm: new Date().toISOString(), items: itensMerged },
