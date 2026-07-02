@@ -77,6 +77,9 @@
 
   .pname{font-size:13px;font-weight:700;line-height:1.3}
   .fire-badge{font-size:9px;font-weight:800;background:rgba(251,146,60,.15);color:#fb923c;border:1px solid rgba(251,146,60,.4);border-radius:4px;padding:1px 5px;width:fit-content;margin-bottom:2px}
+  .fbtn-fire{border:1px solid rgba(251,146,60,.5);background:transparent;color:#fb923c;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;white-space:nowrap;transition:all .15s}
+  .fbtn-fire:hover{background:rgba(251,146,60,.1)}
+  .fbtn-fire.active{background:rgba(251,146,60,.15);border-color:#fb923c}
   .pts-row{display:flex;align-items:baseline;gap:4px}
   .pts-val{font-size:26px;font-weight:900;line-height:1}
   .winner-livelo .pts-val{color:var(--livelo)}
@@ -247,6 +250,7 @@
     <option value="pts_asc">Menor pontuação</option>
     <option value="name">A → Z</option>
   </select>
+  <button class="fbtn-fire" id="btn-acima-media" onclick="toggleAcimaMedia()">🔥 Acima da média</button>
 </div>
 
 <div class="prog-bar" id="prog-filters-bar"></div>
@@ -582,7 +586,7 @@ async function fetchRedirectLinks(partnerUrl){
   }catch{return {};}
 }
 
-let partners=[],activeCat='all',activeFilters=new Set(),activeProgs=null;
+let partners=[],activeCat='all',activeFilters=new Set(),activeProgs=null,filtroAcimaMedia=false;
 
 async function loadData(){
   document.getElementById('grid').innerHTML='<div class="status-box"><div class="spinner"></div><div style="color:var(--muted);font-size:13px" id="load-msg">Iniciando consulta…</div></div>';
@@ -607,12 +611,19 @@ async function loadData(){
   }
 }
 
+function toggleAcimaMedia(){
+  filtroAcimaMedia=!filtroAcimaMedia;
+  document.getElementById('btn-acima-media').classList.toggle('active',filtroAcimaMedia);
+  render();
+}
+
 function pool(){
   const q=document.getElementById('search').value.toLowerCase();
   const filtered=partners.filter(p=>{
     if(q&&!p.name.toLowerCase().includes(q)&&!p.cat.toLowerCase().includes(q))return false;
     if(activeCat!=='all'&&p.cat!==activeCat)return false;
     if(activeProgs!==null&&!Object.keys(p.programs).some(pid=>activeProgs.has(pid)))return false;
+    if(filtroAcimaMedia&&!isAboveAverage(p))return false;
     return true;
   });
   const BASE=['livelo','esfera'], AERIAL=['smiles','azul','latam'];
@@ -721,17 +732,20 @@ function renderModalRows(p, links={}){
     const destUrl=resolveLink(pid,links);
     const linksLoaded=Object.keys(links).length>0;
     const loading=!linksLoaded;
-    const unavailable=linksLoaded&&!destUrl;
-    if(unavailable) return '';
+    const hasLink=!!destUrl;
+    // Não oculta programas sem link — mostra sem âncora clicável
+    const linkAttr=loading?'href="#" onclick="return false;"':hasLink?`href="${destUrl}" target="_blank"`:'href="#" onclick="return false;"';
+    const cursorStyle=loading?'not-allowed':hasLink?'pointer':'default';
+    const opacityStyle=loading?'0.6':'1';
     return `<a class="modal-row ${isBest?'best':''} ${loading?'loading':''}" 
-      ${loading?'href="#" onclick="return false;"':`href="${destUrl}" target="_blank"`}
-      style="text-decoration:none;color:inherit;cursor:${loading?'not-allowed':'pointer'};opacity:${loading?'0.6':'1'}">
+      ${linkAttr}
+      style="text-decoration:none;color:inherit;cursor:${cursorStyle};opacity:${opacityStyle}">
       <div class="modal-prog">
         <div class="modal-prog-dot" style="background:${prog.color}"></div>
         <div>
           <div class="modal-prog-name">${prog.name}</div>
           ${isBest?'<div class="best-badge">✓ Melhor opção</div>':''}
-          <div style="font-size:10px;color:var(--muted);margin-top:2px">${loading?'⟳ carregando link…':'↗ Ir para o parceiro'}</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:2px">${loading?'⟳ carregando link…':hasLink?'↗ Ir para o parceiro':'— sem link disponível'}</div>
         </div>
       </div>
       <div style="text-align:right">
