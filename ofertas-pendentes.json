@@ -1,31 +1,4 @@
 {
   "geradoEm": "2026-07-02T13:54:45.315Z",
-  "items": [
-    {
-      "id": "x31z8z",
-      "titulo": "Até 20 pontos por real entre Portal das Malas e Azul Fidelidade",
-      "emoji": "🛍️",
-      "resumo": "O Azul Fidelidade oferece bonificação em compras realizadas no Portal das Malas e Casas Bahia, com variação conforme o status do cliente no programa. Assinantes do Clube Azul ganham até 20 pontos por real no Portal das Malas e até 15 pontos por real nas Casas Bahia, enquanto membros regulares recebem até 15 e 10 pontos respectivamente. Os pontos são creditados em até 15, 25 ou 30 dias após a entrega dos produtos.",
-      "programa": "Azul Fidelidade",
-      "bonus": "Até 20 pontos por real no Portal das Malas; até 15 pontos por real nas Casas Bahia",
-      "prazo": "31/07/2026",
-      "categoria": "compra_bonificada",
-      "loja": "Portal das Malas e Casas Bahia",
-      "cupom": "",
-      "milheiro": "",
-      "tetoTransferencia": "",
-      "importante": "Sempre verifique a necessidade de uso de cupom, formas de pagamento e produtos específicos participantes, além do prazo para receber os pontos. Recomendamos fortemente que todo processo seja gravado para possível reclamação futura. Sem a gravação você não obterá os pontos se eles não forem creditados corretamente.",
-      "link": "https://www.voeazul.com.br/br/pt/ofertas/pontos",
-      "restricoes": [
-        "Portal das Malas: assinantes do Clube Azul ganham até 20 pontos por real em itens selecionados (válido até 31/07/2026)",
-        "Portal das Malas: membros do Azul Fidelidade ganham até 15 pontos por real em itens selecionados (válido até 31/07/2026)",
-        "Casas Bahia: assinantes do Clube Azul ganham até 15 pontos por real em itens selecionados (válido até 05/07/2026)",
-        "Casas Bahia: membros do Azul Fidelidade ganham até 10 pontos por real em itens selecionados (válido até 05/07/2026)",
-        "Pontos são creditados em até 15, 25 ou 30 dias corridos após a data de entrega do produto, conforme a loja",
-        "É necessário acessar o site de ofertas do Azul Fidelidade para participar da campanha",
-        "A Azul reserva-se o direito de alterar, suspender ou cancelar a campanha sem aviso prévio"
-      ],
-      "publicadoEm": "2026-07-02T12:09:25.000Z"
-    }
-  ]
+  "items": []
 }
