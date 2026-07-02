@@ -1,6 +1,19 @@
 {
-  "atualizadoEm": "2026-07-02T16:46:04.674Z",
+  "atualizadoEm": "2026-07-02T16:47:56.337Z",
   "items": [
+    {
+      "id": "1noib00",
+      "origem": "Campo Grande",
+      "destino": "Zurique",
+      "cia": "LATAM",
+      "programa": "LATAM Pass",
+      "pontos": 89469,
+      "cabine": "Economica",
+      "datas_ida": "Fev/27: 22, Mai/27: 18",
+      "datas_volta": "Mar/27: 01, Mai/27: 28",
+      "fonte": "alerta",
+      "enviadoEm": "2026-07-02T16:47:56.337Z"
+    },
     {
       "id": "zfbjnp",
       "origem": "Campo Grande",
