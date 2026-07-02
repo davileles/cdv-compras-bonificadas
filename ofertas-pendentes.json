@@ -1,35 +1,4 @@
 {
   "geradoEm": "2026-07-02T17:31:07.789Z",
-  "items": [
-    {
-      "id": "7j4r1i",
-      "titulo": "Até 50% de desconto na compra de pontos Esfera para assinantes do Clube",
-      "emoji": "💰",
-      "resumo": "A Esfera oferece desconto de até 50% na compra de pontos durante celebração de 15 anos. Assinantes do Clube Esfera conseguem adquirir pontos a R$ 35,00 por mil, reduzindo o custo pela metade. Promoção válida até 31 de julho com cupom exclusivo.",
-      "programa": "Esfera",
-      "bonus": "Até 50% de desconto na compra de pontos",
-      "prazo": "31/07/2026",
-      "categoria": "compra",
-      "loja": "",
-      "cupom": "PASSAGEIRO50",
-      "milheiro": "💰 Custo do milheiro: R$ 35,00 por 1.000 pontos (assinantes do Clube Esfera com cupom)\n💰 Custo do milheiro: R$ 70,00 por 1.000 pontos (não assinantes)",
-      "tetoTransferencia": "",
-      "importante": "",
-      "link": "https://www.esfera.com.vc/p/compra-de-pontos/e000100033",
-      "restricoes": [
-        "Promoção válida exclusivamente para assinantes do Clube Esfera",
-        "Cupom PASSAGEIRO50 necessário para ativar o desconto de 50%",
-        "Limite de 200.000 pontos ou cinco pedidos mensais por CPF, o que ocorrer primeiro",
-        "Para assinantes do Clube Esfera, limite é de cinco pedidos por mês com quantidade variável conforme o clube contratado",
-        "Quantidade mínima de compra: 1.000 pontos",
-        "Válido para uma única compra por CPF",
-        "Parcelamento disponível em até 12 vezes sem juros",
-        "Pontos creditados em até 24 horas após a transação",
-        "Pontos têm validade de 24 meses a contar da data da compra",
-        "Pagamento apenas por cartão de crédito",
-        "Cupom adicional PASSAGEIRO15 oferece 15% de desconto em resgates de produtos físicos, limitado a 1 por CPF"
-      ],
-      "publicadoEm": "2026-07-02T14:50:36.000Z"
-    }
-  ]
+  "items": []
 }
