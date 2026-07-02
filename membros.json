@@ -1,5 +1,5 @@
 {
-  "atualizadoEm": "2026-07-02T19:21:03.689Z",
+  "atualizadoEm": "2026-07-02T19:24:44.998Z",
   "total": 52,
   "membros": [
     {
@@ -781,10 +781,15 @@
           "oferta": "Acesso vitalício ao conteúdo gravado da Escola do viajante",
           "produtoId": "Y6SczFdKpSz5T3gg2c8f",
           "produtoNome": "Acesso vitalício ao conteúdo gravado da Escola do Viajante"
+        },
+        {
+          "oferta": "Escola do Viajante",
+          "produtoId": "5aPVHUjfhTa79XR2bWqC",
+          "produtoNome": "Clube do Viajante - @davileles"
         }
       ],
       "adicionadoEm": "2026-07-02T19:16:42.132Z",
-      "atualizadoEm": "2026-07-02T19:21:03.689Z",
+      "atualizadoEm": "2026-07-02T19:24:44.998Z",
       "origem": "webhook"
     }
   ]
