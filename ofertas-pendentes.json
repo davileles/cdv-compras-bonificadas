@@ -1,4 +1,65 @@
 {
-  "geradoEm": "2026-07-02T10:28:55.399Z",
-  "items": []
+  "geradoEm": "2026-07-02T11:32:32.282Z",
+  "items": [
+    {
+      "id": "1lvhvuc",
+      "titulo": "Até 55% de desconto na compra de pontos Livelo + 5% extra no Pix",
+      "emoji": "💰",
+      "resumo": "A Livelo oferece até 55% de desconto na compra de pontos para assinantes do Clube Livelo, com desconto adicional de 5% para pagamentos via Pix. A compra pode ser parcelada em até 12 vezes sem juros para valores acima de R$ 240, com limite de 100 mil pontos por operação.",
+      "programa": "Livelo",
+      "bonus": "Até 55% de desconto + 5% extra no Pix",
+      "prazo": "03/07/2026",
+      "categoria": "compra",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "💰 Custo do milheiro: R$ 32,20 por 1.000 pontos (planos Mini, Classic, Special, Plus e Super)\n💰 Custo do milheiro: R$ 30,60 por 1.000 pontos (planos Mini, Classic, Special, Plus e Super com pagamento Pix)\n💰 Custo do milheiro: R$ 31,50 por 1.000 pontos (planos Mega e Top)\n💰 Custo do milheiro: R$ 29,90 por 1.000 pontos (planos Mega e Top com pagamento Pix)",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://www.livelo.com.br/compra-de-pontos/produto/LIVCompraDePontos?skuId=LIVSKUCompraDePontos",
+      "restricoes": [
+        "Desconto de 55% válido para assinantes dos planos Mega e Top, limitado a 100 mil pontos",
+        "Desconto de 54% válido para assinantes dos planos Mini, Classic, Special, Plus e Super, limitado a 100 mil pontos",
+        "Desconto adicional de 5% no Pix aplicado sobre o valor já com desconto",
+        "Parcelamento em até 12 vezes sem juros disponível apenas para compras acima de R$ 240",
+        "Desconto de uso único, aplicado apenas na conveniência 'Compra de Pontos para você'",
+        "Campanha válida exclusivamente para assinantes do Clube Livelo",
+        "Pontos disponibilizados em até 48 horas após confirmação de pagamento",
+        "Não cumulativa com outras promoções, descontos ou campanhas"
+      ],
+      "publicadoEm": "2026-07-02T11:12:13.000Z"
+    },
+    {
+      "id": "1pu6ll3",
+      "titulo": "Até 13 pontos por real entre Insider, Vivara e Livelo",
+      "emoji": "🛍️",
+      "resumo": "Livelo está oferecendo acúmulo de pontos em diversos parceiros com pontuações variadas, sendo a Insider o destaque com até 13 pontos por real gasto. Participantes do Clube Livelo ganham bônus adicional de até 300% ao usar o cupom 'PPCLUBELIVELO' na assinatura. Os pontos são creditados em até 45 dias após a compra.",
+      "programa": "Livelo",
+      "bonus": "Até 13 pontos por real (Insider); até 12 pontos por real (Coffee ++); até 10 pontos por real (Morana e Euro); até 8 pontos por real (Truss, Farmácias App, Vivara); até 6 pontos por real (Crocs, O Boticário); bônus de até 300% para assinantes do Clube Livelo",
+      "prazo": "03/07/2026",
+      "categoria": "compra_bonificada",
+      "loja": "Insider, Coffee ++, Morana, Euro, Truss, Farmácias App, Vivara, Crocs, O Boticário",
+      "cupom": "PPCLUBELIVELO",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "Sempre verifique a necessidade de uso de cupom, formas de pagamento e produtos específicos participantes, além do prazo para receber os pontos. Recomendamos fortemente que todo processo seja gravado para possível reclamação futura. Sem a gravação você não obterá os pontos se eles não forem creditados corretamente.",
+      "link": "https://www.livelo.com.br/ofertas-clube",
+      "restricoes": [
+        "Insider: até 13 pontos por real até 03/07/2026",
+        "Coffee ++: até 12 pontos por real até 03/07/2026",
+        "Morana: até 10 pontos por real até 03/07/2026",
+        "Euro: até 10 pontos por real até 03/07/2026",
+        "Truss: até 8 pontos por real até 03/07/2026",
+        "Farmácias App: até 8 pontos por real até 03/07/2026",
+        "Vivara: até 8 pontos por real até 03/07/2026",
+        "Crocs: até 6 pontos por real até 03/07/2026",
+        "O Boticário: até 6 pontos por real até 03/07/2026",
+        "Cupom 'PPCLUBELIVELO' oferece até 50.000 pontos bônus ao longo de 12 meses para assinantes do Clube Livelo, variando conforme o plano escolhido",
+        "Há variação de pontuação para assinantes do Clube Livelo em alguns parceiros",
+        "Pontos creditados em até 45 dias corridos após a compra",
+        "Campanhas não cumulativas com cupom de afiliados",
+        "Validade e regras variam conforme loja parceira"
+      ],
+      "publicadoEm": "2026-07-02T10:38:00.000Z"
+    }
+  ]
 }
