@@ -407,13 +407,17 @@ function parseHTML(html, progId){
     if(!parsed||!name)return;
     const {pts,ate}=parsed;
     const pm=g.match(/por\s+(\d+)\s+real/i);
-    // Detecta dólar pelo TEXTO da pontuação primeiro (mais confiável)
-    // Só usa o nome do parceiro como fallback se o texto não deixar claro
-    const textoIndicaReal = /r\$|por\s+1?\s*real/i.test(g);
-    const textoIndicaDolar = /u\$|dólar|dollar/i.test(g);
-    const nomeIndicaDolar = /kaligo|hertz|aliexpress|rental\.cars|rentcars|localiza\.int/i.test(name);
-    // Decolar e outros que às vezes são dólar às vezes real: só marca dólar se o texto confirmar
-    const dollar = textoIndicaReal ? false : (textoIndicaDolar || nomeIndicaDolar);
+    // O Comparemania não diferencia dólar de real no texto — usa lista de exceções
+    const DOLLAR_EX = {
+      'hertz':                 ['livelo'],
+      'localiza internacional':['livelo'],
+      'rentcars':              ['livelo'],
+      'travelex':              ['livelo'],
+      'booking':               ['livelo'],
+      'kaligo':                ['livelo','esfera','smiles','azul','latam'],
+      'aliexpress':            ['livelo','esfera','smiles','azul','latam'],
+    };
+    const dollar = (DOLLAR_EX[name.toLowerCase().trim()]||[]).includes(progId);
     const rawHref=na.getAttribute("href")||"#";
     const url=rawHref.startsWith("http")?rawHref:"https://www.comparemania.com.br"+rawHref;
     out.push({name,pts,per:pm?+pm[1]:1,ate,dollar,cat:categorize(name),url,prog:progId});
