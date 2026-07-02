@@ -174,6 +174,8 @@ const OFERTAS_REJEITADAS_PATH = 'ofertas-rejeitadas.json';
 const PASSAGENS_PATH          = 'passagens.json';
 const MAX_OFERTAS_APROVADAS   = 100;
 const MAX_DIAS_PASSAGENS      = 180;
+const MEMBROS_PATH            = 'membros.json';
+const HUBLA_TOKEN             = process.env.HUBLA_TOKEN;
 
 // ── Listar ofertas pendentes (com CORS correto) ───────────────────────────────
 app.get('/ofertas/pendentes', async (req, res) => {
@@ -366,6 +368,19 @@ app.post('/passagens/registrar', async (req, res) => {
   }
 });
 
+// ── Listar passagens (para consulta do gerador) ───────────────────────────────
+app.get('/passagens/listar', async (req, res) => {
+  try {
+    const atual = await ghGetJson(PASSAGENS_PATH, { items: [] });
+    const corteMs = Date.now() - MAX_DIAS_PASSAGENS * 24 * 60 * 60 * 1000;
+    const items = (atual.data.items || []).filter(p => new Date(p.enviadoEm).getTime() >= corteMs);
+    res.setHeader('Content-Type', 'application/json');
+    res.json({ atualizadoEm: atual.data.atualizadoEm || null, items });
+  } catch (err) {
+    res.status(500).json({ ok: false, erro: err.message });
+  }
+});
+
 // ── Excluir passagem ──────────────────────────────────────────────────────────
 app.post('/passagens/excluir', async (req, res) => {
   const { id } = req.body || {};
@@ -390,6 +405,83 @@ app.post('/passagens/excluir', async (req, res) => {
 });
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
+// ── Membros: verificar acesso por e-mail ─────────────────────────────────────
+app.get('/membros/verificar', async (req, res) => {
+  const email = (req.query.email || '').toLowerCase().trim();
+  if (!email) return res.status(400).json({ ok: false, erro: 'E-mail obrigatório' });
+  try {
+    const dados = await ghGetJson(MEMBROS_PATH, { membros: [] });
+    const membro = (dados.data.membros || []).find(m => m.email === email);
+    if (!membro) return res.json({ ok: false, acesso: false, motivo: 'nao_encontrado' });
+    if (membro.status !== 'ativo') return res.json({ ok: false, acesso: false, motivo: 'inativo', nome: membro.nome });
+    res.json({ ok: true, acesso: true, nome: membro.nome, email: membro.email, produtos: membro.produtos });
+  } catch (err) {
+    res.status(500).json({ ok: false, erro: err.message });
+  }
+});
+
+// ── Webhook Hubla: member_added / member_removed ──────────────────────────────
+app.post('/webhook/hubla-membros', async (req, res) => {
+  // Valida token
+  const tokenRecebido = req.headers['x-hubla-token'] || req.headers['authorization'];
+  if (HUBLA_TOKEN && tokenRecebido !== HUBLA_TOKEN) {
+    return res.status(401).json({ ok: false, erro: 'Token inválido' });
+  }
+
+  const { type, event } = req.body || {};
+  if (!type || !event) return res.status(400).json({ ok: false, erro: 'Payload inválido' });
+
+  const isMemberAdded   = type === 'customer.member_added'   || type === 'member.granted';
+  const isMemberRemoved = type === 'customer.member_removed' || type === 'member.revoked';
+  if (!isMemberAdded && !isMemberRemoved) return res.json({ ok: true, ignorado: true, type });
+
+  const member = event.member || event.customer || {};
+  const email  = (member.email || '').toLowerCase().trim();
+  const nome   = member.fullName || member.name || member.email || '';
+  const produto = event.products?.[0] || event.product || {};
+
+  if (!email) return res.status(400).json({ ok: false, erro: 'E-mail não encontrado no payload' });
+
+  try {
+    const agora = new Date().toISOString();
+    const dados = await ghGetJson(MEMBROS_PATH, { atualizadoEm: agora, total: 0, membros: [] });
+    let membros = dados.data.membros || [];
+    const idx   = membros.findIndex(m => m.email === email);
+
+    if (isMemberAdded) {
+      const entrada = {
+        oferta:      produto.offers?.[0]?.name || produto.name || '',
+        produtoId:   produto.id || '',
+        produtoNome: produto.name || ''
+      };
+      if (idx >= 0) {
+        membros[idx].status      = 'ativo';
+        membros[idx].atualizadoEm = agora;
+        if (!membros[idx].produtos) membros[idx].produtos = [];
+        const jaExiste = membros[idx].produtos.some(p => p.produtoId === entrada.produtoId);
+        if (!jaExiste) membros[idx].produtos.push(entrada);
+      } else {
+        membros.push({ nome, email, status: 'ativo', produtos: [entrada], adicionadoEm: agora, atualizadoEm: agora, origem: 'webhook' });
+      }
+    }
+
+    if (isMemberRemoved) {
+      if (idx >= 0) {
+        membros[idx].status       = 'inativo';
+        membros[idx].atualizadoEm = agora;
+        membros[idx].removidoEm   = agora;
+      }
+      // se não encontrar, ignora silenciosamente
+    }
+
+    await ghSaveJson(MEMBROS_PATH, dados.sha, { atualizadoEm: agora, total: membros.filter(m => m.status === 'ativo').length, membros });
+    res.json({ ok: true, type, email, acao: isMemberAdded ? 'adicionado' : 'removido' });
+  } catch (err) {
+    console.error('[webhook-hubla-membros]', err.message);
+    res.status(500).json({ ok: false, erro: err.message });
+  }
+});
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`CDV Proxy rodando na porta ${PORT}`);
