@@ -3603,6 +3603,10 @@
         "azul": {
           "pts": 15,
           "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
         }
       }
     },
@@ -3638,6 +3642,10 @@
         },
         "azul": {
           "pts": 2,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
           "dollar": false
         }
       }
@@ -3711,6 +3719,10 @@
         "azul": {
           "pts": 2,
           "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
         }
       }
     },
@@ -3750,7 +3762,7 @@
         },
         "esfera": {
           "pts": 4,
-          "dollar": true
+          "dollar": false
         }
       }
     },
@@ -4083,6 +4095,10 @@
         "smiles": {
           "pts": 4,
           "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
         }
       }
     },
@@ -4262,6 +4278,10 @@
         },
         "azul": {
           "pts": 2,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
           "dollar": false
         }
       }
@@ -4561,6 +4581,10 @@
           "dollar": false
         },
         "azul": {
+          "pts": 3,
+          "dollar": false
+        },
+        "latam": {
           "pts": 3,
           "dollar": false
         }
@@ -5326,7 +5350,7 @@
       "programs": {
         "esfera": {
           "pts": 5,
-          "dollar": true
+          "dollar": false
         }
       }
     },
@@ -5338,6 +5362,10 @@
         },
         "smiles": {
           "pts": 4,
+          "dollar": false
+        },
+        "latam": {
+          "pts": 3,
           "dollar": false
         }
       }
@@ -5385,6 +5413,10 @@
           "dollar": false
         },
         "azul": {
+          "pts": 3,
+          "dollar": false
+        },
+        "latam": {
           "pts": 3,
           "dollar": false
         }
@@ -5951,6 +5983,10 @@
         "azul": {
           "pts": 1,
           "dollar": false
+        },
+        "latam": {
+          "pts": 3,
+          "dollar": false
         }
       }
     },
@@ -6201,6 +6237,46 @@
     "sam's club": {
       "programs": {
         "azul": {
+          "pts": 1,
+          "dollar": false
+        }
+      }
+    },
+    "ponto store": {
+      "programs": {
+        "latam": {
+          "pts": 3,
+          "dollar": false
+        }
+      }
+    },
+    "ifriend": {
+      "programs": {
+        "latam": {
+          "pts": 2,
+          "dollar": false
+        }
+      }
+    },
+    "all accor": {
+      "programs": {
+        "latam": {
+          "pts": 2,
+          "dollar": false
+        }
+      }
+    },
+    "marriott bonvoy": {
+      "programs": {
+        "latam": {
+          "pts": 1,
+          "dollar": false
+        }
+      }
+    },
+    "elite internacional realty": {
+      "programs": {
+        "latam": {
           "pts": 1,
           "dollar": false
         }
