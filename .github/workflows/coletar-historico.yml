@@ -1,9 +1,7 @@
 name: Coletar histórico de pontuações
 on:
   schedule:
-    - cron: '15 13 * * *'   # 10h15 horário de Brasília (UTC-3)
-    - cron: '0 18 * * *'    # 15h00 horário de Brasília (UTC-3)
-    - cron: '0 23 * * *'    # 20h00 horário de Brasília (UTC-3)
+    - cron: '0 9-23 * * *'   # de hora em hora, das 06h às 20h (horário de Brasília / UTC-3)
   workflow_dispatch:
 jobs:
   coletar:
