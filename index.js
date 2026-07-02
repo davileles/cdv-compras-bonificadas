@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPO = process.env.GITHUB_REPO || 'davileles/cdv-compras-bonificadas';
 
-const ALLOWED = ['comparemania.com.br', 'passageirodeprimeira.com', 'github.io', 'clubedoviajante.com.br'];
+const ALLOWED = ['comparemania.com.br', 'passageirodeprimeira.com'];
 
 app.use(express.json());
 
@@ -174,6 +174,17 @@ const OFERTAS_REJEITADAS_PATH = 'ofertas-rejeitadas.json';
 const PASSAGENS_PATH          = 'passagens.json';
 const MAX_OFERTAS_APROVADAS   = 100;
 const MAX_DIAS_PASSAGENS      = 180;
+
+// ── Listar ofertas pendentes (com CORS correto) ───────────────────────────────
+app.get('/ofertas/pendentes', async (req, res) => {
+  try {
+    const pend = await ghGetJson(OFERTAS_PENDENTES_PATH, { geradoEm: null, items: [] });
+    res.setHeader('Content-Type', 'application/json');
+    res.json(pend.data);
+  } catch (err) {
+    res.status(500).json({ ok: false, erro: err.message });
+  }
+});
 
 // ── Aprovar oferta pendente ───────────────────────────────────────────────────
 app.post('/ofertas/aprovar', async (req, res) => {
