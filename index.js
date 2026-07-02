@@ -450,43 +450,51 @@ app.post('/webhook/hubla-membros', async (req, res) => {
 
   if (!email) return res.status(400).json({ ok: false, erro: 'E-mail não encontrado no payload' });
 
-  try {
-    const agora = new Date().toISOString();
-    let dados = await ghGetJson(MEMBROS_PATH, { atualizadoEm: agora, total: 0, membros: [] });
-    let membros = dados.data.membros || [];
-    const idx   = membros.findIndex(m => m.email === email);
+  for (let tentativa = 1; tentativa <= 4; tentativa++) {
+    try {
+      const agora = new Date().toISOString();
+      const dados = await ghGetJson(MEMBROS_PATH, { atualizadoEm: agora, total: 0, membros: [] });
+      let membros = dados.data.membros || [];
+      const idx   = membros.findIndex(m => m.email === email);
 
-    if (isMemberAdded) {
-      const entrada = {
-        oferta:      produto.offers?.[0]?.name || produto.name || '',
-        produtoId:   produto.id || '',
-        produtoNome: produto.name || ''
-      };
-      if (idx >= 0) {
-        membros[idx].status      = 'ativo';
-        membros[idx].atualizadoEm = agora;
-        if (!membros[idx].produtos) membros[idx].produtos = [];
-        const jaExiste = membros[idx].produtos.some(p => p.produtoId === entrada.produtoId);
-        if (!jaExiste) membros[idx].produtos.push(entrada);
-      } else {
-        membros.push({ nome, email, status: 'ativo', produtos: [entrada], adicionadoEm: agora, atualizadoEm: agora, origem: 'webhook' });
+      if (isMemberAdded) {
+        const entrada = {
+          oferta:      produto.offers?.[0]?.name || produto.name || '',
+          produtoId:   produto.id || '',
+          produtoNome: produto.name || ''
+        };
+        if (idx >= 0) {
+          membros[idx].status       = 'ativo';
+          membros[idx].atualizadoEm = agora;
+          if (!membros[idx].produtos) membros[idx].produtos = [];
+          const jaExiste = membros[idx].produtos.some(p => p.produtoId === entrada.produtoId);
+          if (!jaExiste) membros[idx].produtos.push(entrada);
+        } else {
+          membros.push({ nome, email, status: 'ativo', produtos: [entrada], adicionadoEm: agora, atualizadoEm: agora, origem: 'webhook' });
+        }
       }
-    }
 
-    if (isMemberRemoved) {
-      if (idx >= 0) {
-        membros[idx].status       = 'inativo';
-        membros[idx].atualizadoEm = agora;
-        membros[idx].removidoEm   = agora;
+      if (isMemberRemoved) {
+        if (idx >= 0) {
+          membros[idx].status       = 'inativo';
+          membros[idx].atualizadoEm = agora;
+          membros[idx].removidoEm   = agora;
+        }
       }
-      // se não encontrar, ignora silenciosamente
-    }
 
-    await ghPutJson(MEMBROS_PATH, { atualizadoEm: agora, total: membros.filter(m => m.status === 'ativo').length, membros }, dados.sha, 'webhook: atualiza membros');
-    res.json({ ok: true, type, email, acao: isMemberAdded ? 'adicionado' : 'removido' });
-  } catch (err) {
-    console.error('[webhook-hubla-membros]', err.message);
-    res.status(500).json({ ok: false, erro: err.message });
+      await ghPutJson(MEMBROS_PATH, { atualizadoEm: agora, total: membros.filter(m => m.status === 'ativo').length, membros }, dados.sha, 'webhook: atualiza membros');
+      return res.json({ ok: true, type, email, acao: isMemberAdded ? 'adicionado' : 'removido' });
+
+    } catch (err) {
+      const isShaConflict = err.message && err.message.includes('but expected');
+      if (isShaConflict && tentativa < 4) {
+        console.warn(`[hubla-membros] SHA conflict, retry ${tentativa}/4 em ${tentativa * 400}ms`);
+        await new Promise(r => setTimeout(r, tentativa * 400));
+        continue;
+      }
+      console.error('[webhook-hubla-membros]', err.message);
+      return res.status(500).json({ ok: false, erro: err.message });
+    }
   }
 });
 
