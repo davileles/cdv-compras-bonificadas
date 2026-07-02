@@ -3178,14 +3178,6 @@
         }
       }
     },
-    "seguro viagem bradesco": {
-      "programs": {
-        "livelo": {
-          "pts": 15,
-          "dollar": false
-        }
-      }
-    },
     "ciclic seguro viagem": {
       "programs": {
         "livelo": {
@@ -3367,6 +3359,14 @@
       }
     },
     "o.u.i paris": {
+      "programs": {
+        "livelo": {
+          "pts": 10,
+          "dollar": false
+        }
+      }
+    },
+    "seguro viagem bradesco": {
       "programs": {
         "livelo": {
           "pts": 10,
