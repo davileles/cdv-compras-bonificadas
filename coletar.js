@@ -366,7 +366,7 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
 
   for (const progId of programasComVariacao) {
     const progName = PROG_NAMES[progId] || progId;
-    const variacoes = variacoesPorProg[progId].sort((a, b) => b.delta - a.delta);
+    const variacoes = variacoesPorProg[progId].sort((a, b) => a.parceiro.localeCompare(b.parceiro, 'pt-BR'));
     const count = variacoes.length;
 
     // Gera descrição linha a linha
