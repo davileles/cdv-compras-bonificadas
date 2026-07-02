@@ -201,27 +201,22 @@
   .pass-rota span{color:var(--cdv-coral)}
   .pass-pts{font-size:26px;font-weight:900;color:var(--cdv-coral);line-height:1}
   .pass-pts-lbl{font-size:11px;color:var(--muted)}
-  .pass-info{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px}
+  .pass-info-col{display:flex;flex-direction:column;gap:4px;margin-top:2px}
   .pass-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;background:var(--card);border:1px solid var(--border);color:var(--muted)}
   .pass-datas{font-size:11px;color:var(--muted);line-height:1.4;margin-top:2px}
   .pass-datas strong{color:var(--text-secondary);font-size:10px;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:2px}
   .pass-hist{margin-top:6px;padding-top:8px;border-top:1px solid var(--border)}
-  .pass-hist-titulo{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-  .pass-hist-item{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;padding:2px 0}
-  .pass-hist-melhor{color:#34d399;font-weight:700}
-  .pass-hist-pior{color:#f87171;font-weight:700}
-  .pass-hist-igual{color:var(--muted)}
-  .pass-hist-stats{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-  .pass-stat-pill{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:5px 9px;display:flex;flex-direction:column;gap:1px;flex:1;min-width:90px}
+  .pass-hist-stats{display:flex;gap:5px;flex-wrap:wrap;margin-top:0}
+  .pass-stat-pill{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:4px 7px;display:flex;flex-direction:column;gap:1px;flex:1;min-width:80px}
   .pass-stat-pill.minimo{border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.06)}
   .pass-stat-pill.media{border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.06)}
-  .pass-stat-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted2)}
-  .pass-stat-val{font-size:13px;font-weight:900;color:var(--text)}
+  .pass-stat-label{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted2)}
+  .pass-stat-val{font-size:11px;font-weight:900;color:var(--text)}
   .pass-stat-pill.minimo .pass-stat-val{color:#34d399}
   .pass-stat-pill.media .pass-stat-val{color:#60a5fa}
-  .pass-stat-sub{font-size:9px;color:var(--muted2)}
-  .pass-stat-atual-min{font-size:9px;font-weight:700;color:#34d399;margin-top:1px}
-  .pass-stat-atual-caro{font-size:9px;font-weight:700;color:#f87171;margin-top:1px}
+  .pass-stat-sub{font-size:8px;color:var(--muted2)}
+  .pass-stat-atual-min{font-size:8px;font-weight:700;color:#34d399}
+  .pass-stat-atual-caro{font-size:8px;font-weight:700;color:#f87171}
   .pass-excluir{position:absolute;top:10px;right:10px;background:transparent;border:none;color:var(--muted2);font-size:16px;cursor:pointer;padding:2px 6px;border-radius:4px;line-height:1;transition:color .15s}
   .pass-excluir:hover{color:#f87171}
   .pass-fonte{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:1px 6px;border-radius:3px;width:fit-content}
@@ -1089,7 +1084,9 @@ function renderPassagens() {
   const progFiltro = document.getElementById('pass-filtro-prog')?.value || '';
   const sort = document.getElementById('pass-sort')?.value || 'recente';
 
+  const corte3d = Date.now() - 3 * 24 * 60 * 60 * 1000;
   let items = passagensData.filter(p => {
+    if (new Date(p.enviadoEm).getTime() < corte3d) return false;
     if (progFiltro && p.programa !== progFiltro) return false;
     if (q) {
       const haystack = `${p.origem} ${p.destino} ${p.programa} ${p.cia} ${p.cabine}`.toLowerCase();
@@ -1140,19 +1137,7 @@ function renderPassagens() {
     const hist180 = grupoCompleto.filter(h => new Date(h.enviadoEm).getTime() >= corteMs180);
 
     let histHtml = '';
-    // ── vs. envio anterior ─────────────────────────────────────────────────────
-    let vsAnteriorHtml = '';
-    if (anterior) {
-      const diff = p.pontos - anterior.pontos;
-      const pct = anterior.pontos > 0 ? Math.round(Math.abs(diff)/anterior.pontos*100) : 0;
-      let cls, icone, txt;
-      if (diff < 0) { cls='pass-hist-melhor'; icone='↓'; txt=`${Math.abs(diff).toLocaleString('pt-BR')} pts a menos (${pct}% melhor) vs. ${fmtData(anterior.enviadoEm)}`; }
-      else if (diff > 0) { cls='pass-hist-pior'; icone='↑'; txt=`${diff.toLocaleString('pt-BR')} pts a mais (${pct}% pior) vs. ${fmtData(anterior.enviadoEm)}`; }
-      else { cls='pass-hist-igual'; icone='='; txt=`Mesma pontuação vs. ${fmtData(anterior.enviadoEm)}`; }
-      vsAnteriorHtml = `<div class="pass-hist-item"><span class="${cls}">${icone} ${txt}</span></div>`;
-    }
     // ── média e mínimo 180 dias ────────────────────────────────────────────────
-    let statsHtml = '';
     if (hist180.length >= 2) {
       const pontosArr = hist180.map(h => h.pontos).filter(v => v > 0);
       const minPts = Math.min(...pontosArr);
@@ -1167,11 +1152,11 @@ function renderPassagens() {
           ? `<div class="pass-stat-atual-caro">↑ ${pctMedia}% acima da média</div>`
           : `<div class="pass-stat-sub">= na média</div>`;
       const minTag = isAtualMin
-        ? `<div class="pass-stat-atual-min">★ Melhor preço histórico!</div>`
+        ? `<div class="pass-stat-atual-min">★ Mínimo histórico!</div>`
         : `<div class="pass-stat-sub">${fmtData(minItem?.enviadoEm||'')}</div>`;
-      statsHtml = `<div class="pass-hist-stats">
+      histHtml = `<div class="pass-hist"><div class="pass-hist-stats">
         <div class="pass-stat-pill minimo">
-          <div class="pass-stat-label">🏆 Mínimo 180d</div>
+          <div class="pass-stat-label">🏆 Mín. 180d</div>
           <div class="pass-stat-val">${minPts.toLocaleString('pt-BR')}</div>
           ${minTag}
         </div>
@@ -1180,14 +1165,7 @@ function renderPassagens() {
           <div class="pass-stat-val">${mediaPts.toLocaleString('pt-BR')}</div>
           ${mediaTag}
         </div>
-      </div>`;
-    }
-    if (vsAnteriorHtml || statsHtml) {
-      histHtml = `<div class="pass-hist">
-        <div class="pass-hist-titulo">Histórico da rota (${hist180.length} emissões)</div>
-        ${vsAnteriorHtml}
-        ${statsHtml}
-      </div>`;
+      </div></div>`;
     }
 
     const fonteClass = p.fonte === 'alerta' ? 'pass-fonte-alerta' : 'pass-fonte-emissao';
@@ -1201,12 +1179,11 @@ function renderPassagens() {
         <span class="pass-pts">${(p.pontos||0).toLocaleString('pt-BR')}</span>
         <span class="pass-pts-lbl">pts</span>
       </div>
-      <div class="pass-info">
+      <div class="pass-info-col">
         ${p.programa ? `<span class="pass-badge">🎟️ ${p.programa}</span>` : ''}
         ${p.cia ? `<span class="pass-badge">✈️ ${p.cia}</span>` : ''}
-        ${p.cabine ? `<span class="pass-badge">${normalizarCabine(p.cabine)}</span>` : ''}
+        ${p.cabine ? `<span class="pass-badge">💺 ${normalizarCabine(p.cabine)}</span>` : ''}
       </div>
-      <div style="font-size:10px;color:var(--muted2);margin-top:6px">${fmtData(p.enviadoEm)}</div>
       ${histHtml}
     </div>`;
   }).join('');
@@ -1233,17 +1210,6 @@ function abrirPassagemModal(id) {
     .sort((a,b) => new Date(b.enviadoEm) - new Date(a.enviadoEm));
   const anterior = hist[0];
   let histHtml = '';
-  let vsAnteriorHtml = '';
-  if (anterior) {
-    const diff = p.pontos - anterior.pontos;
-    const pct = anterior.pontos > 0 ? Math.round(Math.abs(diff)/anterior.pontos*100) : 0;
-    let cls, icone, txt;
-    if (diff < 0)      { cls='pass-hist-melhor'; icone='↓'; txt=`${Math.abs(diff).toLocaleString('pt-BR')} pts a menos (${pct}% melhor) vs. ${fmtData(anterior.enviadoEm)}`; }
-    else if (diff > 0) { cls='pass-hist-pior';   icone='↑'; txt=`${diff.toLocaleString('pt-BR')} pts a mais (${pct}% pior) vs. ${fmtData(anterior.enviadoEm)}`; }
-    else               { cls='pass-hist-igual';  icone='='; txt=`Mesma pontuação vs. ${fmtData(anterior.enviadoEm)}`; }
-    vsAnteriorHtml = `<div class="pass-hist-item"><span class="${cls}">${icone} ${txt}</span></div>`;
-  }
-  let statsHtml = '';
   if (hist180.length >= 2) {
     const pontosArr = hist180.map(h => h.pontos).filter(v => v > 0);
     const minPts = Math.min(...pontosArr);
@@ -1258,11 +1224,11 @@ function abrirPassagemModal(id) {
         ? `<div class="pass-stat-atual-caro">↑ ${pctMedia}% acima da média</div>`
         : `<div class="pass-stat-sub">= na média</div>`;
     const minTag = isAtualMin
-      ? `<div class="pass-stat-atual-min">★ Melhor preço histórico!</div>`
+      ? `<div class="pass-stat-atual-min">★ Mínimo histórico!</div>`
       : `<div class="pass-stat-sub">${fmtData(minItem?.enviadoEm||'')}</div>`;
-    statsHtml = `<div class="pass-hist-stats" style="margin-top:10px">
+    histHtml = `<div class="pass-hist" style="margin-top:16px"><div class="pass-hist-stats">
       <div class="pass-stat-pill minimo">
-        <div class="pass-stat-label">🏆 Mínimo 180d</div>
+        <div class="pass-stat-label">🏆 Mín. 180d</div>
         <div class="pass-stat-val">${minPts.toLocaleString('pt-BR')}</div>
         ${minTag}
       </div>
@@ -1271,14 +1237,7 @@ function abrirPassagemModal(id) {
         <div class="pass-stat-val">${mediaPts.toLocaleString('pt-BR')}</div>
         ${mediaTag}
       </div>
-    </div>`;
-  }
-  if (vsAnteriorHtml || statsHtml) {
-    histHtml = `<div class="pass-hist" style="margin-top:16px">
-      <div class="pass-hist-titulo">Histórico da rota (${hist180.length} emissões em 180 dias)</div>
-      ${vsAnteriorHtml}
-      ${statsHtml}
-    </div>`;
+    </div></div>`;
   }
 
   document.getElementById('pass-modal-content').innerHTML = `
