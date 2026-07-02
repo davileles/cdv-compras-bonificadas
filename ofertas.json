@@ -1,6 +1,29 @@
 {
-  "geradoEm": "2026-07-02T13:25:25.323Z",
+  "geradoEm": "2026-07-02T13:26:22.135Z",
   "items": [
+    {
+      "id": "abo5fa",
+      "titulo": "Resgate até 30 pontos grátis no Mastercard Surpreenda",
+      "emoji": "📰",
+      "resumo": "Mastercard Surpreenda disponibiliza códigos promocionais para resgate gratuito de pontos. É possível resgatar 15 pontos com o código de julho e mais 15 pontos com o código de junho, totalizando 30 pontos grátis.\n\nO Mastercard Surpreenda está oferecendo pontos gratuitos através de códigos promocionais. Para resgatar, acesse sua conta no programa, vá em Código Promocional e insira:\n\n• JUL1526 para ganhar 15 pontos\n• JUN1526 para ganhar mais 15 pontos (código de junho ainda válido)\n\nClientes que possuem cartões do Banco do Brasil podem resgatar 200 pontos grátis adicionais utilizando o código 200BBMASTERCARD, desde que cadastrem o cartão BB no programa antes do resgate.",
+      "programa": "Mastercard Surpreenda",
+      "bonus": "30 pontos grátis (15 pontos julho + 15 pontos junho)",
+      "prazo": "",
+      "categoria": "geral",
+      "loja": "",
+      "cupom": "JUL1526",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "É necessário ter cadastro no programa Mastercard Surpreenda. Os códigos devem ser inseridos na área de Código Promocional no menu da conta. Clientes BB devem cadastrar o cartão antes de resgatar o código 200BBMASTERCARD.",
+      "link": "https://surpreenda.naotempreco.com.br/",
+      "restricoes": [
+        "Código JUL1526 válido para resgate de 15 pontos",
+        "Código JUN1526 ainda ativo para resgate de 15 pontos",
+        "Código 200BBMASTERCARD exclusivo para clientes BB Cartões",
+        "Necessário cadastrar cartão BB no programa antes de usar o código de 200 pontos"
+      ],
+      "publicadoEm": "2026-07-02T13:26:21.506Z"
+    },
     {
       "id": "9to1ca",
       "titulo": "Upgrade para o Clube Livelo Plus e ganhe até 67 mil pontos",
