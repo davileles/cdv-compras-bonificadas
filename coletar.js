@@ -128,11 +128,20 @@ function parseComparemaniaPts(html, progId) {
     const pts = extractPts(ptsTxt);
     if (!pts) continue;
 
-    // Detecta se a oferta é em dólar pelo texto da pontuação
-    const textoIndicaReal  = /r\$|por\s+1?\s*real/i.test(ptsTxt);
-    const textoIndicaDolar = /u\$|dólar|dollar/i.test(ptsTxt);
-    const nomeIndicaDolar  = /kaligo|hertz|aliexpress|rental\.cars|rentcars|localiza\.int/i.test(name);
-    const dollar = textoIndicaReal ? false : (textoIndicaDolar || nomeIndicaDolar);
+    // O Comparemania não diferencia dólar de real no texto da pontuação —
+    // usa sempre "por 1 real gasto" mesmo para ofertas em dólar.
+    // Mantemos lista de parceiros+programa conhecidos como dólar.
+    // Atualize esta lista manualmente quando uma oferta mudar de moeda.
+    const DOLLAR_EXCEPTIONS = {
+      'hertz':                ['livelo'],
+      'localiza internacional':['livelo'],
+      'rentcars':             ['livelo'],
+      'travelex':             ['livelo'],
+      'booking':              ['livelo'],
+      'kaligo':               ['livelo', 'esfera', 'smiles', 'azul', 'latam'],
+      'aliexpress':           ['livelo', 'esfera', 'smiles', 'azul', 'latam'],
+    };
+    const dollar = (DOLLAR_EXCEPTIONS[name.toLowerCase().trim()] || []).includes(progId);
 
     const key = name.toLowerCase().trim();
     if (!result[key] || pts > result[key].pts) {
