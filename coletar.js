@@ -37,7 +37,7 @@ const PROGRAMS = [
   {
     id:   'azul',
     name: 'Azul',
-    url:  'https://www.comparemania.com.br/lojas/pontos-milhas/programa-fidelidade-azul',
+    url:  'https://www.comparemania.com.br/lojas/pontos-milhas/programa-fidelidade-tudo-azul',
   },
   {
     id:   'latam',
