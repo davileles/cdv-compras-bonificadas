@@ -407,7 +407,13 @@ function parseHTML(html, progId){
     if(!parsed||!name)return;
     const {pts,ate}=parsed;
     const pm=g.match(/por\s+(\d+)\s+real/i);
-    const dollar=/u\$|dólar|dollar|kaligo|hertz|decolar|aliexpress|rental.cars|rentcars|localiza.int/i.test(g+name);
+    // Detecta dólar pelo TEXTO da pontuação primeiro (mais confiável)
+    // Só usa o nome do parceiro como fallback se o texto não deixar claro
+    const textoIndicaReal = /r\$|por\s+1?\s*real/i.test(g);
+    const textoIndicaDolar = /u\$|dólar|dollar/i.test(g);
+    const nomeIndicaDolar = /kaligo|hertz|aliexpress|rental\.cars|rentcars|localiza\.int/i.test(name);
+    // Decolar e outros que às vezes são dólar às vezes real: só marca dólar se o texto confirmar
+    const dollar = textoIndicaReal ? false : (textoIndicaDolar || nomeIndicaDolar);
     const rawHref=na.getAttribute("href")||"#";
     const url=rawHref.startsWith("http")?rawHref:"https://www.comparemania.com.br"+rawHref;
     out.push({name,pts,per:pm?+pm[1]:1,ate,dollar,cat:categorize(name),url,prog:progId});
@@ -416,6 +422,9 @@ function parseHTML(html, progId){
 }
 
 const EQUIV={livelo:1,esfera:1,smiles:1/1.8,azul:1/1.9,latam:1/1.25};
+// Fator de conversão dólar→real para comparação justa (1 U$ ≈ 5 R$)
+// Parceiros em dólar têm pts/U$ dividido por 5 para equiparar com pts/R$
+const DOLLAR_FACTOR = 5;
 
 let historico={};
 
@@ -472,7 +481,7 @@ function mergePartners(allData){
       if(!map[key]){
         map[key]={name:p.name,cat:p.cat,dollar:p.dollar,ate:p.ate,per:p.per,programs:{}};
       }
-      map[key].programs[progId]={pts:p.pts,ate:p.ate,per:p.per,url:p.url};
+      map[key].programs[progId]={pts:p.pts,ate:p.ate,per:p.per,url:p.url,dollar:p.dollar};
       if(p.dollar)map[key].dollar=true;
       if(p.ate)map[key].ate=true;
     }
@@ -485,7 +494,7 @@ function mergePartners(allData){
     for(const pid of BASE_PROGS){
       const data=p.programs[pid];
       if(!data) continue;
-      const equiv=data.pts*(EQUIV[pid]||1);
+      const equiv=(data.pts/(data.dollar?DOLLAR_FACTOR:1))*(EQUIV[pid]||1);
       if(equiv>bestBaseEquiv){bestBaseEquiv=equiv;bestBasePts=data.pts;bestBaseProg=pid;}
       else if(equiv===bestBaseEquiv&&bestBaseProg){bestBaseProg='both';bestBasePts=Math.max(bestBasePts,data.pts);}
     }
@@ -494,7 +503,7 @@ function mergePartners(allData){
     for(const pid of AERIAL_PROGS){
       const data=p.programs[pid];
       if(!data) continue;
-      const equiv=data.pts*(EQUIV[pid]||1);
+      const equiv=(data.pts/(data.dollar?DOLLAR_FACTOR:1))*(EQUIV[pid]||1);
       if(equiv>bestAerialEquiv){bestAerialEquiv=equiv;bestAerialPts=data.pts;bestAerialProg=pid;}
     }
 
@@ -684,7 +693,7 @@ function render(){
 
   const lbl=p=>{
     const bp=p.programs[p.bestProg==='both'?Object.keys(p.programs)[0]:p.bestProg]||{};
-    return (bp.per>1)?`R$${bp.per}`:p.dollar?'U$':'R$';
+    return (bp.per>1)?`R$${bp.per}`:bp.dollar?'U$':'R$';
   };
 
   const progBadges=p=>Object.entries(p.programs).map(([pid,d])=>{
@@ -725,7 +734,7 @@ function renderModalRows(p, links={}){
     const prog=PROGRAMS.find(x=>x.id===pid);
     const equiv=data.pts*(EQUIV[pid]||1);
     const isBest=Math.abs(equiv-bestEquivReal)<0.01;
-    const lbl=(data.per>1)?`R$${data.per}`:p.dollar?'U$':'R$';
+    const lbl=(data.per>1)?`R$${data.per}`:data.dollar?'U$':'R$';
     const destUrl=resolveLink(pid,links);
     const linksLoaded=Object.keys(links).length>0;
     const loading=!linksLoaded;
