@@ -1,6 +1,24 @@
 {
-  "geradoEm": "2026-07-02T17:57:54.248Z",
+  "geradoEm": "2026-07-02T18:17:00.952Z",
   "items": [
+    {
+      "id": "uqu477",
+      "titulo": "Revolut altera paridade de transferência para Turkish Airlines, Etihad, SAS e China Southern",
+      "emoji": "🔄",
+      "resumo": "A Revolut anunciou mudanças na paridade de transferência de RevPoints para quatro programas internacionais de fidelidade. Turkish Airlines, Etihad Guest e SAS EuroBonus passam de 1:1 para 2:1, enquanto China Southern Sky Pearl Club passa para 3:2. Os demais parceiros, incluindo LATAM Pass, Smiles, TAP, Iberia, British Airways e Qatar Airways, mantêm conversão 1:1.\n\nA Revolut alterou as taxas de conversão para os seguintes programas:\n\n🔴 Turkish Airlines Miles&Smiles — agora 2:1 (antes 1:1)\n🔴 Etihad Guest — agora 2:1 (antes 1:1)\n🔴 SAS EuroBonus — agora 2:1 (antes 1:1)\n🔴 China Southern Sky Pearl Club — agora 3:2 (antes 1:1)\n\n✅ Mantêm conversão 1:1:\nSmiles, LATAM Pass, Iberia Club, British Airways Club, Qatar Airways Privilege Club, TAP Miles&Go, Finnair Plus, Aer Lingus AerClub, Vueling Club\n\n🔸 Outras paridades mantidas:\nAvianca LifeMiles (3:2) e Flying Blue (2:1)\n\nA Revolut informou que as paridades 1:1 seguem mantidas por tempo indeterminado e qualquer mudança futura será comunicada previamente aos clientes.",
+      "programa": "Revolut RevPoints",
+      "bonus": "",
+      "prazo": "",
+      "categoria": "transferencia",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "Para quem transfere RevPoints para Turkish Airlines, Etihad ou SAS, o custo em pontos dobra. Uma transferência que antes exigia 10 mil RevPoints para gerar 10 mil milhas agora exigirá 20 mil RevPoints. No caso da China Southern, a conversão passa a ser aproximadamente 0,67 milha por RevPoint.",
+      "link": "https://revolut.ngih.net/c/4478117/3313731/9626",
+      "restricoes": [],
+      "publicadoEm": "2026-07-02T18:17:00.241Z"
+    },
     {
       "id": "7j4r1i",
       "titulo": "Até 50% de desconto na compra de pontos Esfera para assinantes do Clube",
