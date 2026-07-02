@@ -132,17 +132,23 @@ app.post('/alerta', async (req, res) => {
 });
 
 // ── Helpers genéricos de leitura/escrita de arquivos JSON no GitHub ───────────
-function ghHeaders() {
-  return {
+function ghHeaders(nocache = false) {
+  const h = {
     'Authorization': `Bearer ${GITHUB_TOKEN}`,
     'Accept': 'application/vnd.github+json',
     'Content-Type': 'application/json'
   };
+  if (nocache) {
+    h['Cache-Control'] = 'no-cache, no-store';
+    h['If-None-Match'] = '';
+    h['Pragma'] = 'no-cache';
+  }
+  return h;
 }
 
 async function ghGetJson(filePath, fallback) {
   const apiBase = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
-  const res = await fetch(apiBase + '?t=' + Date.now(), { compress: false, headers: ghHeaders() });
+  const res = await fetch(apiBase, { compress: false, headers: ghHeaders(true) });
   if (res.status === 404) return { data: fallback, sha: null };
   const data = await res.json();
   if (!res.ok || !data.content) return { data: fallback, sha: null };
