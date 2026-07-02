@@ -1,6 +1,19 @@
 {
-  "atualizadoEm": "2026-07-02T13:42:25.377Z",
+  "atualizadoEm": "2026-07-02T13:42:33.670Z",
   "items": [
+    {
+      "id": "1xm5r0a",
+      "origem": "São Paulo",
+      "destino": "Santiago",
+      "cia": "Turkish",
+      "programa": "Azul pelo Mundo",
+      "pontos": 61500,
+      "cabine": "Executiva",
+      "datas_ida": "não encontrado",
+      "datas_volta": "Ago/26: 12",
+      "fonte": "alerta",
+      "enviadoEm": "2026-07-02T13:42:33.670Z"
+    },
     {
       "id": "qukj6m",
       "origem": "São Paulo",
