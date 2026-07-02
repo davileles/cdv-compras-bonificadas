@@ -1,6 +1,29 @@
 {
-  "geradoEm": "2026-07-02T12:04:00.248Z",
+  "geradoEm": "2026-07-02T12:25:02.727Z",
   "items": [
+    {
+      "id": "azp0ll",
+      "titulo": "10% de cashback em créditos da Uber",
+      "emoji": "🛍️",
+      "resumo": "O PicPay está oferecendo 10% de cashback na compra de créditos da Uber. A oferta é válida por tempo limitado, somente para pagamentos com PicPay Card.\n\nCompre créditos da Uber através do app do PicPay (seção Shop > Gift Cards) e ganhe 10% de cashback pagando com PicPay Card. O código para resgate fica disponível imediatamente e o cashback é creditado após confirmação do pagamento, ficando disponível por 7 dias. O crédito Uber é válido por 36 meses, apenas para viagens no Brasil.",
+      "programa": "PicPay",
+      "bonus": "10% de cashback",
+      "prazo": "",
+      "categoria": "compra_bonificada",
+      "loja": "Uber",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "No PicPay, o saldo do cashback não pode ser sacado, nem transferido via Pix. Você pode usar o valor para transferências dentro do aplicativo, como pagar um amigo, estabelecimentos, boletos e comprar no PicPay Shop.",
+      "link": "",
+      "restricoes": [
+        "Cashback aplicado somente em compras acima de R$ 150 (a partir de R$ 151)",
+        "Limitado a uma compra por CPF",
+        "Pagamento obrigatório com PicPay Card",
+        "Cashback creditado após confirmação do pagamento e disponível por 7 dias"
+      ],
+      "publicadoEm": "2026-07-02T12:25:02.037Z"
+    },
     {
       "id": "1lvhvuc",
       "titulo": "Até 55% de desconto na compra de pontos Livelo + 5% extra no Pix",
