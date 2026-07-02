@@ -1,4 +1,87 @@
 {
-  "geradoEm": "2026-07-02T13:54:45.315Z",
-  "items": []
+  "geradoEm": "2026-07-02T17:31:07.789Z",
+  "items": [
+    {
+      "id": "se8cbu",
+      "titulo": "Até 30% de bônus ao transferir pontos Azul para ALL Accor",
+      "emoji": "🔄",
+      "resumo": "O programa ALL Accor está oferecendo até 30% de pontos Reward em bônus nas transferências de pontos Azul Fidelidade, válida até 3 de julho. Assinantes do ALL Signature e com contas vinculadas no Cross Rewards recebem os maiores percentuais. A promoção permite gerar vouchers em euros a partir de R$ 3,46, com fator de conversão reduzido para clientes Clube Azul.",
+      "programa": "Azul Fidelidade, ALL Accor",
+      "bonus": "Até 30% de pontos Reward (5% base + 10% ALL Signature + 15% Cross Rewards vinculado)",
+      "prazo": "03/07/2026",
+      "categoria": "transferencia",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://all.accor.com/a/pt-br/loyalty-program/partners/offers/oferta-transferencia-azul-fidelidade.html",
+      "restricoes": [
+        "5% de bônus: aplicado sobre o total de pontos transferidos",
+        "10% de bônus adicional: assinantes ALL Signature com assinatura ativa e pagamento regularizado",
+        "15% de bônus adicional: associados com contas vinculadas no programa Cross Rewards (crédito em até 30 dias)",
+        "Fator de conversão 7,5:1 para clientes Clube Azul (9,5:1 para não-Clube; 11,25:1 para demais usuários)",
+        "Limite máximo de 10 lotes de transferências por associado, feitos em uma única operação",
+        "Pontos bônus creditados em até 2 dias",
+        "Sem obrigatoriedade de hospedagem para receber o bônus",
+        "Resgate de vouchers promocionais limitado, podendo acabar antes do fim da vigência da campanha"
+      ],
+      "publicadoEm": "2026-07-02T16:48:56.000Z"
+    },
+    {
+      "id": "1a58ovr",
+      "titulo": "Ganhe 25.000 pontos ao assinar o Clube Livelo Classic",
+      "emoji": "🎁",
+      "resumo": "A Livelo oferece 13.000 pontos bônus para novas assinaturas anuais do Clube Livelo Classic, totalizando 25.000 pontos creditados ao longo de 12 meses. O custo por mil pontos fica em R$ 19,40 com desconto de 10% no pagamento à vista. A promoção é válida apenas para novos assinantes e encerra em breve.",
+      "programa": "Livelo",
+      "bonus": "13.000 pontos bônus (10.250 pontos no 1º mês e 250 pontos mensais do 2º ao 12º mês), totalizando 25.000 pontos em 12 meses",
+      "prazo": "03/07/2026",
+      "categoria": "clube",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "💰 Custo do milheiro: R$ 19,40 por 1.000 pontos (à vista com 10% de desconto)\n💰 Custo do milheiro: R$ 20,47 por 1.000 pontos (parcelado com 5% de desconto)",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://www.livelo.com.br/clube",
+      "restricoes": [
+        "- Válida exclusivamente para novas adesões do Clube Livelo Classic",
+        "- Assinatura obrigatória na modalidade anual",
+        "- Não cumulativa com outras promoções, descontos ou campanhas",
+        "- Exclusiva para clientes Livelo que não sejam assinantes atuais do Clube Livelo e que não tenham cancelado a assinatura nos últimos 7 dias",
+        "- Bônus creditado mensalmente ao longo de 12 meses de assinatura",
+        "- Valor da assinatura anual: R$ 538,80"
+      ],
+      "publicadoEm": "2026-07-02T16:10:53.000Z"
+    },
+    {
+      "id": "7j4r1i",
+      "titulo": "Até 50% de desconto na compra de pontos Esfera para assinantes do Clube",
+      "emoji": "💰",
+      "resumo": "A Esfera oferece desconto de até 50% na compra de pontos durante celebração de 15 anos. Assinantes do Clube Esfera conseguem adquirir pontos a R$ 35,00 por mil, reduzindo o custo pela metade. Promoção válida até 31 de julho com cupom exclusivo.",
+      "programa": "Esfera",
+      "bonus": "Até 50% de desconto na compra de pontos",
+      "prazo": "31/07/2026",
+      "categoria": "compra",
+      "loja": "",
+      "cupom": "PASSAGEIRO50",
+      "milheiro": "💰 Custo do milheiro: R$ 35,00 por 1.000 pontos (assinantes do Clube Esfera com cupom)\n💰 Custo do milheiro: R$ 70,00 por 1.000 pontos (não assinantes)",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://www.esfera.com.vc/p/compra-de-pontos/e000100033",
+      "restricoes": [
+        "Promoção válida exclusivamente para assinantes do Clube Esfera",
+        "Cupom PASSAGEIRO50 necessário para ativar o desconto de 50%",
+        "Limite de 200.000 pontos ou cinco pedidos mensais por CPF, o que ocorrer primeiro",
+        "Para assinantes do Clube Esfera, limite é de cinco pedidos por mês com quantidade variável conforme o clube contratado",
+        "Quantidade mínima de compra: 1.000 pontos",
+        "Válido para uma única compra por CPF",
+        "Parcelamento disponível em até 12 vezes sem juros",
+        "Pontos creditados em até 24 horas após a transação",
+        "Pontos têm validade de 24 meses a contar da data da compra",
+        "Pagamento apenas por cartão de crédito",
+        "Cupom adicional PASSAGEIRO15 oferece 15% de desconto em resgates de produtos físicos, limitado a 1 por CPF"
+      ],
+      "publicadoEm": "2026-07-02T14:50:36.000Z"
+    }
+  ]
 }
