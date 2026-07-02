@@ -1,4 +1,62 @@
 {
-  "geradoEm": "2026-07-02T12:09:23.545Z",
-  "items": []
+  "geradoEm": "2026-07-02T13:54:45.315Z",
+  "items": [
+    {
+      "id": "x31z8z",
+      "titulo": "Até 20 pontos por real entre Portal das Malas e Azul Fidelidade",
+      "emoji": "🛍️",
+      "resumo": "O Azul Fidelidade oferece bonificação em compras realizadas no Portal das Malas e Casas Bahia, com variação conforme o status do cliente no programa. Assinantes do Clube Azul ganham até 20 pontos por real no Portal das Malas e até 15 pontos por real nas Casas Bahia, enquanto membros regulares recebem até 15 e 10 pontos respectivamente. Os pontos são creditados em até 15, 25 ou 30 dias após a entrega dos produtos.",
+      "programa": "Azul Fidelidade",
+      "bonus": "Até 20 pontos por real no Portal das Malas; até 15 pontos por real nas Casas Bahia",
+      "prazo": "31/07/2026",
+      "categoria": "compra_bonificada",
+      "loja": "Portal das Malas e Casas Bahia",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "Sempre verifique a necessidade de uso de cupom, formas de pagamento e produtos específicos participantes, além do prazo para receber os pontos. Recomendamos fortemente que todo processo seja gravado para possível reclamação futura. Sem a gravação você não obterá os pontos se eles não forem creditados corretamente.",
+      "link": "https://www.voeazul.com.br/br/pt/ofertas/pontos",
+      "restricoes": [
+        "Portal das Malas: assinantes do Clube Azul ganham até 20 pontos por real em itens selecionados (válido até 31/07/2026)",
+        "Portal das Malas: membros do Azul Fidelidade ganham até 15 pontos por real em itens selecionados (válido até 31/07/2026)",
+        "Casas Bahia: assinantes do Clube Azul ganham até 15 pontos por real em itens selecionados (válido até 05/07/2026)",
+        "Casas Bahia: membros do Azul Fidelidade ganham até 10 pontos por real em itens selecionados (válido até 05/07/2026)",
+        "Pontos são creditados em até 15, 25 ou 30 dias corridos após a data de entrega do produto, conforme a loja",
+        "É necessário acessar o site de ofertas do Azul Fidelidade para participar da campanha",
+        "A Azul reserva-se o direito de alterar, suspender ou cancelar a campanha sem aviso prévio"
+      ],
+      "publicadoEm": "2026-07-02T12:09:25.000Z"
+    },
+    {
+      "id": "mnwpij",
+      "titulo": "Até 115% de bônus nas transferências de pontos Livelo para Azul Fidelidade",
+      "emoji": "🔄",
+      "resumo": "Azul Fidelidade oferece bônus nas transferências de pontos da Livelo, com até 85% de ganho para assinantes do Clube Azul e até 30% adicional conforme o tempo de adesão ao clube. A promoção é válida até 5 de julho de 2026, com crédito dos pontos bônus em até 15 dias úteis após o encerramento da campanha.",
+      "programa": "Azul Fidelidade e Livelo",
+      "bonus": "Até 85% de bônus + até 30% adicional (totalizando até 115%)",
+      "prazo": "05/07/2026",
+      "categoria": "transferencia",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "🎯 Bônus de 55% (clientes não-Clube): transfira até 545.454 pontos para atingir o teto de 300.000 pontos de bônus\n🎯 Bônus de 85% (Clube Azul com até 6 meses): transfira até 352.941 pontos para atingir o teto de 300.000 pontos de bônus\n🎯 Bônus de 90% (Clube Azul entre 1 a 2 anos): transfira até 333.333 pontos para atingir o teto de 300.000 pontos de bônus\n🎯 Bônus de 105% (Clube Azul entre 3 a 4 anos): transfira até 285.714 pontos para atingir o teto de 300.000 pontos de bônus\n🎯 Bônus de 115% (Clube Azul há 5 anos ou mais): transfira até 260.869 pontos para atingir o teto de 300.000 pontos de bônus",
+      "importante": "",
+      "link": "https://www.voeazul.com.br/br/pt/ofertas/livelo",
+      "restricoes": [
+        "Clientes não-Clube Azul recebem 55% de bônus",
+        "Assinantes Clube Azul com conta ativa recebem 85% de bônus base",
+        "Bônus adicional de 5% para assinantes Clube Azul há mais de 6 meses",
+        "Bônus adicional de 10% para assinantes Clube Azul entre 1 a 2 anos (12 a 35 meses)",
+        "Bônus adicional de 20% para assinantes Clube Azul entre 3 a 4 anos (36 a 69 meses)",
+        "Bônus adicional de 30% para assinantes Clube Azul há mais de 5 anos (60+ meses)",
+        "Limite máximo de 300.000 pontos de bônus por CPF",
+        "Limite de bônus cumulativo de 100.000 pontos por ano (01/01 a 31/12)",
+        "Crédito dos pontos bônus em até 15 dias úteis após o término da campanha",
+        "Pontos bônus possuem validade de 6 meses",
+        "Necessário cadastro na página da promoção até 05/07/2026",
+        "Transferência dos pontos também deve ser realizada até 05/07/2026"
+      ],
+      "publicadoEm": "2026-07-02T11:42:24.000Z"
+    }
+  ]
 }
