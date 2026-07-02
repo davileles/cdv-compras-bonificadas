@@ -436,20 +436,18 @@ function decodeHistKey(s){
     .toLowerCase().trim();
 }
 
-function mediaHistorica(partnerKey){
+// Calcula média histórica usando UM valor por dia (ignora o dia atual)
+// Isso garante que uma pontuação alta que se mantém continue sendo considerada "acima da média"
+function mediaHistoricaDiaria(partnerKey, progId){
   const hoje=new Date().toISOString().split('T')[0];
   const vals=[];
+  // Ordena dias e pega um valor por dia (já é assim no historico.json — um snapshot/dia)
   for(const[data,snap] of Object.entries(historico)){
-    if(data===hoje) continue;
-    // tenta chave normal e chave decodificada
+    if(data===hoje) continue; // exclui o dia atual da média
     const entry=snap[partnerKey]||snap[decodeHistKey(partnerKey)];
     if(!entry) continue;
-    let bestEquiv=0;
-    for(const[pid,pts] of Object.entries(entry.programs||{})){
-      const eq=pts*(EQUIV[pid]||1);
-      if(eq>bestEquiv) bestEquiv=eq;
-    }
-    if(bestEquiv>0) vals.push(bestEquiv);
+    const pts=entry.programs?.[progId];
+    if(pts>0) vals.push(pts);
   }
   if(!vals.length) return null;
   return vals.reduce((a,b)=>a+b,0)/vals.length;
@@ -457,14 +455,13 @@ function mediaHistorica(partnerKey){
 
 function isAboveAverage(p){
   const key=p.name.toLowerCase().trim();
-  const media=mediaHistorica(key);
-  if(media===null) return false;
-  let bestEquiv=0;
+  // Verifica programa a programa: se qualquer programa está acima da sua própria média histórica
   for(const[pid,data] of Object.entries(p.programs)){
-    const eq=data.pts*(EQUIV[pid]||1);
-    if(eq>bestEquiv) bestEquiv=eq;
+    const media=mediaHistoricaDiaria(key, pid);
+    if(media===null) continue;
+    if(data.pts >= media*1.2) return true; // 20% acima da média diária do programa
   }
-  return bestEquiv >= media*1.2;
+  return false;
 }
 
 function mergePartners(allData){
