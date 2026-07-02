@@ -1,6 +1,32 @@
 {
-  "geradoEm": "2026-07-02T12:25:02.727Z",
+  "geradoEm": "2026-07-02T12:27:14.700Z",
   "items": [
+    {
+      "id": "1fn47g5",
+      "titulo": "20% OFF em pacotes aéreo Azul + hotel para julho e agosto",
+      "emoji": "📰",
+      "resumo": "Azul Viagens oferece 20% de desconto em todos os pacotes com voos Azul e hospedagem para viagens em julho e agosto de 2026. Promoção válida para compras realizadas entre 02/07 e 06/07 com o código FERIAS20.\n\nDesconto de 20% aplicável exclusivamente em pacotes completos (aéreo Azul + hotel) para viagens realizadas entre 03/07/2026 e 31/08/2026. O código promocional FERIAS20 deve ser utilizado no momento da compra. Válido para reservas feitas através do site Azul Viagens, Azul Fidelidade, Central de Atendimento (4003-1181), Agências e Lojas Azul Viagens. O desconto não é cumulativo com outras promoções e será cancelado em caso de alteração ou cancelamento da reserva original.",
+      "programa": "Azul Viagens",
+      "bonus": "20% de desconto",
+      "prazo": "06/07/2026",
+      "categoria": "geral",
+      "loja": "",
+      "cupom": "FERIAS20",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://www.azulviagens.com.br",
+      "restricoes": [
+        "Período de compra: 02/07/2026 a 06/07/2026 ou enquanto durarem os estoques",
+        "Período de viagem: 03/07/2026 a 31/08/2026",
+        "Válido apenas para pacotes (aéreo + hotel), não aplicável a produtos separados, aluguel de carros, seguro viagem, ingressos, passeios, cruzeiros, traslados ou voos block charter",
+        "Desconto concedido apenas para pagamentos em Reais ou resgate com pontos Azul",
+        "Em caso de cancelamento ou alteração, o desconto será cancelado e aplicam-se penalidades conforme Termos e Condições",
+        "Campanha pode ser encerrada a qualquer momento sem aviso prévio",
+        "Descontos não são cumulativos"
+      ],
+      "publicadoEm": "2026-07-02T12:27:14.230Z"
+    },
     {
       "id": "azp0ll",
       "titulo": "10% de cashback em créditos da Uber",
