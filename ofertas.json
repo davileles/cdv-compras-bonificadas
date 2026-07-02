@@ -1,6 +1,33 @@
 {
-  "geradoEm": "2026-07-02T13:33:11.367Z",
+  "geradoEm": "2026-07-02T17:35:19.282Z",
   "items": [
+    {
+      "id": "se8cbu",
+      "titulo": "Até AMANHÃ! 30% de bônus ao transferir pontos Azul para ALL Accor",
+      "emoji": "🔄",
+      "resumo": "O programa ALL Accor está oferecendo até 30% de pontos Reward em bônus nas transferências de pontos Azul Fidelidade, válida até 3 de julho. Assinantes do ALL Signature e com contas vinculadas no Cross Rewards recebem os maiores percentuais. A promoção permite gerar vouchers em euros a partir de R$ 3,46, com fator de conversão reduzido para clientes Clube Azul.",
+      "programa": "Azul Fidelidade, ALL Accor",
+      "bonus": "Até 30% de pontos Reward (5% base + 10% ALL Signature + 15% Cross Rewards vinculado)",
+      "prazo": "03/07/2026",
+      "categoria": "transferencia",
+      "loja": "",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "",
+      "link": "https://all.accor.com/a/pt-br/loyalty-program/partners/offers/oferta-transferencia-azul-fidelidade.html",
+      "restricoes": [
+        "5% de bônus: aplicado sobre o total de pontos transferidos",
+        "10% de bônus adicional: assinantes ALL Signature com assinatura ativa e pagamento regularizado",
+        "15% de bônus adicional: associados com contas vinculadas no programa Cross Rewards (crédito em até 30 dias)",
+        "Fator de conversão 7,5:1 para clientes Clube Azul (9,5:1 para não-Clube; 11,25:1 para demais usuários)",
+        "Limite máximo de 10 lotes de transferências por associado, feitos em uma única operação",
+        "Pontos bônus creditados em até 2 dias",
+        "Sem obrigatoriedade de hospedagem para receber o bônus",
+        "Resgate de vouchers promocionais limitado, podendo acabar antes do fim da vigência da campanha"
+      ],
+      "publicadoEm": "2026-07-02T16:48:56.000Z"
+    },
     {
       "id": "lgx5tm",
       "titulo": "13.000 pontos extras em assinatura do Clube Livelo Classic 1.000 anual",
