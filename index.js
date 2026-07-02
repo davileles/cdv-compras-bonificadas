@@ -436,9 +436,10 @@ app.post('/webhook/hubla-membros', async (req, res) => {
   const isMemberRemoved = type === 'customer.member_removed' || type === 'member.revoked';
   if (!isMemberAdded && !isMemberRemoved) return res.json({ ok: true, ignorado: true, type });
 
-  const member = event.member || event.customer || {};
-  const email  = (member.email || '').toLowerCase().trim();
-  const nome   = member.fullName || member.name || member.email || '';
+  // Payload v2: e-mail em event.user ou event.subscription.payer
+  const user   = event.user || event.subscription?.payer || event.member || event.customer || {};
+  const email  = (user.email || '').toLowerCase().trim();
+  const nome   = [user.firstName, user.lastName].filter(Boolean).join(' ') || user.fullName || user.name || email;
   const produto = event.products?.[0] || event.product || {};
 
   if (!email) return res.status(400).json({ ok: false, erro: 'E-mail não encontrado no payload' });
