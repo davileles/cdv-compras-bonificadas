@@ -31,4 +31,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add ofertas-pendentes.json ofertas-processados.json
           git diff --staged --quiet || git commit -m "chore: atualiza radar e histórico de IDs [skip ci]"
+          git pull --rebase origin main
           git push
