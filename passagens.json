@@ -1,19 +1,6 @@
 {
-  "atualizadoEm": "2026-07-02T18:17:50.513Z",
+  "atualizadoEm": "2026-07-02T18:39:23.914Z",
   "items": [
-    {
-      "id": "16k501u",
-      "origem": "Uberlandia",
-      "destino": "Salvador",
-      "cia": "Azul",
-      "programa": "Azul Fidelidade",
-      "pontos": 26000,
-      "cabine": "Economica",
-      "datas_ida": "Set/26: 16, 17, 18, 19, 20, 27; Nov/26: 14",
-      "datas_volta": "Set/26: 23, 24, 25, 26, 27",
-      "fonte": "alerta",
-      "enviadoEm": "2026-07-02T18:17:50.513Z"
-    },
     {
       "id": "160g8pi",
       "origem": "Uberlandia",
