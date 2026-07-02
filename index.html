@@ -225,10 +225,40 @@
     .main-tab{padding:12px 12px;font-size:12px}
     .radar-bar{padding:12px 14px 0}
   }
+
+  /* ── Login ───────────────────────────────────────────────────────────────── */
+  #login-screen{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px}
+  .login-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:36px 32px;width:100%;max-width:380px;display:flex;flex-direction:column;align-items:center;gap:0}
+  .login-logo{width:72px;height:72px;object-fit:contain;margin-bottom:20px}
+  .login-title{font-size:20px;font-weight:900;color:var(--text);text-align:center;margin-bottom:4px}
+  .login-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:28px}
+  .login-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;align-self:flex-start;margin-bottom:6px}
+  .login-input{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:11px 14px;border-radius:10px;font-size:14px;font-family:'Montserrat',sans-serif;outline:none;transition:border-color .2s;margin-bottom:16px}
+  .login-input:focus{border-color:var(--cdv-coral)}
+  .login-btn{width:100%;background:var(--cdv-coral);border:none;color:#fff;padding:12px;border-radius:10px;font-size:14px;font-weight:800;cursor:pointer;font-family:'Montserrat',sans-serif;transition:opacity .2s;margin-bottom:12px}
+  .login-btn:hover{opacity:.85}
+  .login-btn:disabled{opacity:.5;cursor:not-allowed}
+  .login-erro{font-size:12px;font-weight:700;color:#f87171;text-align:center;min-height:18px;margin-bottom:4px}
+  .login-ok{font-size:12px;font-weight:700;color:#34d399;text-align:center;min-height:18px;margin-bottom:4px}
+  #app-content{display:none}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <img class="login-logo" src="logocdv.png" onerror="this.style.display='none'" alt="CDV"/>
+    <div class="login-title">Painel CDV</div>
+    <div class="login-sub">Digite o e-mail cadastrado na sua assinatura</div>
+    <div class="login-label">E-mail</div>
+    <input class="login-input" id="login-email" type="email" placeholder="seu@email.com" autocomplete="email"/>
+    <div class="login-erro" id="login-erro"></div>
+    <button class="login-btn" id="login-btn" onclick="fazerLogin()">Entrar</button>
+    <div style="font-size:11px;color:var(--muted2);text-align:center">Acesso exclusivo para membros do Clube do Viajante</div>
+  </div>
+</div>
+<div id="app-content">
 
 <header>
   <div class="logo-row">
@@ -237,6 +267,10 @@
       <span class="brand-name">Clube do Viajante</span>
       <span class="brand-sub">Painel de ofertas</span>
     </div>
+  </div>
+  <div style="margin-left:auto;display:flex;align-items:center;gap:12px">
+    <span id="header-nome-membro" style="font-size:12px;font-weight:700;color:var(--muted)"></span>
+    <button onclick="fazerLogout()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:5px 12px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .15s" onmouseover="this.style.borderColor='#f87171';this.style.color='#f87171'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">Sair</button>
   </div>
 </header>
 
@@ -1529,6 +1563,76 @@ document.getElementById('oferta-modal-overlay').addEventListener('click',e=>{
 document.getElementById('oferta-modal-close-btn').addEventListener('click',closeOfertaModal);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOfertaModal();});
 
+
+// ── Login ─────────────────────────────────────────────────────────────────────
+const CDV_PROXY_AUTH = 'https://cdv-proxy-production.up.railway.app';
+const LOGIN_KEY  = 'cdv_auth';
+const LOGIN_TTL  = 24 * 60 * 60 * 1000; // 24h
+
+function salvarSessao(dados) {
+  localStorage.setItem(LOGIN_KEY, JSON.stringify({ ...dados, ts: Date.now() }));
+}
+function lerSessao() {
+  try {
+    const s = JSON.parse(localStorage.getItem(LOGIN_KEY) || 'null');
+    if (!s || !s.ts) return null;
+    if (Date.now() - s.ts > LOGIN_TTL) { localStorage.removeItem(LOGIN_KEY); return null; }
+    return s;
+  } catch { return null; }
+}
+function mostrarPainel(sessao) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app-content').style.display = 'block';
+  // Mostra nome no header se existir
+  const nomeEl = document.getElementById('header-nome-membro');
+  if (nomeEl && sessao?.nome) nomeEl.textContent = '👤 ' + sessao.nome.split(' ')[0];
+}
+async function fazerLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const erroEl = document.getElementById('login-erro');
+  const btn = document.getElementById('login-btn');
+  erroEl.textContent = '';
+  if (!email || !email.includes('@')) { erroEl.textContent = 'Digite um e-mail válido.'; return; }
+  btn.disabled = true;
+  btn.textContent = 'Verificando...';
+  try {
+    const res = await fetch(CDV_PROXY_AUTH + '/membros/verificar?email=' + encodeURIComponent(email));
+    const data = await res.json();
+    if (data.acesso) {
+      salvarSessao({ email: data.email, nome: data.nome });
+      mostrarPainel(data);
+    } else {
+      const msgs = {
+        nao_encontrado: 'E-mail não encontrado. Verifique se é o mesmo da sua assinatura.',
+        inativo: 'Sua assinatura está inativa. Renove para acessar o painel.'
+      };
+      erroEl.textContent = msgs[data.motivo] || 'Acesso negado.';
+    }
+  } catch (e) {
+    erroEl.textContent = 'Erro ao verificar. Tente novamente.';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Entrar';
+  }
+}
+// Enter no campo dispara login
+document.getElementById('login-email').addEventListener('keydown', e => { if (e.key === 'Enter') fazerLogin(); });
+
+function fazerLogout() {
+  localStorage.removeItem(LOGIN_KEY);
+  document.getElementById('app-content').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-erro').textContent = '';
+  document.getElementById('header-nome-membro').textContent = '';
+}
+// Verifica sessão salva ao carregar
+(function verificarSessaoSalva() {
+  const sessao = lerSessao();
+  if (sessao) { mostrarPainel(sessao); }
+})();
+
 </script>
+</div><!-- /app-content -->
 </body>
 </html>
