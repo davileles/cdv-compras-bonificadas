@@ -476,7 +476,7 @@ app.post('/webhook/hubla-membros', async (req, res) => {
       // se não encontrar, ignora silenciosamente
     }
 
-    await ghSaveJson(MEMBROS_PATH, dados.sha, { atualizadoEm: agora, total: membros.filter(m => m.status === 'ativo').length, membros });
+    await ghPutJson(MEMBROS_PATH, { atualizadoEm: agora, total: membros.filter(m => m.status === 'ativo').length, membros }, dados.sha, 'webhook: atualiza membros');
     res.json({ ok: true, type, email, acao: isMemberAdded ? 'adicionado' : 'removido' });
   } catch (err) {
     console.error('[webhook-hubla-membros]', err.message);
