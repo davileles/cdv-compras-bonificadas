@@ -1,25 +1,4 @@
 {
   "geradoEm": "2026-07-02T10:28:55.399Z",
-  "items": [
-    {
-      "id": "var_fkaza3",
-      "titulo": "2 parceiros tiveram aumento de pontuação com Esfera",
-      "emoji": "📈",
-      "resumo": "2 parceiros do programa Esfera tiveram aumento de pontuação na última atualização do Painel do Clube do Viajante.\n\n🛍️ Boticário — 1 → 5 pts/R$ (+4)\n🛍️ Ponto — 1 → 5 pts/R$ (+4)",
-      "descricao": "",
-      "programa": "Esfera",
-      "bonus": "",
-      "prazo": "",
-      "categoria": "compra_bonificada",
-      "loja": "Esfera",
-      "cupom": "",
-      "link": "https://painel.clubedoviajante.com.br",
-      "importante": "",
-      "milheiro": "",
-      "tetoTransferencia": "",
-      "restricoes": [],
-      "publicadoEm": "2026-07-02T10:28:55.399Z",
-      "tipoVariacao": true
-    }
-  ]
+  "items": []
 }
