@@ -455,7 +455,8 @@ function mediaHistoricaDiaria(partnerKey, progId){
     if(data===hoje) continue; // exclui o dia atual da média
     const entry=snap[partnerKey]||snap[decodeHistKey(partnerKey)];
     if(!entry) continue;
-    const pts=entry.programs?.[progId];
+    const progV=entry.programs?.[progId];
+    const pts=typeof progV==='object'?progV.pts:progV;
     if(pts>0) vals.push(pts);
   }
   if(!vals.length) return null;
@@ -864,7 +865,9 @@ function renderHistChart(partnerName){
       // tenta chave normal e chave decodificada
       const entry = snap[key] || snap[decodeHistKey(key)];
       if(!entry) return null;
-      return entry.programs?.[pid] || null;
+      const v = entry.programs?.[pid];
+      if (!v) return null;
+      return typeof v === 'object' ? v.pts : v;
     });
   const BORDER_DASH = {
     livelo: [],
