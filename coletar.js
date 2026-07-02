@@ -128,9 +128,15 @@ function parseComparemaniaPts(html, progId) {
     const pts = extractPts(ptsTxt);
     if (!pts) continue;
 
+    // Detecta se a oferta é em dólar pelo texto da pontuação
+    const textoIndicaReal  = /r\$|por\s+1?\s*real/i.test(ptsTxt);
+    const textoIndicaDolar = /u\$|dólar|dollar/i.test(ptsTxt);
+    const nomeIndicaDolar  = /kaligo|hertz|aliexpress|rental\.cars|rentcars|localiza\.int/i.test(name);
+    const dollar = textoIndicaReal ? false : (textoIndicaDolar || nomeIndicaDolar);
+
     const key = name.toLowerCase().trim();
-    if (!result[key] || pts > result[key]) {
-      result[key] = pts;
+    if (!result[key] || pts > result[key].pts) {
+      result[key] = { pts, dollar };
     }
   }
 
@@ -345,8 +351,10 @@ async function gerarOfertasVariacao(snapshotAtual, historico, hoje) {
     const dadosAnt = snapshotAnterior[parceiro];
     if (!dadosAnt) continue; // parceiro novo — não compara
 
-    for (const [progId, ptsNow] of Object.entries(dadosAtual.programs || {})) {
-      const ptsBefore = (dadosAnt.programs || {})[progId];
+    for (const [progId, progAtual] of Object.entries(dadosAtual.programs || {})) {
+      const ptsNow = typeof progAtual === 'object' ? progAtual.pts : progAtual;
+      const progBefore = (dadosAnt.programs || {})[progId];
+      const ptsBefore = typeof progBefore === 'object' ? progBefore.pts : progBefore;
       if (!ptsBefore || ptsNow <= ptsBefore) continue; // sem variação positiva
 
       // Chave única por parceiro+programa
@@ -493,7 +501,7 @@ async function main() {
       for (const [key, pts] of Object.entries(parceiros)) {
         const cleanKey = decodeEntities(key);
         if (!snapshot[cleanKey]) snapshot[cleanKey] = { programs: {} };
-        snapshot[cleanKey].programs[prog.id] = pts;
+        snapshot[cleanKey].programs[prog.id] = { pts: parceiros[key].pts, dollar: parceiros[key].dollar };
       }
     } catch (e) {
       console.error(`[Histórico] Erro ao coletar ${prog.name}:`, e.message);
@@ -514,7 +522,8 @@ async function main() {
     const key = (alerta.parceiro || '').toLowerCase().trim();
     const snap = snapshot[key];
     if (!snap) { alertasRestantes.push(alerta); continue; }
-    const pts = snap.programs[alerta.programa];
+    const progData = snap.programs[alerta.programa];
+    const pts = typeof progData === 'object' ? progData.pts : progData;
     if (pts && pts >= alerta.minPts) {
       await dispararAlerta(alerta, alerta.parceiro, pts);
       // Não adiciona de volta — alerta consumido após envio
