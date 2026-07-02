@@ -142,7 +142,7 @@ function ghHeaders() {
 
 async function ghGetJson(filePath, fallback) {
   const apiBase = `https://api.github.com/repos/${GITHUB_REPO}/contents/${filePath}`;
-  const res = await fetch(apiBase, { compress: false, headers: ghHeaders() });
+  const res = await fetch(apiBase + '?t=' + Date.now(), { compress: false, headers: ghHeaders() });
   if (res.status === 404) return { data: fallback, sha: null };
   const data = await res.json();
   if (!res.ok || !data.content) return { data: fallback, sha: null };
@@ -446,7 +446,7 @@ app.post('/webhook/hubla-membros', async (req, res) => {
 
   try {
     const agora = new Date().toISOString();
-    const dados = await ghGetJson(MEMBROS_PATH, { atualizadoEm: agora, total: 0, membros: [] });
+    let dados = await ghGetJson(MEMBROS_PATH, { atualizadoEm: agora, total: 0, membros: [] });
     let membros = dados.data.membros || [];
     const idx   = membros.findIndex(m => m.email === email);
 
