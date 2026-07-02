@@ -100,7 +100,7 @@
       "programs": {
         "livelo": {
           "pts": 7,
-          "dollar": true
+          "dollar": false
         },
         "esfera": {
           "pts": 8,
@@ -308,7 +308,7 @@
       "programs": {
         "livelo": {
           "pts": 5,
-          "dollar": true
+          "dollar": false
         }
       }
     },
@@ -324,7 +324,7 @@
       "programs": {
         "livelo": {
           "pts": 4,
-          "dollar": false
+          "dollar": true
         },
         "esfera": {
           "pts": 4,
@@ -1168,7 +1168,7 @@
       "programs": {
         "livelo": {
           "pts": 2,
-          "dollar": true
+          "dollar": false
         },
         "esfera": {
           "pts": 2,
@@ -3124,7 +3124,7 @@
       "programs": {
         "azul": {
           "pts": 3,
-          "dollar": false
+          "dollar": true
         }
       }
     },
@@ -3346,7 +3346,7 @@
       "programs": {
         "livelo": {
           "pts": 10,
-          "dollar": false
+          "dollar": true
         }
       }
     },
@@ -3682,7 +3682,7 @@
       "programs": {
         "livelo": {
           "pts": 5,
-          "dollar": false
+          "dollar": true
         }
       }
     },
@@ -3718,7 +3718,7 @@
       "programs": {
         "livelo": {
           "pts": 5,
-          "dollar": false
+          "dollar": true
         },
         "azul": {
           "pts": 1,
@@ -3746,7 +3746,7 @@
       "programs": {
         "livelo": {
           "pts": 4,
-          "dollar": false
+          "dollar": true
         },
         "esfera": {
           "pts": 4,
@@ -5182,7 +5182,7 @@
       "programs": {
         "livelo": {
           "pts": 1,
-          "dollar": false
+          "dollar": true
         }
       }
     },
