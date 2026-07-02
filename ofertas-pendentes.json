@@ -1,4 +1,28 @@
 {
-  "geradoEm": "2026-07-02T17:31:07.789Z",
-  "items": []
+  "geradoEm": "2026-07-02T19:20:52.187Z",
+  "items": [
+    {
+      "id": "trj8pk",
+      "titulo": "5 pontos por real entre Esfera e Pontofrio",
+      "emoji": "🛍️",
+      "resumo": "A Esfera está oferecendo 5 pontos por real gasto em compras no Pontofrio e O Boticário. A promoção é válida até 6 de julho de 2026 e os pontos serão creditados em até 45 dias após o recebimento do produto. Algumas ofertas não são cumulativas com cupons de afiliados.",
+      "programa": "Esfera",
+      "bonus": "5 pontos por real gasto",
+      "prazo": "06/07/2026",
+      "categoria": "compra_bonificada",
+      "loja": "Pontofrio e O Boticário",
+      "cupom": "",
+      "milheiro": "",
+      "tetoTransferencia": "",
+      "importante": "Sempre verifique a necessidade de uso de cupom, formas de pagamento e produtos específicos participantes, além do prazo para receber os pontos. Recomendamos fortemente que todo processo seja gravado para possível reclamação futura. Sem a gravação você não obterá os pontos se eles não forem creditados corretamente.",
+      "link": "https://www.esfera.com.vc/p/ponto/e000100179",
+      "restricoes": [
+        "- Válido para Pontofrio e O Boticário até 6 de julho de 2026",
+        "- Pontos creditados em até 45 dias após recebimento do produto",
+        "- Ofertas não são cumulativas com cupons de afiliados",
+        "- Recomenda-se registrar o processo de compra (fotos ou vídeo da tela) para garantir o crédito correto dos pontos"
+      ],
+      "publicadoEm": "2026-07-02T17:30:50.000Z"
+    }
+  ]
 }
